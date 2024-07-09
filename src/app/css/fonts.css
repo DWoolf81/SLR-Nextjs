@@ -1,0 +1,21 @@
+/*  Fonts and Only Fonts */
+
+
+
+@font-face {
+    font-family: "UniSans";
+    src:
+      local("Uni Sans"),
+      url("fonts/UNI\ SANS\ HEAVY.OTF") format("opentype");
+    font-weight: bold;
+    font-display: optional;
+  }
+  
+  @font-face {
+    font-family: "UniSans";
+    src:
+      local("Uni Sans"),
+      url("fonts/UNI\ SANS\ THIN.OTF") format("opentype");
+    font-weight: normal;
+    font-display: optional;
+  }

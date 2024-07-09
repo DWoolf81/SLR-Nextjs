@@ -1,0 +1,132 @@
+[
+  {
+    "id": "00001",
+    "name": "Prime Time lacrosse luxury lite",
+    "year": "2012",
+    "length": "35.42",
+    "type": "Travel Tariler",
+    "sleeps": 10,
+    "details_web": "",
+    "buy_website": "https://www.facebook.com/marketplace/item/745662404092767",
+    "location": {
+      "city": " -- ",
+      "state": "TX",
+      "site": " -- "
+    },
+    "images": [
+      "357354480_7354658054556968_7586703221745730716_n.jpg",
+      "two",
+      "three",
+      "four"
+    ],
+    "available": 2,
+    "rate": {
+      "day": 95,
+      "week": 500,
+      "month": 1700
+    }
+  },
+  {
+    "id": "00002",
+    "name": "Sportsman T/A 5th Wheel",
+    "year": "1997",
+    "length": "26'2",
+    "type": "Travel Tariler",
+    "sleeps": 6,
+    "buy_website": "https://www.facebook.com/marketplace/item/1796202040793305/",
+    "location": {
+      "city": " -- ",
+      "state": "TX",
+      "site": "TBH"
+    },
+    "images": [
+      "418962694_7505895799443468_526453201712088413_n.jpg",
+      "two",
+      "three"
+    ],
+    "available": 2,
+    "rate": {
+      "day": 79,
+      "week": 400,
+      "month": 1450
+    }
+  },
+  {
+    "id": "00003",
+    "name": "Prime Time - Crusader Lite",
+    "year": "2017",
+    "length": "31.83",
+    "type": "Travel Tariler",
+    "sleeps": 6,
+    "details_web": "https://www.rvusa.com/rv-guide/2017-prime-time-crusader-lite-fifth-wheel-floorplan-28rl-tr28830",
+    "buy_website": "https://www.facebook.com/marketplace/item/1052787112616394",
+    "location": {
+      "city": "Katy",
+      "state": "TX",
+      "site": "TBH"
+    },
+    "images": [
+      "419111676_1580199919398737_8716742353335859336_n.jpg",
+      "two",
+      "three"
+    ],
+    "available": 0,
+    "rate": {
+      "day": 119,
+      "week": 600,
+      "month": 2000
+    }
+  },
+  {
+    "id": "00004",
+    "name": "Heartland - North Peak",
+    "year": "2016",
+    "length": "31.3",
+    "type": "Travel Tariler (5th Wheel)",
+    "sleeps": 4,
+    "details_web": "https://www.rvusa.com/rv-guide/2017-heartland-north-peak-fifth-wheel-floorplan-np-28-ts-tr29315",
+    "buy_website": "https://www.facebook.com/marketplace/item/875775774552717/",
+    "location": {
+      "city": "Katy",
+      "state": "TX",
+      "site": "TBH"
+    },
+    "images": [
+      "418443326_1398560911054270_2213976909808613291_n.jpg",
+      "two",
+      "three"
+    ],
+    "available": 2,
+    "rate": {
+      "day": 99,
+      "week": 500,
+      "month": 1700
+    }
+  },
+  {
+    "id": "00005",
+    "name": "Forest River - Salem Hemisphere 314BUD",
+    "year": "2021",
+    "length": "39'25",
+    "type": "Travel Tariler",
+    "sleeps": 10,
+    "details_web": "https://www.rvusa.com/rv-guide/2021-forest-river-salem-hemisphere-travel-trailer-floorplan-314bud-tr50528",
+    "buy_website": "https://www.facebook.com/marketplace/item/396249356185489/",
+    "location": {
+      "city": " -- ",
+      "state": "TX",
+      "site": "TBH"
+    },
+    "images": [
+      "406694420_7053245931401889_2551278331133069583_n.jpg",
+      "two",
+      "three"
+    ],
+    "available": 2,
+    "rate": {
+      "day": 189,
+      "week": 800,
+      "month": 2600
+    }
+  }
+]

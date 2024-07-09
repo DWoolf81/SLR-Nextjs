@@ -1,0 +1,55 @@
+{
+  "rvid": "00001",
+  "name": "Prime Time Lacrosse Luxury Lite",
+  "year": "2012",
+  "length": "35.42",
+  "type": "Travel Tariler",
+  "sleeps": 6,
+  "location": {
+    "city": "Katy",
+    "state": "TX",
+    "site": "A Golf Rv Resort"
+  },
+  "pictures": [
+    "357354480_7354658054556968_7586703221745730716_n.jpg",
+    "365413409_7113282028752063_2035201694897733938_n.jpg",
+    "363262725_7125400944170163_2760440383654570590_n.jpg",
+    "412974241_7334419543288616_4352274939097083474_n.jpg",
+    "366026711_7112286175528754_4998180709234740964_n.jpg",
+    "353990813_5328456740611244_5659293514929601547_n.jpg",
+    "364241679_6955409951172458_7703495535524456192_n.jpg",
+    "364246691_7059650907455542_6194410434720732257_n.jpg",
+    "364207749_6806331292817768_5804661089101966028_n.jpg"
+  ],
+  "desc": "This luxurious and spacious RV is perfect for a longer stay with family or friends. It features a large queen-size bed suite and a bunkhouse that’s as big as a second bedroom, making it ideal for accommodating multiple adults. The RV also comes equipped with an outdoor prep area, allowing you to enjoy outdoor activities with your friends and co-workers. And the best part? This RV is available at a super low rate! Don’t miss out on this amazing opportunity and reserve it now before it’s too late!",
+  "amenities": [
+    "toliet",
+    "refrigerator",
+    "power recliners",
+    "inside shower",
+    "outside shower",
+    "TV",
+    "radio",
+    "over",
+    "stove",
+    "private queen bed",
+    "bunk beds",
+    "microwave",
+    "dishware"
+  ],
+  "addons": [
+    "amazon alexa",
+    "smart lock",
+    "WIFI",
+    "rgb lights",
+    "Kureg K4000 Coffee Machine",
+    "Smart TV",
+    "Solar Lights"
+  ],
+  "available": 2,
+  "rate": {
+    "day": 79,
+    "week": 350,
+    "month": 1150
+  }
+}

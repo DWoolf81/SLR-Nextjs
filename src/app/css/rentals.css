@@ -1,0 +1,27 @@
+#bottomSection, .box-container, .list-container {
+    justify-content: start;
+    padding: 30px;
+    gap: 0px;
+}
+
+@media screen and (max-width: 430px) {
+    #bottomSection, .box-container, .list-container {
+        justify-content: center;
+        padding: 0px;
+    }
+
+    .list-container .div1 {
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 300px;
+        margin: 0;
+    }
+    .rv-img-box {
+        border-radius: 0px;
+    }
+    .rv-details-box {
+        padding: 20px;
+    }
+    
+
+}

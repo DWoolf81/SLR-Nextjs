@@ -1,0 +1,58 @@
+{
+  "rvid": "00005",
+  "name": "Forest River - Salem Hemisphere 314BUD",
+  "year": "2021",
+  "length": "39'25",
+  "type": "Travel Tariler",
+  "sleeps": 8,
+  "location": {
+    "city": " -- ",
+    "state": "TX",
+    "site": " -- "
+  },
+  "pictures": [
+    "406694420_7053245931401889_2551278331133069583_n.jpg",
+    "406597193_25320058100926889_8013596456490104609_n.jpg",
+    "406380734_6954843644577305_8153396373265324727_n.jpg",
+    "405496985_6926587957394998_6156033889941479358_n.jpg",
+    "406344286_5702655466526365_8909195229077833496_n.jpg",
+    "406461637_7567749906602429_3495590361854999802_n.jpg",
+    "406556388_6889780254475288_9173145634795924805_n.jpg",
+    "406570909_24706727108925711_6372018565750067790_n.jpg",
+    "406661432_6818462521542251_5068047917336254214_n.jpg",
+    "406914443_6706023009508679_60016000077635761_n.jpg",
+    "405276065_6599405470185886_2390206710679784857_n.jpg"
+  ],
+  "desc": "If you want a no compromise luxury leisure while you're on the road for work, then this is the camper for you. This powerhouse camper has everything you need to enjoy a home away from home while you work. The only thing is lacking is a washer and dryer, but it has two bathrooms, so you don’t have to wait in line. This camper is designed for multiple occupants. It can sleep up to 10 people, but 4 or 5 would be ideal to split the cost to just over $500 per person. This camper will be available soon, so book it now before it’s gone!",
+  "amenities": [
+    "1 private queen bedroom",
+    "2 bathrooms",
+    "refrigerator",
+    "2 AC units",
+    "power recliners",
+    "inside shower",
+    "outside kitchen",
+    "3 TVs",
+    "radio",
+    "oven",
+    "3 stove burner",
+    "microwave",
+    "dishware",
+    "fireplace"
+  ],
+  "addons": [
+    "amazon alexa",
+    "smart lock",
+    "WIFI",
+    "rgb lights",
+    "Kureg K4000 Coffee Machine",
+    "Smart TV",
+    "Solar Lights"
+  ],
+  "available": 2,
+  "rate": {
+    "day": 189,
+    "week": 800,
+    "month": 2600
+  }
+}

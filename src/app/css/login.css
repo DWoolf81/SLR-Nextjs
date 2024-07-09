@@ -1,0 +1,208 @@
+
+
+body::before {
+  content: "";
+  background-color: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  transition: all .5s linear;
+}
+
+.header {
+  font-size: xx-large;
+  color: #000000;
+}
+
+
+.login {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5%;
+  position: relative;
+  border: solid 1px #ffffff21;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.loginForm,
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  color: #000000;
+}
+
+label {
+  margin: 5px 0px;
+}
+
+.loginForm input,
+.registerForm input {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+.lcCode {
+  background-color: transparent;
+  border: #5c5c5c solid 1px !important;
+  font-size: x-large;
+  max-width: 200px;
+}
+
+
+.lor-input {
+  display: flex;
+  /* align-items: center; */
+  /* box-shadow: inset 0 0 20px 20px #23232329; */
+  border-bottom: solid 1px #5c5c5c;
+  padding: 5px 10px;
+  margin: 10px 0px;
+}
+
+.lor-input input {
+  background-color: transparent;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  margin-left: 20px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #000000;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+button {
+  color: #000000;
+  background-color: var(--button-bg-color);
+  box-shadow: 0px 0px 5px 5px #706e6e0f;
+}
+
+.login2 {
+  width: calc(100% - 60px);
+  max-width: 500px;
+  position: relative;
+  text-align: left;
+}
+.login2 h2 {
+  color: var(--main-bg-color);
+  font-weight: bold;
+  letter-spacing: .15em;
+}
+
+.home_link_box {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.id-card {
+  position: absolute;
+  width: 100%;
+  bottom: 110%;
+  border-radius: 20px;
+  background-color: #b5ffb5;
+  height: 200px;
+}
+
+.errorLine {
+  font-size: 11px;
+  color: #ff7676;
+  display: none;
+}
+
+.showError {
+  display: block;
+}
+
+a {
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+
+
+.darkMode .home_link_box a {
+  color: #ffb13e;
+
+}
+
+.darkMode::before {
+  background-color: rgba(43, 43, 43, 0.9);
+}
+
+.darkMode .loginForm,
+.darkMode .registerForm,
+.darkMode .header {
+  color: #FFF;
+}
+
+#userCheck {
+  margin-left: 10px;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+}
+
+.avail {
+  background-color: #b5ffb5;
+}
+
+.taken {
+  background-color: #ffaca6;
+}
+
+.inline-flex {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+
+#new-mem-box {
+  transition: all 1s linear;
+}
+
+.ready-to-play-box {
+  height: 100px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.ready-to-play-box p {
+  color: #000000;
+  font-size: 22px;
+}
+
+.darkMode .ready-to-play-box p {
+  color: orange;
+}
+
+.send-new-code-link {
+  text-align: center;
+  margin: 20px auto;
+  color: black;
+  width: 100%;
+}
+
+
+.darkMode .send-new-code-link {
+  color: #ffb13e;
+}
+
+.darkMode .loginForm input,
+.darkMode .registerForm input {
+
+  color: #ffb13e;
+}

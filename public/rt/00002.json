@@ -1,0 +1,51 @@
+{
+  "rvid": "00002",
+  "name": "Coleman Sportsmen",
+  "year": "1997",
+  "length": "26′ 2",
+  "type": "Travel Tariler",
+  "sleeps": 6,
+  "location": {
+    "city": " -- ",
+    "state": "TX",
+    "site": " -- "
+  },
+  "pictures": [
+    "418962694_7505895799443468_526453201712088413_n.jpg",
+    "418262510_7505912289441819_2147892060295532698_n.jpg",
+    "418965436_7505895086110206_4791999497683664945_n.jpg",
+    "418977300_7505895242776857_5220619557254965170_n.jpg",
+    "419031149_7505895382776843_3060782423808754140_n.jpg",
+    "419062353_7505895826110132_6425059771322914568_n.jpg",
+    "419112335_7505895212776860_5850283128644416830_n.jpg"
+  ],
+  "desc": "Don’t just sleep on this one, sleep in it! This newly renovated beauty has been fully remodeled to meet today’s modern standards from top to bottom. It can comfortably sleep up to 6 people with a queen size bed and bunkhouse in the back. It’s equipped with everything you need to come home and relax after a long day’s work. This is the perfect RV for a single person or 2 or 3 friends or co-workers who want to save money but still live like they’re at home. And if you add some extra features, you may not want to go home on the weekends!",
+  "amenities": [
+    "toliet",
+    "refrigerator",
+    "AC and heat",
+    "sofa",
+    "inside shower and tub",
+    "TV",
+    "oven",
+    "stove",
+    "queen bed",
+    "2 bunk beds",
+    "microwave"
+  ],
+  "addons": [
+    "amazon alexa",
+    "smart lock",
+    "WIFI",
+    "rgb lights",
+    "Kureg K4000 Coffee Machine",
+    "Smart TV",
+    "Solar Lights"
+  ],
+  "available": 2,
+  "rate": {
+    "day": 79,
+    "week": 400,
+    "month": 1450
+  }
+}

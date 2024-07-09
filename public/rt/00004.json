@@ -1,0 +1,56 @@
+{
+  "rvid": "00004",
+  "name": "Heartland - North Peak",
+  "year": "2016",
+  "length": "31.3",
+  "type": "Travel Tariler (5th Wheel)",
+  "sleeps": 4,
+  "location": {
+    "city": " -- ",
+    "state": "TX",
+    "site": " -- "
+  },
+  "pictures": [
+    "418443326_1398560911054270_2213976909808613291_n.jpg",
+    "417803362_1398559094387785_2283310426055197220_n.jpg",
+    "417819404_1398559127721115_7162807557897670986_n.jpg",
+    "417826824_1398559131054448_7701036041099289151_n.jpg",
+    "417853765_1398559284387766_6182912079739511059_n.jpg",
+    "417892336_1398559204387774_3028467194791891520_n.jpg",
+    "417902026_1398559361054425_6051940773936885509_n.jpg",
+    "417777916_1398558804387814_4294374470555894941_n.jpg"
+  ],
+  "desc": "This stunning camper is ideal for anyone who values their personal space. It offers superb luxury and spaciousness, like a small apartment on wheels. It comes with everything you need to feel at home. This camper is currently reserved and undergoing renovation with RV furniture, but you can still book it now. Don’t miss this opportunity, it won’t last long!",
+  "amenities": [
+    "1 bedroom",
+    "toliet",
+    "refrigerator",
+    "2 AC units",
+    "Washer & dyer",
+    "power recliners",
+    "inside shower",
+    "outside shower",
+    "2 TVs",
+    "radio",
+    "oven",
+    "3 stove burner",
+    "private queen bed",
+    "microwave",
+    "dishware"
+  ],
+  "addons": [
+    "amazon alexa",
+    "smart lock",
+    "WIFI",
+    "rgb lights",
+    "Kureg K4000 Coffee Machine",
+    "Smart TV",
+    "Solar Lights"
+  ],
+  "available": 2,
+  "rate": {
+    "day": 99,
+    "week": 500,
+    "month": 1700
+  }
+}

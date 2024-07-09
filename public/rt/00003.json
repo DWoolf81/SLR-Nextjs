@@ -1,0 +1,57 @@
+{
+  "rvid": "00003",
+  "name": "Prime Time - Crusader Lite",
+  "year": "2017",
+  "length": "31.83",
+  "type": "Travel Tariler",
+  "sleeps": 6,
+  "location": {
+    "city": " -- ",
+    "state": "TX",
+    "site": " -- "
+  },
+  "pictures": [
+    "419111676_1580199919398737_8716742353335859336_n.jpg",
+    "419111961_1580199659398763_1120798330592742889_n.jpg",
+    "419125889_1580199719398757_4652185876467969971_n.jpg",
+    "419125904_1580199999398729_1331695503275137371_n.jpg",
+    "419133682_1580199852732077_3241109860105911450_n.jpg",
+    "419143113_1580199822732080_833365760138939517_n.jpg",
+    "419162525_1580199786065417_333957400897659210_n.jpg",
+    "417396675_1580201772731885_9054830481690271830_n.jpg",
+    "419101460_1580199776065418_5952653481993110456_n.jpg"
+  ],
+  "desc": "This beautiful camper can accomadate you for as long as you want. It boast many features found in family homes to make you feel like you never left home. It has 1 private queen bed and a sofa with a pull out bed. It has a standup shower and and plenty of storage space for all your clothing and accessoriees. This is the ultimate RV for you and you loved one who loves to travel with you, or a co-worker that can help split the bill. Reserve it today before it's too late! ",
+  "amenities": [
+    "1 bedroom",
+    "toliet",
+    "refrigerator",
+    "2 AC units",
+    "Washer & dyer",
+    "power recliners",
+    "inside shower",
+    "outside shower",
+    "2 TVs",
+    "radio",
+    "oven",
+    "3 stove burner",
+    "private queen bed",
+    "microwave",
+    "dishware"
+  ],
+  "addons": [
+    "amazon alexa",
+    "smart lock",
+    "WIFI",
+    "rgb lights",
+    "Kureg K4000 Coffee Machine",
+    "Smart TV",
+    "Solar Lights"
+  ],
+  "available": 2,
+  "rate": {
+    "day": 119,
+    "week": 600,
+    "month": 2000
+  }
+}
