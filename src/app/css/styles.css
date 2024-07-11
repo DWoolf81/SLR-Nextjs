@@ -389,6 +389,12 @@ nav ul li a {
   font-weight: bold;
   list-style: disc;
 }
+.phCenterBox {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
 
 footer {
   background-color: var(--main-bg-color);

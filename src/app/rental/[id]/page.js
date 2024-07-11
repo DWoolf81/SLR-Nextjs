@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { RentalCard } from "@/components/rentalcard";
 import "@/app/css/rental.css";
 
@@ -66,8 +67,7 @@ const Rental = async ({ params }) => {
               if (index == 3) {
                 return (
                   <div key={index} className="view-more">
-                    <p>+ { rvs.length - index }</p>
-                    <a id="open-images" href="#"></a>
+                   <Link  href={`/rental/${params.id}/photos`}><p>+ { rvs.length - index }</p></Link>
                   </div>
                 );
               } else if (index < 2 ){
