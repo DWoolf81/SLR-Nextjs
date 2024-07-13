@@ -57,7 +57,7 @@ const PhotoModal = ({ children, id }) => {
 
     const handleClose = () => router.back()
   return (
-    <div onClick={handleClose} style={phStyles.modalBg}>
+    <div style={phStyles.modalBg}>
       <div style={phStyles.modalFlexBox}>
         <div style={phStyles.modalImgBox}>
           <div className="phCenterBox">
