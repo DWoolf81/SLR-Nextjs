@@ -12,8 +12,8 @@ const PhotosInterceted = async ({ params }) => {
   console.log(photos.pictures);
 
   return (
-    <PhotoModal>
-<div className="phCenterBox">
+    <PhotoModal id={params.id}>
+
       {photos.pictures.map((img, index) => {
         return (
         <div key={index}>
@@ -29,7 +29,6 @@ const PhotosInterceted = async ({ params }) => {
       }
     
     )}
-    </div>
 
       </PhotoModal>
   )
