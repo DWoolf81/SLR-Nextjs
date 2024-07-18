@@ -21,9 +21,9 @@ const Menubtn = () => {
     <>
     <nav className={isOpen ? menu += " open-nav": menu}>
           <ul>
-            <li>Rates & Amenities</li>
-            <li>Listings</li>
-            <li>Login</li>
+            <li><Link href="/extras">Rates & Amenities</Link></li>
+            <li><Link href="/search">Listings</Link></li>
+            <li><Link href="/login">Login</Link></li>
           </ul>
         </nav>
         <Link className="menu-link" href="" onClick={test} ><span className="material-symbols-outlined">Menu</span></Link>

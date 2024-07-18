@@ -1,0 +1,47 @@
+[
+    {
+        "id": "9999",
+        "email": "fake@fakeemail.com",
+        "password": "12345",
+        "name": "John Doe",
+        "location": {
+            "city": "Fakeville",
+            "state": "LA"
+        }
+
+    },
+    {
+        "id": "0001",
+        "email": "darrell@fakeemail.com",
+        "password": "12345",
+        "name": "Daryl WIlford",
+        "location": {
+            "city": "Houston",
+            "state": "Tx"
+        }
+
+    },
+    {
+        "id": "0002",
+        "email": "kayla@fakeemail.com",
+        "password": "12345",
+        "name": "Kayla Cockstrong",
+        "location": {
+            "city": "Dickmedown",
+            "state": "NY"
+        }
+
+    },
+    {
+        "id": "0005",
+        "email": "darrellwoolfolk@outlooks.com",
+        "password": "12345",
+        "name": "Darren Wolfolk",
+        "location": {
+            "city": "Badass",
+            "state": "TX"
+        }
+
+    }
+    
+]
