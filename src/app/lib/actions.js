@@ -1,3 +1,4 @@
+'use server'
 import { NextRequest } from "next/server";
 import { cookies } from "next/headers";
 import React from "react";
@@ -23,6 +24,15 @@ const authenticate = async (int, formData) => {
 
   if (res) {
     const match = `Hey! Is this ${res.name} from ${res.location.city}`;
+
+    // cookies().set("renter", "new Renter")
+
+    cookies().set({
+      name: 'renter01',
+      value: `${res.name}`,
+      httpOnly: true,
+      path: '/',
+    })
 
     return `Found a match! ${match}`;
   }
