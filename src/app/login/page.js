@@ -53,13 +53,13 @@ marginTop: "20px"
 const formAction = async (prev, formData) => {
     formData.append("id", "123456")
     console.log("This is ", formData.get('email'))
-    prev = "Not as much as farts"
-    return prev
+    const res = await authenticate(formData)
+    return res
 }
 
 const Login = () => {
 
-    const [error, action] = useFormState(authenticate, null)
+    const [error, action] = useFormState(formAction, null)
 
 
   return (
@@ -67,7 +67,6 @@ const Login = () => {
       <div style={formStyles.formBox}>
         
         <form action={formData => {
-          console.log("hit em good", formData)
           action(formData)
         }} style={formStyles.form}>
             <h1 style={formStyles.h1}>Login</h1>
