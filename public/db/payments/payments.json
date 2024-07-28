@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "pid": "P2376",
+        "rvid": "00005",
+        "rid": "0005",
+        "date": "09/07",
+        "type": 2,
+        "amount": 420,
+        "create_at": "2024-09-07 13:23:58",
+        "method":"mobile",
+        "payment": {
+            "number":"2329998787",
+            "method": "Venmo"
+        }
+
+    },
+    {
+        "id": 2,
+        "pid": "P4856",
+        "rvid": "00005",
+        "rid": "0005",
+        "date": "09/09",
+        "type": 3,
+        "amount": 420,
+        "create_at": "2024-09-09 22:30:58",
+        "method": "CC",
+        "payment" : {
+            "method":"visa",
+            "name": "Danny Willford",
+            "number": "xxxxxxxxxxx-9045",
+            "expire": "1024"
+        }
+
+    },
+{
+        "id": 3,
+        "pid": "P1286",
+        "rvid": "00004",
+        "rid": "0005",
+        "date": "10/09",
+        "type": 1,
+        "amount": 856,
+        "create_at": "2024-10-09 13:23:58",
+        "method": "check",
+        "payment": {
+            "checkNum": "1231428374908"
+        }
+
+    }
+
+]

@@ -1,3 +1,7 @@
+body * {
+    --acct-history-item-bg: #b8ec99;
+}
+
 #nextAmount {
     text-align: center;
     border-radius: 50%;
@@ -10,6 +14,7 @@
     flex-direction: column;
 
 }
+
 .next-amount {
     font-size: 66px;
     font-family: 'UniSans';
@@ -38,6 +43,7 @@
     margin: 20px;
 
 }
+
 .align-center {
     text-align: center;
 }
@@ -64,4 +70,221 @@
     color: #707357;
     font-weight: bold;
     gap: 10px;
+}
+
+.acct-rv-img {
+    height: 100px;
+    width: 100px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+
+.acct-rv-top-box {
+    background-color: var(--sub-bg-color);
+    padding: 80px 10px 10px 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    max-width: 1024px;
+}
+
+.gap-30 {
+    gap: 30px
+}
+
+.gap-20 {
+    gap: 20px
+}
+
+.acct-bold-head-p {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.acct-head-p {
+    font-size: 2rem;
+}
+
+
+
+.acct-sub-head-p {
+    color: grey
+}
+
+.acct-details-btn {
+    padding: 10px 0px;
+    color: white;
+    background-color: var(--main-link-color);
+    text-align: center;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.acct-mid-content {
+    border-bottom: solid 1px var(--sub-bg-color);
+    border-top: solid 1px var(--sub-bg-color);
+    max-width: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+    padding: 10px 0px;
+}
+
+.acct-big-bold-head-p {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.acct-link {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-link-color);
+    font-size: 40px;
+    border-radius: 50px;
+    text-align: center;
+    color: white;
+}
+
+.acct-link-box {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.history-grid-column-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0;
+    margin: 10px;
+}
+
+.history-grid-column-list > div{
+   padding: 10px;
+   display: flex;
+   background-color: #f0f0f0;
+   margin-bottom: 10px;
+
+}
+
+.history-item-box {
+    padding-top: 200px;
+    
+}
+
+.acct-history-item {
+    background-color: var(--acct-history-item-bg) !important;
+}
+
+.acct-history-item-top-box {
+    display: grid;
+    height: 150px;
+    grid-template-columns: 1fr 10fr 1fr;
+    margin: 20px 0px;
+}
+
+.ahitop-mid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-link-color);
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0px 10px;
+    border-radius: 20px;
+}
+
+.ahitop-left {
+    background-color: var(--acct-history-item-bg);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+}
+.ahitop-right {
+    background-color: var(--acct-history-item-bg);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+}
+.pay-item-details-box, .pay-item-method-box {
+    margin: 20px 0px;
+}
+.pay-item-details-box p, .pay-item-method-box p {
+    margin: 10px 0px;
+}
+.pay-item-details-box p span, .pay-item-method-box p span {
+    font-weight: bold;
+}
+.pay-item-details-box p:nth-last-child(1) {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+@media screen and (max-width: 555px) {
+    .acct-rv-img {
+        height: 75px;
+        width: 75px;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+   
+    .acct-bold-head-p {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+
+    .acct-head-p {
+        font-size: 2rem;
+    }
+
+
+
+    .acct-sub-head-p {
+        color: grey;
+        font-size: .8rem;
+    }
+
+    .acct-details-btn {
+        padding: 10px 0px;
+        color: white;
+        background-color: var(--main-link-color);
+        text-align: center;
+        border-radius: 15px;
+        width: 100%;
+        font-size: .5rem;
+    }
+
+    .acct-link-box {
+        gap: 10px;
+    }
+
+    .acct-link {
+        width: 180px;
+        height: 180px;
+        font-size: 5vw;
+        border-radius: 30px;
+    }
+
+    .history-grid-column-list > div{
+        font-size: 12px;
+        
+     }
+
+     .history-item-box {
+        padding-top: 170px;
+    }
+
+
+
+
 }

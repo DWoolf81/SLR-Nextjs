@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useFormState, useFormStatus } from 'react-dom'
 import authenticate from "../lib/actions";
+import { useEffect, useState } from "react";
 
 const formStyles = {
   bgColor: {
@@ -51,15 +52,36 @@ marginTop: "20px"
 
 
 const formAction = async (prev, formData) => {
+    if (!formData) return false
     formData.append("id", "123456")
-    console.log("This is ", formData.get('email'))
-    prev = "Not as much as farts"
-    return prev
+    console.log("This is ", formData.get('email'), prev)
+    const res = await authenticate(formData)
+    return res
 }
+
+
 
 const Login = () => {
 
-    const [error, action] = useFormState(authenticate, null)
+    const [error, action] = useFormState(formAction, null)
+
+    const [errorMess, setErrorMess] = useState(null)
+    const [pass, setPass] = useState(0)
+
+    useEffect(()=>{
+      console.log("Run use effect", error, errorMess)
+      if (!errorMess){
+       action(false)
+        setErrorMess(true)
+      }
+    }, [error, errorMess])
+
+    const handleChange = () => {
+      console.log("Something needs to change")
+      setErrorMess(false)
+      
+    }
+   
 
 
   return (
@@ -67,28 +89,29 @@ const Login = () => {
       <div style={formStyles.formBox}>
         
         <form action={formData => {
-          console.log("hit em good", formData)
           action(formData)
         }} style={formStyles.form}>
             <h1 style={formStyles.h1}>Login</h1>
+            { error && (<p className="error-mess-bubble">{ error }</p>) }
           <p>
-            <input style={formStyles.input}
+            <input onChange={handleChange} style={formStyles.input}
               type="text"
               name="email"
               placeholder="Enter email or phone number"
             />
           </p>
           <p>
-            <input style={formStyles.input} type="password" name="pass" placeholder="Password" />
+            <input onChange={handleChange} style={formStyles.input} type="password" name="pass" placeholder="Password" />
           </p>
           <p>
             <LoginButton />
           </p>
-          { error }
+          
           <div style={formStyles.fgDiv}>
             <Link href="/forgot">Forgot password</Link>
           </div>
         </form>
+        
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
 li {
   list-style: none;
 }
@@ -28,23 +29,28 @@ body * {
   --main-link-color-hover: #557243;
   --button-bg-color: #cddc39;
   --error-mess: #e40a0a;
+  --sub-bg-color: rgb(226, 226, 226);
   text-decoration: none;
 }
+
 .logo p,
 h2,
 h3 {
   font-family: "UniSans";
   font-weight: normal;
 }
+
 /*.material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }*/
 .text-white {
   color: white !important;
 }
+
 .book-email {
   font-size: 36px;
 }
+
 .text-green-shadow {
   text-shadow: 5px 5px 5px var(--main-bg-color);
 }
@@ -69,6 +75,14 @@ h3 {
   font-size: 12px;
 }
 
+.error-mess-bubble {
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  background-color: var(--error-mess);
+  font-size: 12px;
+}
+
 .main-search::before {
   content: "";
   background: rgba(0, 39, 6, 0.7);
@@ -86,6 +100,18 @@ h3 {
 
 .nav-bar .menu-link {
   display: none !important;
+}
+.max-wid-700 {
+  max-width: 700px;
+  margin: auto;
+}
+.max-wid-1024 {
+  max-width: 1024px;
+  margin: auto;
+}
+.flex-dir-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-bar {
@@ -106,6 +132,7 @@ h3 {
   margin: 20px 0px;
   display: none;
 }
+
 button {
   font-size: 22px;
   padding: 10px 0px;
@@ -115,6 +142,7 @@ button {
   margin-top: 30px;
   font-weight: bold;
 }
+
 .search-bar {
   display: flex;
   justify-content: center;
@@ -166,7 +194,7 @@ nav ul li a {
 }
 
 .main-search {
- /* background: rgba(0, 0, 0, 0.5) url("../../assets/shutterstock_758389312-1.jpg") 
+  /* background: rgba(0, 0, 0, 0.5) url("../../assets/shutterstock_758389312-1.jpg") 
     center center no-repeat; */
   background-size: cover;
   display: flex;
@@ -257,9 +285,11 @@ nav ul li a {
 .rv-details-box {
   text-align: left;
 }
+
 .rv-details-box section {
   padding: 5px 0px;
 }
+
 .rv-img-box {
   overflow: hidden;
   border-radius: 20px;
@@ -267,37 +297,45 @@ nav ul li a {
   display: flex;
   align-items: center;
 }
+
 .rv-title p {
   font-weight: 700;
 }
+
 .rv-rate {
   display: flex;
   justify-content: space-between;
   align-items: end;
 }
+
 .wm-rate {
   color: #cddc39;
   margin-top: 10px;
   display: block;
 }
+
 .rv-price {
   font-size: 28px;
   font-weight: bold;
   color: var(--main-bg-color);
 }
+
 .rv-rate-star {
   display: flex;
   align-items: center;
 }
+
 .rv-river-bg {
- /* background: rgba(64, 167, 20, 0.5) url(../assets/rv-camper-by-a-river.jpg)
+  /* background: rgba(64, 167, 20, 0.5) url(../assets/rv-camper-by-a-river.jpg)
     center center no-repeat; */
   background-size: cover;
 }
+
 .bold62 {
   font-size: 62px;
   font-weight: bold;
 }
+
 .green-link {
   display: block;
   padding: 10px 20px;
@@ -311,6 +349,7 @@ nav ul li a {
   margin-top: 20px;
   transition: background-color 0.2s linear;
 }
+
 .green-link:hover {
   background-color: var(--main-link-color-hover);
 }
@@ -355,6 +394,7 @@ nav ul li a {
 .avail {
   background-color: #39a2bf;
 }
+
 .soon {
   background-color: #ff9800;
 }
@@ -379,6 +419,7 @@ nav ul li a {
   font-weight: bold;
   color: var(--main-link-color);
 }
+
 #amenities-plus-list {
   margin-bottom: 50px;
 }
@@ -389,12 +430,13 @@ nav ul li a {
   font-weight: bold;
   list-style: disc;
 }
+
 .phCenterBox {
   max-width: 700px;
   display: flex;
   flex-direction: column;
   margin: auto;
-  
+
 }
 
 footer {
@@ -406,6 +448,7 @@ footer {
   align-items: center;
   flex-direction: column;
 }
+
 footer ul {
   display: flex;
   gap: 20px;
@@ -425,17 +468,21 @@ footer ul {
 footer ul a {
   color: #77a05f;
 }
+
 footer ul a:hover {
   color: #bfe2ab;
 }
+
 @media screen and (max-width: 430px) {
- 
+
   .logo {
     font-size: large;
   }
+
   .desktop-none {
     display: block;
   }
+
   .big-quote h2 {
     font-size: 4vh;
     font-weight: 700;
@@ -444,6 +491,36 @@ footer ul a:hover {
   .book-email {
     font-size: 4.5vw;
   }
+
+  
+
+  #amenities-box img {
+    width: 100px !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .logo {
+    font-size: large;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .logoText {
+    visibility: hidden;
+    position: relative;
+  }
+
+  .logoText::after {
+    font-weight: bold;
+    content: "SLR";
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+
 
   .nav {
     position: fixed;
@@ -485,29 +562,5 @@ footer ul a:hover {
     display: block !important;
     margin-right: 10px;
     color: white;
-  }
-  #amenities-box img {
-    width: 100px !important;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .logo {
-    font-size: large;
-  }
-}
-
-@media screen and (max-width: 555px) {
-  .logoText {
-    visibility: hidden;
-    position: relative;
-  }
-  .logoText::after {
-    font-weight: bold;
-    content: "SLR";
-    visibility: visible;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
 }
