@@ -20,11 +20,12 @@ const phStyles = {
   backBox: {
     display: "flex",
     height: "50px",
-    top: "75px",
+    top: "175px",
     left: "0px",
     background: "rgba(119, 160, 95, .5)",
-    width: "100%",
-    alignItems: "center"
+    alignItems: "center",
+    position: "fixed",
+    padding: "0px 10px"
 
   },
 
@@ -32,7 +33,6 @@ const phStyles = {
     display: "flex",
     flexDirection: "row",
     justifyContent: "start",
-    position: "fixed",
     width: "100%",
     fontSize: "20px !important",
     alignItems: "center",
@@ -47,13 +47,12 @@ const History = async () => {
   const rv = await data1();
 
 
-    //const rv = [...Array(25)]
+const rvs = [...Array(25)]
   return (
     <div className="history-item-box">
-      <div style={phStyles.backBox}>
-              <Link style={phStyles.backBtn} href={`/account/`}>
+      <div className="back-btn-box">
+              <Link className="back-btn" href={`/account/`}>
                 <span className="material-symbols-outlined">arrow_back</span>
-                <span>Back</span>
               </Link>
             </div>
       <div className="history-grid-column-list">
@@ -76,7 +75,14 @@ const History = async () => {
           <p>Links</p>
         </div>
 
-        {rv.map((el, index) => {
+        {
+
+          rvs.map(index => {
+
+            return (
+
+
+rv.map((el, index) => {
             const prime = index % 2 == 0 ? "acct-history-item" : ""
             let type = ""
 
@@ -103,11 +109,26 @@ const History = async () => {
                 <p>${ el.amount }</p>
               </div>
               <div style={{display: "flex", flexDirection: "column", borderStartEndRadius: "10px", borderEndEndRadius: "10px" }}>
-                  <Link className="acct-details-btn" href={`/account/history/${el.rid}`}>Link</Link>
+                  <Link className="acct-details-btn" href={`/account/history/${el.pid}`}>Link</Link>
               </div>
             </>
           );
-        })}
+        })
+
+
+
+
+
+            )
+
+
+          })
+        
+        
+        
+        
+        
+        }
       </div>
     </div>
   );

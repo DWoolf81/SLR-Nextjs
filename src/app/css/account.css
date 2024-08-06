@@ -174,7 +174,7 @@ body * {
 
 }
 
-.history-item-box {
+.history-item-box, .acct-main-box {
     padding-top: 200px;
     
 }
@@ -226,6 +226,18 @@ body * {
 .pay-item-details-box p:nth-last-child(1) {
     font-weight: bold;
     font-size: x-large;
+}
+
+.acct-payment-btn {
+    display: flex;
+    margin: 30px auto;
+    max-width: 300px;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-radius: 30px;
+    background-color: var(--main-link-color);
+    color: white;
 }
 
 @media screen and (max-width: 555px) {
@@ -280,7 +292,7 @@ body * {
         
      }
 
-     .history-item-box {
+     .history-item-box, .acct-main-box {
         padding-top: 170px;
     }
 

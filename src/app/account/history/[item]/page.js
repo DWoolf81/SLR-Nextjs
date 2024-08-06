@@ -1,44 +1,19 @@
 import Link from "next/link";
 import React from "react";
 
-const findPayment = async (rvid) => {
+const findPayment = async (pid) => {
   const res = await fetch(`http://localhost:3000/db/payments/payments.json`);
 
   const arr = await res.json();
 
-  const find = arr.find((rvid) => rvid === rvid);
+  const find = arr.find((el) => el.pid === pid);
 
-  console.log(find.payment);
 
   return find;
 };
 
 
-const phStyles = {
 
-  backBox: {
-    display: "flex",
-    height: "50px",
-    top: "75px",
-    left: "0px",
-    background: "rgba(119, 160, 95, .5)",
-    width: "100%",
-    alignItems: "center"
-
-  },
-
-  backBtn: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "start",
-    width: "100%",
-    fontSize: "20px !important",
-    alignItems: "center",
-    gap: "6px",
-    marginLeft: "10px",
-    color: "white",
-  },
-};
 const Item = async ({ params }) => {
   const payment = await findPayment(params.item);
 
@@ -49,10 +24,9 @@ const Item = async ({ params }) => {
 
   return (
     <div className="history-item-box">
-      <div style={phStyles.backBox}>
-              <Link style={phStyles.backBtn} href={`/account/history`}>
+      <div className="back-btn-box">
+              <Link className="back-btn" href={`/account/history`}>
                 <span className="material-symbols-outlined">arrow_back</span>
-                <span>Back</span>
               </Link>
             </div>
       <div className="acct-history-item-top-box">
