@@ -1,0 +1,79 @@
+[{
+  "_id": {
+    "$oid": "66d3e79e76bb99333870597c"
+  },
+  "id": "9999",
+  "email": "fake@fakeemail.com",
+  "password": "12345",
+  "name": "John Doe",
+  "location": {
+    "city": "Fakeville",
+    "state": "LA"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d3e79e76bb99333870597d"
+  },
+  "id": "0001",
+  "email": "darrell@fakeemail.com",
+  "password": "12345",
+  "name": "Daryl WIlford",
+  "location": {
+    "city": "Houston",
+    "state": "Tx"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d3e79e76bb99333870597e"
+  },
+  "id": "0002",
+  "email": "kayla@fakeemail.com",
+  "password": "12345",
+  "name": "Kayla Cockstrong",
+  "location": {
+    "city": "Dickmedown",
+    "state": "NY"
+  }
+},
+{
+  "_id": {
+    "$oid": "66d3e79e76bb99333870597f"
+  },
+  "id": "0005",
+  "email": "darrellwoolfolk@outlooks.com",
+  "password": "$2a$10$YhXEudgIHhWjmnP0vjdoI.U9IVT.HAiryw5z4/rdMTObZlhJhfoFW",
+  "name": "Darren Wolfolk",
+  "location": {
+    "city": "Badass",
+    "state": "TX"
+  },
+  "renting": {
+    "rv": "00004",
+    "rate": 850,
+    "tenants": 2,
+    "location": "O19084",
+    "moveout": "2024-09-05"
+  },
+  "addon": [
+    {
+      "aid": 9,
+      "name": "Toaster",
+      "rate": 3,
+      "brand": {
+        "name": "GE TOASTER",
+        "aid": 905
+      }
+    },
+    {
+      "aid": 4,
+      "name": "Bluetooth Speaker",
+      "rate": 5,
+      "brand": {
+        "name": "JBL Xteme",
+        "aid": 467
+      }
+    }
+  ]
+}]

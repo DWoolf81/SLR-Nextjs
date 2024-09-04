@@ -1,0 +1,47 @@
+[{
+  "_id": {
+    "$oid": "66d3eb8776bb993338705984"
+  },
+  "name": "Darrell",
+  "age": 42
+},
+{
+  "_id": {
+    "$oid": "66d467f07edd289b0e86c66c"
+  },
+  "name": "Shanika",
+  "age": 45,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d468f67edd289b0e86c66f"
+  },
+  "name": "Laray",
+  "age": 47,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d468fa7edd289b0e86c671"
+  },
+  "name": "Kayla",
+  "age": 37,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d468fe7edd289b0e86c674"
+  },
+  "name": "Markel",
+  "age": 22,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66d468ff7edd289b0e86c676"
+  },
+  "name": "tweet",
+  "age": 25,
+  "__v": 0
+}]

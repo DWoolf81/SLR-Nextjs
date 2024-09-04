@@ -1,0 +1,294 @@
+[{
+  "_id": {
+    "$oid": "66d4b42176bb9933387059ab"
+  },
+  "rvid": "00001",
+  "name": "Prime Time Lacrosse Luxury Lite",
+  "year": "2012",
+  "length": 35.42,
+  "type": "Travel Trailer",
+  "sleeps": 6,
+  "location": {
+    "city": "Katy",
+    "state": "TX",
+    "site": "A Golf Rv Resort"
+  },
+  "pictures": [
+    "357354480_7354658054556968_7586703221745730716_n.jpg",
+    "365413409_7113282028752063_2035201694897733938_n.jpg",
+    "363262725_7125400944170163_2760440383654570590_n.jpg",
+    "412974241_7334419543288616_4352274939097083474_n.jpg",
+    "366026711_7112286175528754_4998180709234740964_n.jpg",
+    "353990813_5328456740611244_5659293514929601547_n.jpg",
+    "364241679_6955409951172458_7703495535524456192_n.jpg",
+    "364246691_7059650907455542_6194410434720732257_n.jpg",
+    "364207749_6806331292817768_5804661089101966028_n.jpg"
+  ],
+  "desc": "This luxurious and spacious RV is perfect for a longer stay with family or friends. It features a large queen-size bed suite and a bunkhouse that’s as big as a second bedroom, making it ideal for accommodating multiple adults. The RV also comes equipped with an outdoor prep area, allowing you to enjoy outdoor activities with your friends and co-workers. And the best part? This RV is available at a super low rate! Don’t miss out on this amazing opportunity and reserve it now before it’s too late!",
+  "amenities": [
+    "toliet",
+    "refrigerator",
+    "power recliners",
+    "inside shower",
+    "outside shower",
+    "TV",
+    "radio",
+    "over",
+    "stove",
+    "private queen bed",
+    "bunk beds",
+    "microwave",
+    "dishware"
+  ],
+  "addons": [
+    "amazon alexa",
+    "smart lock",
+    "WIFI",
+    "rgb lights",
+    "Kureg K4000 Coffee Machine",
+    "Smart TV",
+    "Solar Lights"
+  ],
+  "available": 2,
+  "rate": {
+    "day": 79,
+    "week": 350,
+    "month": 1150
+  }
+},
+{
+  "_id": {
+    "$oid": "66d4b48a76bb9933387059ac"
+  },
+  "rvid": "00004",
+  "name": "Heartland - North Peak",
+  "year": 2016,
+  "length": 31.3,
+  "type": "Travel Trailer (5th Wheel)",
+  "sleeps": 4,
+  "location": {
+    "city": " -- ",
+    "state": "TX",
+    "site": " -- "
+  },
+  "pictures": [
+    "418443326_1398560911054270_2213976909808613291_n.jpg",
+    "417803362_1398559094387785_2283310426055197220_n.jpg",
+    "417819404_1398559127721115_7162807557897670986_n.jpg",
+    "417826824_1398559131054448_7701036041099289151_n.jpg",
+    "417853765_1398559284387766_6182912079739511059_n.jpg",
+    "417892336_1398559204387774_3028467194791891520_n.jpg",
+    "417902026_1398559361054425_6051940773936885509_n.jpg",
+    "417777916_1398558804387814_4294374470555894941_n.jpg"
+  ],
+  "desc": "This stunning camper is ideal for anyone who values their personal space. It offers superb luxury and spaciousness, like a small apartment on wheels. It comes with everything you need to feel at home. This camper is currently reserved and undergoing renovation with RV furniture, but you can still book it now. Don’t miss this opportunity, it won’t last long!",
+  "amenities": [
+    "1 bedroom",
+    "toliet",
+    "refrigerator",
+    "2 AC units",
+    "Washer & dyer",
+    "power recliners",
+    "inside shower",
+    "outside shower",
+    "2 TVs",
+    "radio",
+    "oven",
+    "3 stove burner",
+    "private queen bed",
+    "microwave",
+    "dishware",
+    "Random thing"
+  ],
+  "addons": [
+    "amazon alexa",
+    "smart lock",
+    "WIFI",
+    "rgb lights",
+    "Kureg K4000 Coffee Machine",
+    "Smart TV",
+    "Solar Lights"
+  ],
+  "brand": [],
+  "available": 2,
+  "rate": {
+    "day": 99,
+    "week": 500,
+    "month": 1700
+  }
+},
+{
+  "_id": {
+    "$oid": "66d4b4ff76bb9933387059ad"
+  },
+  "rvid": "00002",
+  "name": "Coleman Sportsmen",
+  "year": 1997,
+  "length": 26.2,
+  "type": "Travel Trailer",
+  "sleeps": 6,
+  "location": {
+    "city": " -- ",
+    "state": "TX",
+    "site": " -- "
+  },
+  "pictures": [
+    "418962694_7505895799443468_526453201712088413_n.jpg",
+    "418262510_7505912289441819_2147892060295532698_n.jpg",
+    "418965436_7505895086110206_4791999497683664945_n.jpg",
+    "418977300_7505895242776857_5220619557254965170_n.jpg",
+    "419031149_7505895382776843_3060782423808754140_n.jpg",
+    "419062353_7505895826110132_6425059771322914568_n.jpg",
+    "419112335_7505895212776860_5850283128644416830_n.jpg"
+  ],
+  "desc": "Don’t just sleep on this one, sleep in it! This newly renovated beauty has been fully remodeled to meet today’s modern standards from top to bottom. It can comfortably sleep up to 6 people with a queen size bed and bunkhouse in the back. It’s equipped with everything you need to come home and relax after a long day’s work. This is the perfect RV for a single person or 2 or 3 friends or co-workers who want to save money but still live like they’re at home. And if you add some extra features, you may not want to go home on the weekends!",
+  "amenities": [
+    "toliet",
+    "refrigerator",
+    "AC and heat",
+    "sofa",
+    "inside shower and tub",
+    "TV",
+    "oven",
+    "stove",
+    "queen bed",
+    "2 bunk beds",
+    "microwave"
+  ],
+  "addons": [
+    "amazon alexa",
+    "smart lock",
+    "WIFI",
+    "rgb lights",
+    "Kureg K4000 Coffee Machine",
+    "Smart TV",
+    "Solar Lights"
+  ],
+  "available": 2,
+  "rate": {
+    "day": 79,
+    "week": 400,
+    "month": 1450
+  }
+},
+{
+  "_id": {
+    "$oid": "66d4b50876bb9933387059ae"
+  },
+  "rvid": "00003",
+  "name": "Prime Time - Crusader Lite",
+  "year": 2017,
+  "length": 31.83,
+  "type": "Travel Tariler",
+  "sleeps": 6,
+  "location": {
+    "city": " -- ",
+    "state": "TX",
+    "site": " -- "
+  },
+  "pictures": [
+    "419111676_1580199919398737_8716742353335859336_n.jpg",
+    "419111961_1580199659398763_1120798330592742889_n.jpg",
+    "419125889_1580199719398757_4652185876467969971_n.jpg",
+    "419125904_1580199999398729_1331695503275137371_n.jpg",
+    "419133682_1580199852732077_3241109860105911450_n.jpg",
+    "419143113_1580199822732080_833365760138939517_n.jpg",
+    "419162525_1580199786065417_333957400897659210_n.jpg",
+    "417396675_1580201772731885_9054830481690271830_n.jpg",
+    "419101460_1580199776065418_5952653481993110456_n.jpg"
+  ],
+  "desc": "This beautiful camper can accomadate you for as long as you want. It boast many features found in family homes to make you feel like you never left home. It has 1 private queen bed and a sofa with a pull out bed. It has a standup shower and and plenty of storage space for all your clothing and accessoriees. This is the ultimate RV for you and you loved one who loves to travel with you, or a co-worker that can help split the bill. Reserve it today before it's too late! ",
+  "amenities": [
+    "1 bedroom",
+    "toliet",
+    "refrigerator",
+    "2 AC units",
+    "Washer & dyer",
+    "power recliners",
+    "inside shower",
+    "outside shower",
+    "2 TVs",
+    "radio",
+    "oven",
+    "3 stove burner",
+    "private queen bed",
+    "microwave",
+    "dishware"
+  ],
+  "addons": [
+    "amazon alexa",
+    "smart lock",
+    "WIFI",
+    "rgb lights",
+    "Kureg K4000 Coffee Machine",
+    "Smart TV",
+    "Solar Lights"
+  ],
+  "available": 2,
+  "rate": {
+    "day": 119,
+    "week": 600,
+    "month": 2000
+  }
+},
+{
+  "_id": {
+    "$oid": "66d4b51976bb9933387059af"
+  },
+  "rvid": "00005",
+  "name": "Forest River - Salem Hemisphere 314BUD",
+  "year": 2021,
+  "length": 39.25,
+  "type": "Travel Trailer",
+  "sleeps": 8,
+  "location": {
+    "city": " -- ",
+    "state": "TX",
+    "site": " -- "
+  },
+  "pictures": [
+    "406694420_7053245931401889_2551278331133069583_n.jpg",
+    "406597193_25320058100926889_8013596456490104609_n.jpg",
+    "406380734_6954843644577305_8153396373265324727_n.jpg",
+    "405496985_6926587957394998_6156033889941479358_n.jpg",
+    "406344286_5702655466526365_8909195229077833496_n.jpg",
+    "406461637_7567749906602429_3495590361854999802_n.jpg",
+    "406556388_6889780254475288_9173145634795924805_n.jpg",
+    "406570909_24706727108925711_6372018565750067790_n.jpg",
+    "406661432_6818462521542251_5068047917336254214_n.jpg",
+    "406914443_6706023009508679_60016000077635761_n.jpg",
+    "405276065_6599405470185886_2390206710679784857_n.jpg"
+  ],
+  "desc": "If you want a no compromise luxury leisure while you're on the road for work, then this is the camper for you. This powerhouse camper has everything you need to enjoy a home away from home while you work. The only thing is lacking is a washer and dryer, but it has two bathrooms, so you don’t have to wait in line. This camper is designed for multiple occupants. It can sleep up to 10 people, but 4 or 5 would be ideal to split the cost to just over $500 per person. This camper will be available soon, so book it now before it’s gone!",
+  "amenities": [
+    "1 private queen bedroom",
+    "2 bathrooms",
+    "refrigerator",
+    "2 AC units",
+    "power recliners",
+    "inside shower",
+    "outside kitchen",
+    "3 TVs",
+    "radio",
+    "oven",
+    "3 stove burner",
+    "microwave",
+    "dishware",
+    "fireplace"
+  ],
+  "addons": [
+    "amazon alexa",
+    "smart lock",
+    "WIFI",
+    "rgb lights",
+    "Kureg K4000 Coffee Machine",
+    "Smart TV",
+    "Solar Lights"
+  ],
+  "available": 2,
+  "rate": {
+    "day": 189,
+    "week": 800,
+    "month": 2600
+  }
+}]
