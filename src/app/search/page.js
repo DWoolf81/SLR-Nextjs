@@ -1,11 +1,20 @@
 import React from "react";
+import connectToDatabase from "@/lib/mongoose";
 import { RentalCard } from "@/components/rentalcard";
+import Camper from "@/models/campers";
+
+
 
 const Search = async () => {
 
-    const res = await fetch("http://localhost:3000/list.json")
+   await connectToDatabase()
 
-   const data = await res.json()
+    //const res = await fetch("http://localhost:3000/list.json")
+
+  //const data = await res.json()
+
+   const data = await Camper.find()
+
   return (
     <div style={{marginTop: "85px"}}>
 

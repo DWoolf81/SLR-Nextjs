@@ -23,7 +23,7 @@ const Item = async ({ params }) => {
 
 
   return (
-    <div className="history-item-box">
+    <>
       <div className="back-btn-box">
               <Link className="back-btn" href={`/account/history`}>
                 <span className="material-symbols-outlined">arrow_back</span>
@@ -69,7 +69,7 @@ const Item = async ({ params }) => {
           ))}
         </article>
       </div>
-    </div>
+    </>
   );
 };
 

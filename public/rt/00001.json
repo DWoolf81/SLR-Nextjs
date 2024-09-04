@@ -2,8 +2,8 @@
   "rvid": "00001",
   "name": "Prime Time Lacrosse Luxury Lite",
   "year": "2012",
-  "length": "35.42",
-  "type": "Travel Tariler",
+  "length": 35.42,
+  "type": "Travel Trailer",
   "sleeps": 6,
   "location": {
     "city": "Katy",

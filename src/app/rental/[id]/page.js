@@ -2,24 +2,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { RentalCard } from "@/components/rentalcard";
 import "@/app/css/rental.css";
+import Camper from "@/models/campers";
+import connectToDatabase from "@/lib/mongoose";
 
 const data1 = async (id) => {
-  const res = await fetch(`http://localhost:3000/rt/${id}.json`);
+  // const res = await fetch(`http://localhost:3000/rt/${id}.json`);
 
-  const data = await res.json();
+  // const data = await res.json();
 
-  // console.log(data);
+
+  const data = Camper.findOne({ rvid: id })
+
+ 
+
   return data;
 };
 
 const data2 = async () => {
-  const res = await fetch("http://localhost:3000/list.json");
+  //const res = await fetch("http://localhost:3000/list.json");
 
-  const data = await res.json();
+  //const data = await res.json();
+
+  const data = Camper.find()
 
   return data;
 };
 const Rental = async ({ params }) => {
+
+  await connectToDatabase()
+  
   const rv = await data1(params.id);
 
   console.log(rv, rv.pictures[9]);

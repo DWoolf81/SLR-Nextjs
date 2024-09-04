@@ -1,3 +1,4 @@
+import Backbtn from "@/components/backbtn";
 import Link from "next/link";
 import React from "react";
 
@@ -30,13 +31,8 @@ const phStyles = {
 
 const Payment = () => {
   return (
-    <div className="acct-main-box">
-        <div style={phStyles.backBox}>
-              <Link style={phStyles.backBtn} href={`/account/history`}>
-                <span className="material-symbols-outlined">arrow_back</span>
-                <span>Back</span>
-              </Link>
-            </div>
+    <>
+            <Backbtn link="/account" />
       <div style={{ textAlign: "center", margin: "20px 10px" }}>
         <h2
           style={{
@@ -62,7 +58,7 @@ const Payment = () => {
           </p>
           <p>Pay your rent any of the various mobile payment services</p>
           <p>Accepted Mobile Services</p>
-          <Link className="acct-payment-btn" href="#">
+          <Link className="acct-payment-btn" href="payment/mobile">
             Mobile Payment Services
           </Link>
         </article>
@@ -79,12 +75,12 @@ const Payment = () => {
             Credit Card
           </p>
           <p>Pay your rent using a credit and set up auto pay</p>
-          <Link className="acct-payment-btn" href="#">
+          <Link className="acct-payment-btn" href="payment/card">
             Payment with Credit Card
           </Link>
         </article>
       </div>
-    </div>
+    </>
   );
 };
 

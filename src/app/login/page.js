@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useFormState, useFormStatus } from 'react-dom'
-import authenticate from "../lib/actions";
+import authenticate from "@/lib/actions";
 import { useEffect, useState } from "react";
+
+
 
 const formStyles = {
   bgColor: {
@@ -51,6 +53,7 @@ marginTop: "20px"
 };
 
 
+
 const formAction = async (prev, formData) => {
     if (!formData) return false
     formData.append("id", "123456")
@@ -63,10 +66,18 @@ const formAction = async (prev, formData) => {
 
 const Login = () => {
 
+ 
+
+  // console.log("Env test", process.env.TEST, process.env.NODE_ENV, process.env.MONGODB_URI)
+
+ 
+
+
     const [error, action] = useFormState(formAction, null)
 
     const [errorMess, setErrorMess] = useState(null)
     const [pass, setPass] = useState(0)
+
 
     useEffect(()=>{
       console.log("Run use effect", error, errorMess)
@@ -74,6 +85,7 @@ const Login = () => {
        action(false)
         setErrorMess(true)
       }
+
     }, [error, errorMess])
 
     const handleChange = () => {
@@ -87,7 +99,7 @@ const Login = () => {
   return (
     <div className="container flex-center" style={formStyles.bgColor}>
       <div style={formStyles.formBox}>
-        
+
         <form action={formData => {
           action(formData)
         }} style={formStyles.form}>

@@ -1,0 +1,75 @@
+[
+  {
+    "aid": 1,
+    "name": "Comforter Bedding",
+    "instock": true,
+    "desc": "We supply clean comforters and two pillows  for your conveniency. You are responsible for intial washings",
+    "rate": 0,
+    "image": "bedding-1.jpg"
+  },
+
+  {
+    "aid": 2,
+    "name": "All In One Computer",
+    "instock": false,
+    "desc": "Early model computers that can be used to check emails, social media or entertainment. Imacs can be either 21.5\" or 27\"",
+    "rate": 15,
+    "image": "AIO-computer.jpg"
+  },
+  {
+    "aid": 3,
+    "name": "Smart Speaker",
+    "instock": true,
+    "desc": "Smart speakers help with various task around the camper. it can play music as well when pair to your phone as a bluetooth speaker",
+    "rate": 5,
+    "image": "smart-speaker-2.jpg"
+  },
+  {
+    "aid": 4,
+    "name": "Bluetooth Speaker",
+    "instock": true,
+    "desc": "Crank the music up but not to loud to wake the neighbors with our load bluetooth speakers. Take them outside and dance the night away",
+    "rate": 5,
+    "image": "bluetooth-speaker-1.jpg"
+  },
+  {
+    "aid": 5,
+    "name": "Coffee Machine",
+    "instock": true,
+    "desc": "No need to leave the camper to get a fresh brew of coffee with the this coffee machine. Save money and time when you make it yourself, Coffee comes with a month supply or K-Cups of Caffinated or Decaf",
+    "rate": 7,
+    "image": "coffee-machine-2.jpg"
+  },
+  {
+    "aid": 6,
+    "name": "Smart Tv",
+    "instock": true,
+    "desc": "Upgrade you TV to a smart TV. Install apps like Netflix, HULU, Disney+, MAX and more. If you already have an account with this apps, you can login and watch them from the camper",
+    "rate": 15,
+    "image": "smart-tv.jpg"
+  },
+  {
+    "aid" : 7,
+    "name": "Surround Sound",
+    "instock": false,
+    "desc": "Take your movie viewing and music listening to the next level with a surround sound system in your camper",
+    "rate": 10,
+    "image": "surround-sound-system-1.jpg"
+  },
+  {
+    "aid": 8,
+    "name": "Lawn Chairs",
+    "instock": true,
+    "desc": "Enjoy the outdoors with our comfortable lawn chairs. Equiped with cup holders so your favor drinks are iches away",
+    "rate": 5,
+    "image": "lawn-chair.jpg"
+  },
+  {
+    "aid": 9,
+    "name": "Toaster",
+    "instock": true,
+    "desc": "Make toast for your breaskfast meals or dinner",
+    "rate": 3,
+    "image": "toaster.jpg"
+  }
+]

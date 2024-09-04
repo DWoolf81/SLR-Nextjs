@@ -81,7 +81,7 @@ body * {
 
 
 .acct-rv-top-box {
-    background-color: var(--sub-bg-color);
+    background-color: #ffffff;
     padding: 80px 10px 10px 10px;
     border-radius: 20px;
     display: flex;
@@ -89,6 +89,7 @@ body * {
     position: fixed;
     width: 100%;
     max-width: 1024px;
+    box-shadow: 0px 5px 5px #0000001f;
 }
 
 .gap-30 {
@@ -126,12 +127,18 @@ body * {
 .acct-mid-content {
     border-bottom: solid 1px var(--sub-bg-color);
     border-top: solid 1px var(--sub-bg-color);
-    max-width: 20px 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 20px 0px;
+    margin: 20px 10px;
     padding: 10px 0px;
+}
+
+.acct-mid-date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 30px;
 }
 
 .acct-big-bold-head-p {
@@ -150,6 +157,12 @@ body * {
     border-radius: 50px;
     text-align: center;
     color: white;
+    transition: all .5s linear;
+}
+
+.acct-link:hover {
+    background-color: #2121211a;
+    color: #707357;
 }
 
 .acct-link-box {
@@ -166,20 +179,40 @@ body * {
     margin: 10px;
 }
 
-.history-grid-column-list > div{
-   padding: 10px;
-   display: flex;
-   background-color: #f0f0f0;
-   margin-bottom: 10px;
+.addon-grid-column-list {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+    gap: 0;
+    margin: 30px 10px;
+}
+
+
+
+.history-grid-column-list>div,
+.addon-grid-column-list>div {
+    padding: 10px;
+    display: flex;
+    background-color: #f0f0f0;
+    margin-bottom: 10px;
+    align-items: center;
 
 }
 
-.history-item-box, .acct-main-box {
+.grid-column-header {
+    background-color: transparent !important;
+    border-bottom: solid 2px #f0f0f0;
+    color: #929292;
+    margin-right: 5px;
+}
+
+.history-item-box,
+.acct-main-box {
     padding-top: 200px;
-    
+
 }
 
-.acct-history-item {
+.acct-history-item,
+.acct-addon-item {
     background-color: var(--acct-history-item-bg) !important;
 }
 
@@ -206,23 +239,31 @@ body * {
     background-color: var(--acct-history-item-bg);
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    
+
 }
+
 .ahitop-right {
     background-color: var(--acct-history-item-bg);
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 
 }
-.pay-item-details-box, .pay-item-method-box {
+
+.pay-item-details-box,
+.pay-item-method-box {
     margin: 20px 0px;
 }
-.pay-item-details-box p, .pay-item-method-box p {
+
+.pay-item-details-box p,
+.pay-item-method-box p {
     margin: 10px 0px;
 }
-.pay-item-details-box p span, .pay-item-method-box p span {
+
+.pay-item-details-box p span,
+.pay-item-method-box p span {
     font-weight: bold;
 }
+
 .pay-item-details-box p:nth-last-child(1) {
     font-weight: bold;
     font-size: x-large;
@@ -240,7 +281,262 @@ body * {
     color: white;
 }
 
+.mobile-pay-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mobile-pay-list li {
+    padding: 30px 10px;
+    background-color: var(--acct-history-item-bg);
+    width: 100%;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    color: var(--main-link-color);
+}
+
+.main-card-box {
+    margin: 10px;
+    padding: 10px;
+}
+
+.main-card-box input,
+.main-card-box select {
+    background-color: rgba(201 228 185 / 58%);
+    border: none;
+    border-radius: 30px;
+    padding: 20px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.main-card-box>div {
+    margin: 0px 0px 30px;
+    width: 100%;
+}
+
+.main-card-box p {
+    color: var(--main-link-color);
+    margin: 10px 0px;
+    padding-left: 20px;
+    font-size: 12px;
+}
+
+.card-expire {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-date {
+    display: flex;
+}
+
+.card-date input {
+    width: 50px;
+    margin: 5px 0px;
+
+}
+
+.card-date select:first-child {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin: 0;
+    border-right: solid 2px var(--sub-bg-color);
+}
+
+.card-date select:last-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    margin: 0;
+    width: 110px;
+}
+
+.card-cvv input {
+    width: 70px;
+}
+
+.card-submit-box {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+}
+
+.card-submit-box button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    margin: 0px 30px;
+    background-color: var(--main-link-color);
+    color: white;
+    cursor: pointer;
+}
+
+.amenity_list_item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.amenity_list_item ul {
+    padding: 20px;
+    min-width: 180px;
+}
+
+.amenity_list_item ul li {
+    list-style-type: circle;
+    padding: 5px;
+}
+
+.amenity-item-box {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 30px;
+    background-color: #e9e9e9;
+
+}
+
+.amenity-item-box-mini {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 30px;
+    background-color: #ffffff;
+    min-width: 170px;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100%;
+
+}
+
+.amenity-image-box {
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.amenity-image-box-mini {
+    padding-bottom: 30px;
+    text-align: center;
+    background-color: #e9e9e9;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.amenity-image-box-shadow,
+.amenity-image-box-shadow-mini {
+    width: 250px;
+    height: 16px;
+    border-radius: 100%;
+    margin: 30px 0px;
+    background-color: #00000091;
+    filter: blur(10px);
+}
+
+.amenity-image-box-shadow-mini {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+
+
+
+.amenity-cost-box,
+.amenity-cost-box-mini {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0px 60px;
+    align-items: center;
+    font-weight: bold;
+    max-width: 800px;
+}
+
+.amenity-cost-box-mini {
+    padding: 5px;
+    gap: 10px;
+    align-items: baseline;
+
+}
+
+.amenity-info-box {
+    padding: 20px;
+    margin: 20px;
+    background-color: #e7e7e7;
+    border-radius: 30px;
+    box-shadow: 5px 5px 5px #0000001c, -5px -5px 5px #ffffff;
+    /* border: solid 1px #fff; */
+}
+
+.amenity-forms-box {
+
+    display: flex;
+    padding: 0px 30px;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.amenity-forms-box form {
+    width: 100%;
+}
+
+.amenity-button,
+.amenity-button-mini {
+    border-radius: 20px;
+    background-color: rgb(174, 174, 174);
+    font-size: 20px;
+    width: 100%;
+    color: white;
+}
+
+.amenity-button-mini {
+    font-weight: normal;
+    font-size: 14px;
+    padding: 5px 15px;
+
+}
+
+.add-btn {
+    background-color: var(--main-link-color);
+}
+
+.remove-btn {
+    background-color: #ef7168;
+}
+
 @media screen and (max-width: 555px) {
+    .amenity-add-remove-btn-box {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }
     .acct-rv-img {
         height: 75px;
         width: 75px;
@@ -248,7 +544,7 @@ body * {
         border-radius: 10px;
     }
 
-   
+
     .acct-bold-head-p {
         font-size: 1.2rem;
         font-weight: bold;
@@ -276,6 +572,10 @@ body * {
         font-size: .5rem;
     }
 
+    .acct-mid-date-box {
+        padding: 0px 20px;
+    }
+
     .acct-link-box {
         gap: 10px;
     }
@@ -287,12 +587,13 @@ body * {
         border-radius: 30px;
     }
 
-    .history-grid-column-list > div{
+    .history-grid-column-list>div {
         font-size: 12px;
-        
-     }
 
-     .history-item-box, .acct-main-box {
+    }
+
+    .history-item-box,
+    .acct-main-box {
         padding-top: 170px;
     }
 

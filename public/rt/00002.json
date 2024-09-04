@@ -1,9 +1,9 @@
 {
   "rvid": "00002",
   "name": "Coleman Sportsmen",
-  "year": "1997",
-  "length": "26′ 2",
-  "type": "Travel Tariler",
+  "year": 1997,
+  "length": 26.2,
+  "type": "Travel Trailer",
   "sleeps": 6,
   "location": {
     "city": " -- ",

@@ -1,9 +1,9 @@
 {
   "rvid": "00004",
   "name": "Heartland - North Peak",
-  "year": "2016",
-  "length": "31.3",
-  "type": "Travel Tariler (5th Wheel)",
+  "year": 2016,
+  "length": 31.3,
+  "type": "Travel Trailer (5th Wheel)",
   "sleeps": 4,
   "location": {
     "city": " -- ",
@@ -36,7 +36,8 @@
     "3 stove burner",
     "private queen bed",
     "microwave",
-    "dishware"
+    "dishware",
+    "Random thing"
   ],
   "addons": [
     "amazon alexa",
@@ -47,6 +48,7 @@
     "Smart TV",
     "Solar Lights"
   ],
+  "brand":[],
   "available": 2,
   "rate": {
     "day": 99,

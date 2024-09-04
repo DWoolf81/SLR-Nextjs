@@ -1,9 +1,9 @@
 {
   "rvid": "00005",
   "name": "Forest River - Salem Hemisphere 314BUD",
-  "year": "2021",
-  "length": "39'25",
-  "type": "Travel Tariler",
+  "year": 2021,
+  "length": 39.25,
+  "type": "Travel Trailer",
   "sleeps": 8,
   "location": {
     "city": " -- ",

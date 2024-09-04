@@ -1,11 +1,29 @@
 import "../css/account.css";
 import Link from "next/link";
 import Image from "next/image";
+import { getSession } from "@/lib/sessions";
+import { findUserById, getRv } from "@/lib/actions";
 
-const AcountLayout = ({ children}) => {
+const AcountLayout = async ({ children}) => {
+
+  let toad ="";
+  const session = await getSession();
+  if (!session)  toad = ""
+  //console.log("geting sess from middle ware", session)
+    const renter = await findUserById(session.renter.id);
+
+    let rv = false
+
+    if (renter.renting) rv = await getRv(renter.renting.rv)
+
+    let rate = renter.renting.rate
+
+    renter.addon.forEach(el => rate += el.rate)
+
+    console.log("rental", rv.name, rate)
 
   return (
-    <div className="container">
+    <>
       <div className="max-wid-1024 flex-dir-column">
         <div>
           <div className="acct-rv-top-box gap-20">
@@ -22,11 +40,13 @@ const AcountLayout = ({ children}) => {
                 />
               </div>
             </div>
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
               <article>
-                <p className="acct-sub-head-p">current stay</p>
-                <p className="acct-bold-head-p">RV-Name: ShotGv</p>
-                <p>Tenant: <span>Darrell Woolfolk + 1</span></p>
+                <p className="acct-sub-head-p">Renting</p>
+                <p className="acct-bold-head-p">{ rv.name }</p>
+                <p style={{  display: "flex", alignItems: "center", gap: "5px" }}><span class="material-symbols-outlined green">
+group
+</span> <span>{ renter.name } + {renter.renting.tenants} </span></p>
               </article>
             </div>
             <div
@@ -38,16 +58,22 @@ const AcountLayout = ({ children}) => {
                 flexDirection: "column",
               }}
             >
-              <p className="acct-bold-head-p">$856</p>
+              <p className="acct-bold-head-p">${ rate }</p>
               <p className="acct-sub-head-p" style={{ margin: "-5px 0px 10px" }}>month</p>
-              <Link className="acct-details-btn" href="#">Details</Link>
+              <Link className="acct-details-btn" href={{
+          pathname: `/rental/${rv.rvid}`,
+        }} >Details</Link>
             </div>
           </div>
         </div>
+        <div className="acct-main-box">
 
-        {children}
+          {children}
+        </div>
+
+        
       </div>
-    </div>
+    </>
   );
 };
 

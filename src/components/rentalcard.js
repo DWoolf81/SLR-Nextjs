@@ -22,7 +22,7 @@ export const RentalCard = ({ item }) => {
 
 
 
-  const imgSrc = `/assets/campers/${item.id}/${item.images[0]}`
+  const imgSrc = `/assets/campers/${item.rvid}/${item.pictures[0]}`
 
   return (
     <div className="div1">
@@ -42,7 +42,7 @@ export const RentalCard = ({ item }) => {
           <p>{ item.name }</p>
         </section>
         <section className="rv-type">
-          <p>{item.type} | Sleeps { item.sleeps } | { item.length }th</p>
+          <p>{item.type} | Sleeps { item.sleeps } | { item.length }ft</p>
         </section>
         <section className="rv-loc-avail">
           <p>{ item.location.city} { item.location.state } | <span className={isAvailClass }>Reserve</span></p>
@@ -56,7 +56,7 @@ export const RentalCard = ({ item }) => {
           </p>
         </section>
         <Link href={{
-          pathname: `/rental/${item.id}`,
+          pathname: `/rental/${item.rvid}`,
         }} 
         className="green-link">View Item</Link>
       </div>

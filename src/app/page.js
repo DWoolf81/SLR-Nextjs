@@ -1,6 +1,9 @@
 import Image from "next/image";
 import bg from "../../public/assets/shutterstock_758389312-1.jpg";
 import { RentalCard } from "../components/rentalcard";
+import connectToDatabase from "@/lib/mongoose";
+import Camper from "@/models/campers";
+import Renter from "@/models/renters";
 
 export default async function Home() {
   const bgStyles = {
@@ -17,11 +20,17 @@ export default async function Home() {
     color: "white",
   };
 
-   const res = await fetch("http://localhost:3000/list.json")
+  await connectToDatabase()
 
-   const data = await res.json()
+   const res = await fetch("http://localhost:3000/api/")
 
-  console.log( data)
+   const data = await Camper.find();
+   const renter = await Renter.findOne({email: "darrellwoolfolk@outlooks.com"})
+
+   console.log(renter.name, await res.json())
+   console.log( res.name)
+
+   // data.map(list => console.log("This is the camper name and length", list.nam, list.length) )
 
 
   return (
