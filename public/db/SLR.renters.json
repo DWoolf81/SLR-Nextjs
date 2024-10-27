@@ -2,59 +2,109 @@
   "_id": {
     "$oid": "66d3e79e76bb99333870597c"
   },
-  "id": "9999",
   "email": "fake@fakeemail.com",
   "password": "12345",
-  "name": "John Doe",
+  "name": "John Tightass",
   "location": {
-    "city": "Fakeville",
+    "address": "213 Digoling Blvd",
+    "city": "Fucktown",
     "state": "LA"
-  }
+  },
+  "rid": "9999",
+  "dl": "5454545454",
+  "dob": "11/05/1918",
+  "phone": "9002123999",
+  "renting": {
+    "rv": "9999",
+    "tenants": 3,
+    "rate": 1157,
+    "location": "100002",
+    "nextdate": {
+      "$date": "2024-11-26T00:00:00.000Z"
+    },
+    "moveout": null
+  },
+  "addon": [
+    {
+      "aid": "2",
+      "stockNum": "7812623472",
+      "name": "All In One Computer",
+      "rate": 15,
+      "_id": {
+        "$oid": "671c5120f5ee87b5c7b2df56"
+      }
+    },
+    {
+      "aid": "3",
+      "stockNum": "2529626381",
+      "name": "Smart Speaker",
+      "rate": 5,
+      "_id": {
+        "$oid": "671c5122f5ee87b5c7b2df5b"
+      }
+    },
+    {
+      "aid": "3",
+      "stockNum": "5039874361",
+      "name": "Smart Speaker",
+      "rate": 5,
+      "_id": {
+        "$oid": "671c5123f5ee87b5c7b2df61"
+      }
+    }
+  ]
 },
 {
   "_id": {
     "$oid": "66d3e79e76bb99333870597d"
   },
-  "id": "0001",
   "email": "darrell@fakeemail.com",
   "password": "12345",
   "name": "Daryl WIlford",
   "location": {
     "city": "Houston",
     "state": "Tx"
-  }
+  },
+  "rid": "0001"
 },
 {
   "_id": {
     "$oid": "66d3e79e76bb99333870597e"
   },
-  "id": "0002",
   "email": "kayla@fakeemail.com",
   "password": "12345",
   "name": "Kayla Cockstrong",
   "location": {
+    "address": "555 what is happening lane",
     "city": "Dickmedown",
     "state": "NY"
-  }
+  },
+  "rid": "0002",
+  "dl": "9999999999998",
+  "dob": "09/5/1986",
+  "phone": "9897777777"
 },
 {
   "_id": {
     "$oid": "66d3e79e76bb99333870597f"
   },
-  "id": "0005",
   "email": "darrellwoolfolk@outlooks.com",
   "password": "$2a$10$YhXEudgIHhWjmnP0vjdoI.U9IVT.HAiryw5z4/rdMTObZlhJhfoFW",
-  "name": "Darren Wolfolk",
+  "name": "Darren Woolfolk",
   "location": {
-    "city": "Badass",
+    "address": "12345 Good Luck Lane",
+    "city": "Cornfield",
     "state": "TX"
   },
   "renting": {
-    "rv": "00004",
-    "rate": 850,
+    "rv": "0005",
     "tenants": 2,
-    "location": "O19084",
-    "moveout": "2024-09-05"
+    "rate": 850,
+    "location": "019084",
+    "nextdate": {
+      "$date": "2024-11-26T00:00:00.000Z"
+    },
+    "moveout": null
   },
   "addon": [
     {
@@ -74,6 +124,75 @@
         "name": "JBL Xteme",
         "aid": 467
       }
+    },
+    {
+      "aid": "6",
+      "stockNum": "9318748486",
+      "name": "Smart Tv",
+      "rate": 15,
+      "_id": {
+        "$oid": "671d5bd4f5ee87b5c7b2e144"
+      }
     }
-  ]
+  ],
+  "rid": "0005",
+  "dl": "2351512451",
+  "dob": "10/09/1981",
+  "phone": "2122122222"
+},
+{
+  "_id": {
+    "$oid": "670ec2c163113cbd41811304"
+  },
+  "rid": "cxSIHjeM80",
+  "email": "darrellwoolfolk@outlook.com",
+  "password": "10/09/1981",
+  "name": "Darrell Woolfolk",
+  "location": {
+    "address": "2127 Great Egret Bnd",
+    "city": "Fulshear",
+    "state": "HI"
+  },
+  "dob": "10/09/1981",
+  "phone": "2283277677",
+  "addon": [],
+  "__v": 0,
+  "renting": "false",
+  "dl": "1111111111111111"
+},
+{
+  "_id": {
+    "$oid": "670ee12063113cbd41811308"
+  },
+  "rid": "x5OhLmXW6E",
+  "email": "thedon@trump.com",
+  "password": "$2a$10$9mqaYQQgX45r7UMtF.AlWeHhDTdpxV3HE.R5qqcIrnMLj3lgJPu4S",
+  "name": "Donald Trump",
+  "location": {
+    "address": "4545 President Lane",
+    "city": "Fort Lauderdale",
+    "state": null
+  },
+  "dob": "10/09/1956",
+  "phone": "717-454-4545",
+  "addon": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "670ee2bb63113cbd4181130e"
+  },
+  "rid": "4011788251",
+  "email": "joe@biden.com",
+  "password": "$2a$10$Ut9SZa7GYBkghEv2yod5rOYXjJ85pkpI.sEjUTyhDnUQP/qps44Xu",
+  "name": "Joe Biden",
+  "location": {
+    "address": "1234 Dumbass Lane",
+    "city": "Stupidville",
+    "state": "PA"
+  },
+  "dob": "11/11/1909",
+  "phone": "212-222-2222",
+  "addon": [],
+  "__v": 0
 }]

@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$oid": "66fe01dab5a541bcd1dba0bf"
+  },
+  "loc_id": "100001",
+  "name": "Bridge City RV Park",
+  "image": null,
+  "type": "RV Park",
+  "location": {
+    "street": "555 N John St",
+    "city": "Bridge City",
+    "state": "Texas",
+    "zip": "77611",
+    "map": "https://maps.app.goo.gl/LQyFDFd8EdSNdUeP7"
+  },
+  "web": "https://www.bridgecityrvpark.com/"
+},
+{
+  "_id": {
+    "$oid": "66fe01dab5a541bcd1dba0c0"
+  },
+  "loc_id": "100002",
+  "name": "The Elite RV Park",
+  "image": null,
+  "type": "RV Park",
+  "location": {
+    "street": "195 Texas Ave",
+    "city": "Bridge City",
+    "state": "Texas",
+    "zip": "77611",
+    "map": "https://maps.app.goo.gl/xh78kCxWXSPWCbr67"
+  },
+  "web": "https://www.theelitervpark.com/"
+},
+{
+  "_id": {
+    "$oid": "66fe01dab5a541bcd1dba0c1"
+  },
+  "loc_id": "100003",
+  "name": "Roundbunch RV Park",
+  "image": null,
+  "type": "RV Park",
+  "location": {
+    "street": "1667 Texas Ave",
+    "city": "Bridge City",
+    "state": "Texas",
+    "zip": "77611",
+    "map": "https://maps.app.goo.gl/jhgGFVtXRGfTfgXV6"
+  },
+  "web": "https://www.roundbunchrv.com/"
+}]
