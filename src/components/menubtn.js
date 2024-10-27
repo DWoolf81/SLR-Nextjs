@@ -35,7 +35,7 @@ const Menubtn = ({ renter }) => {
           {renter ? (
             <li>
               <Link className="acct-icon" onClick={closeMenu} href="/account">
-                <span class="material-symbols-outlined acct-icon-bg">person</span>
+                <span className="material-symbols-outlined acct-icon-bg">person</span>
               </Link>
             </li>
           ) : (

@@ -1,10 +1,13 @@
-import { getSession } from "@/app/lib/actions";
 import Backbtn from "@/components/backbtn";
 import Paymenthead from "@/components/paymenthead";
 import YearSelect from "@/components/selectyear";
+import { findUserFromSession } from "@/lib/actions";
 import React from "react";
 
 const Card = async () => {
+
+
+    const renter = await findUserFromSession()
 
 
     const month = [...Array(13).keys()]

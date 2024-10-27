@@ -1,11 +1,11 @@
 "use server";
 import { cookies } from "next/headers";
 import jose, { jwtDecrypt, jwtVerify, SignJWT } from "jose";
-import { NextRequest, NextResponse } from "next/server";
 import { redirect } from "next/navigation";
 import bcrypt, { hash } from "bcryptjs";
 import { getSession } from "./sessions";
 import Renter from "@/models/renters";
+import Addon from "@/models/addons";
 
 
 
@@ -14,69 +14,79 @@ const key = new TextEncoder().encode(process.env.SECRET_PHRASE);
 // const keyDecode = jose.base64url.decode(key)
 
 
+export const addOnAmounts = ({ items }) => {
+
+  console.log("Get actions for amounts")
+
+
+    let sum = 0;
+
+   //return  items.forEach((rate) => (sum += rate.rate));
+
+}
+
+
 
 export const findUser = async (e, p) => {
 
   const renter = await Renter.findOne({email: e})
 
-  console.log("Renter from Model", renter, p)
-
   if (renter) {
-
-    console.log("Hashed password", renter.password )
-
 
     const isPass = await bcrypt.compare(p, renter.password)
 
     return isPass ? renter : false
 
-  } return false
+  } 
   
-  const res = await fetch("http://localhost:3000/db/renters.json");
-  const rep = await fetch("http://localhost:3000/api");
-  // console.log(rep)
-
-  //const arr = await res.json();
-
-  //const find = arr.find(({ email, password }) => email === e && password === p);
-
-  // return find;
-
   return false
+  
 };
-export const findUserById = async (rid) => {
-  const res = await fetch("http://localhost:3000/db/renters.json");
+export const findUserById = async (id) => {
 
-  const arr = await res.json();
+  const renter = await Renter.findOne({_id: id})
 
-  const find = arr.find(({ id }) => id === rid);
-
-  return find;
+  return renter;
 };
 
 export const findUserFromSession = async () => {
   let renter = false;
   const session = await getSession();
 
-  if (session) renter = await findUserById(session.renter.id);
+  if (session) renter = await Renter.findOne({email: session.renter.email})
 
   return renter;
 };
 
 export const findAmenityById = async (a) => {
-  const res = await fetch("http://localhost:3000/db/amenities.json");
 
-  const arr = await res.json();
+  const find = await Addon.findOne({ aid: a })
 
-  const find = arr.find(({ aid }) => aid === a);
+  const findAll = await Addon.find()
+
+  
+
+  console.log("This item from actions", findAll, a)
+
+
+  //const res = await fetch("http://localhost:3000/db/amenities.json");
+
+  //const arr = await res.json();
+
+  //const find = arr.find(({ aid }) => aid === a);
 
   return find;
 };
 
 export const getRv = async (id) => {
+  const sess = getSession()
   const res = await fetch(`http://localhost:3000/rt/${id}.json`);
 
-  const arr = await res.json();
+  const arr = ""
+ if (res) {
+
+    //const arr = await res.json();
+ } 
 
   return arr;
 };
@@ -101,38 +111,7 @@ export const decrypt = async (input) => {
   }
 };
 
-const setCookie = async (request) => {
-  try {
-    const getCookie = request.cookies.get("session")?.value;
 
-    if (!getCookie) return;
-
-    const res = await decrypt(getCookie);
-
-    res.expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
-
-    const expires = res.expires;
-
-    const renter = {
-      id: res.renter.id,
-      email: res.renter.email,
-      name: res.renter.name,
-    };
-
-    const resp = NextResponse.next();
-
-    const enc = await encrypt({ renter, expires });
-
-    const setCookie = resp.cookies.set("session", enc, {
-      expires,
-      httpOnly: true,
-    });
-
-    return resp;
-  } catch (e) {
-    console.log("We have an error somewhere", e);
-  }
-};
 
 const authenticate = async (formData) => {
   // console.log(formData);
@@ -141,8 +120,7 @@ const authenticate = async (formData) => {
 
   const res = await findUser(email, password);
 
-  console.log("Res in auth", res)
-
+    
   if (res) {
     
     const match = `Hey! Is this ${res.name} from ${res.location.city}`;
@@ -167,6 +145,8 @@ const authenticate = async (formData) => {
 export const logout = () => {
   cookies().set("session", "", { expires: new Date(0) });
 };
+
+
 
 
 

@@ -1,5 +1,5 @@
-import { findUserFromSession } from "@/app/lib/actions";
 import Backbtn from "@/components/backbtn";
+import { findUserFromSession } from "@/lib/actions";
 import React from "react";
 
 const Moveout = async () => {

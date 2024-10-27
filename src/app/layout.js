@@ -4,8 +4,10 @@ import "./globals.css";
 import "./css/styles.css";
 import "./globalicons.css";
 import Menubtn from "@/components/menubtn";
+import { findUserFromSession } from "@/lib/actions";
 import { getSession } from "@/lib/sessions";
-import { findAmenityById } from "@/lib/actions";
+import Renter from "@/models/renters";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,16 +16,12 @@ export const metadata = {
   description: "Living in an RV is cool",
 };
 
-export default async function RootLayout({ children }) {
- 
-  let toad = "";
-  let renter = false
-  const session = await getSession();
-  if (session) {
-    renter = await findUserById(session.renter.id);
-  }
 
-   
+export default async function RootLayout({ children }) {
+  let toad = "";
+
+  const renter = await getSession();
+ 
 
   return (
     <html lang="en">
@@ -39,25 +37,25 @@ export default async function RootLayout({ children }) {
         />
       </head>
       <body className={inter.className}>
-        <div className="container">
-          <div className="nav-bar">
-            <div className="logo">
-              <a className="home-link" href="#">
-                <Image
-                  src="/assets/logo/logo-transparent-small.png"
-                  width={35}
-                  height={35}
-                  alt="Simply Living Logo"
-                />
-                <p className="logoText">Simply Living Rentals</p>
-              </a>
+          <div className="container">
+            <div className="nav-bar">
+              <div className="logo">
+                <a className="home-link" href="#">
+                  <Image
+                    src="/assets/logo/logo-transparent-small.png"
+                    width={35}
+                    height={35}
+                    alt="Simply Living Logo"
+                  />
+                  <p className="logoText">Simply Living Rentals</p>
+                </a>
+              </div>
+
+              <Menubtn renter={ renter } />
             </div>
 
-            <Menubtn renter={renter} />
+            {children}
           </div>
-
-          {children}
-        </div>
       </body>
     </html>
   );

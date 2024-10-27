@@ -1,73 +1,79 @@
-import { findUser, getRv, findUserById } from "@/app/lib/actions";
+import { findUser, getRv, findUserById } from "@/lib/actions";
 import Link from "next/link";
 import React from "react";
 import Backbtn from "./backbtn";
 import Image from "next/image";
 import Amenitycard from "./amenitycard";
 
-const Amenites = async ({ title, list }) => {
-  const r = Math.round((list.length + 3) / 5);
+const Amenities = async ({ title, list }) => {
+  try {
+    const r = Math.round((list.length + 3) / 5);
 
-  const rvs = new Array();
+    const rvs = new Array();
 
-  for (let i = 0; i < r; i++) {
-    const rvi = list.slice(i * 5, (i + 1) * 5);
+    for (let i = 0; i < r; i++) {
+      const rvi = list.slice(i * 5, (i + 1) * 5);
 
-    rvs.push(rvi);
+      rvs.push(rvi);
+    }
+
+    return (
+      <>
+        <div>
+          <h2>{title}</h2>
+        </div>
+        <div className="amenity_list_item">
+          {rvs.map((arr) => {
+            return (
+              <ul>
+                {arr.map((el, index) => (
+                  <li key={index}>{el}</li>
+                ))}
+              </ul>
+            );
+          })}
+        </div>
+      </>
+    );
+  } catch (e) {
+    console.log("We have an error");
   }
-
-  return (
-    <>
-      <div>
-        <h2>{title}</h2>
-      </div>
-      <div className="amenity_list_item">
-        {rvs.map((arr) => {
-          return (
-            <ul>
-              {arr.map((el, index) => (
-                <li key={index}>{el}</li>
-              ))}
-            </ul>
-          );
-        })}
-      </div>
-    </>
-  );
 };
 
 export const PaidAddons = async ({ rid }) => {
-  const renter = await findUserById(rid);
+  try {
+    const renter = await findUserById(rid);
 
-  // console.log("Here's the renter", renter, rid);
+    let sum = 0;
 
-  let sum = 0;
+    renter.addon.forEach((rate) => (sum += rate.rate));
 
-  renter.addon.forEach((rate) => (sum += rate.rate));
-
-  return (
-    <>
-      <div style={{ marginBottom: "100px" }}>
-        <h2>
-          Paid Add-Ons | <strong>Cost ${sum}/month</strong>{" "}
-        </h2>
-        <div className="amenity_list_item">
-          <ul>
-            {renter.addon.map((el) => (
-              <li>
-                {el.name} | ${el.rate}
-              </li>
-            ))}
-          </ul>
+    return (
+      <>
+        <div style={{ marginBottom: "100px" }}>
+          <h2>
+            Paid Add-Ons | <strong>Cost ${sum}/month</strong>{" "}
+          </h2>
+          <div className="amenity_list_item">
+            <ul>
+              {renter.addon.map((el, index) => (
+                <li key={index}>
+                  {el.name} | ${el.rate}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="amenity-add-remove-btn-box">
+            <Link className="acct-payment-btn" href="amenities/addons/">
+              Add/Remove Amenites
+            </Link>
+          </div>
         </div>
-        <div className="amenity-add-remove-btn-box">
-          <Link className="acct-payment-btn" href="amenities/addons/">
-            Add/Remove Amenites
-          </Link>
-        </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  } catch (e) {
+    console.log("We have an error somewhere", e);
+  }
 };
 
 export const AddRemove = async () => {
@@ -111,9 +117,9 @@ export const AddRemove = async () => {
   );
 };
 
-export default Amenites;
+export default Amenities;
 
-const oldAmenList = () => {
+export const oldAmenList = ({ all, renters = [] }) => {
   return (
     <div className="addon-grid-column-list">
       <div className="grid-column-header">

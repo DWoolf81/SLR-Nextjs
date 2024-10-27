@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useFormState, useFormStatus } from 'react-dom'
-import authenticate from "@/lib/actions";
+import authenticate, { fake_action } from "@/lib/actions";
 import { useEffect, useState } from "react";
 
 
@@ -59,6 +59,7 @@ const formAction = async (prev, formData) => {
     formData.append("id", "123456")
     console.log("This is ", formData.get('email'), prev)
     const res = await authenticate(formData)
+
     return res
 }
 
@@ -69,9 +70,6 @@ const Login = () => {
  
 
   // console.log("Env test", process.env.TEST, process.env.NODE_ENV, process.env.MONGODB_URI)
-
- 
-
 
     const [error, action] = useFormState(formAction, null)
 

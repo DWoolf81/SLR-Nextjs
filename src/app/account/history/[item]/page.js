@@ -1,15 +1,15 @@
+import { findUserFromSession } from "@/lib/actions";
+import Payment from "@/models/payments";
 import Link from "next/link";
 import React from "react";
 
 const findPayment = async (pid) => {
-  const res = await fetch(`http://localhost:3000/db/payments/payments.json`);
 
-  const arr = await res.json();
+  const renter = await findUserFromSession()
 
-  const find = arr.find((el) => el.pid === pid);
-
-
-  return find;
+  const payment = await Payment.findOne({  rid : renter.rid, pid: pid })
+  
+  return payment;
 };
 
 
@@ -17,9 +17,21 @@ const findPayment = async (pid) => {
 const Item = async ({ params }) => {
   const payment = await findPayment(params.item);
 
+
   const type = "Credit Card";
 
-  const pm = Object.entries(payment.payment);
+  const sample = {
+    name : "Turd",
+    age: "47",
+    gender: "boy",
+    hair: "green"
+    }
+
+    const pm = payment.payment
+
+  const pmx = Object.entries(pm);
+
+  console.log("WHat about payment", pm, payment)
 
 
   return (
@@ -59,10 +71,10 @@ const Item = async ({ params }) => {
           </p>
         </article>
         <h2 style={{ borderBottom: "solid 1px grey", paddingBottom: "10px" }}>
-          Method:{" "}
+          Method: {payment.method}
         </h2>
         <article className="pay-item-method-box">
-          {pm.map(([k, v], index) => (
+          {pmx.map(([k, v], index) => (
             <p key={index}>
               {k}: <span>{v}</span>
             </p>

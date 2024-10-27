@@ -1,35 +1,44 @@
-import React from "react";
-import connectToDatabase from "@/lib/mongoose";
-import { RentalCard } from "@/components/rentalcard";
-import Camper from "@/models/campers";
+
+import React, { Suspense } from "react";
+
+import Searchinventory from "@/components/searchinventory";
+import Rvmapopener from "@/components/rvmapopener";
+import Rvmappop from "@/components/rvmappop";
+import Addon from "@/models/addons";
 
 
+const Search = async ({ params, searchParams}) => {
 
-const Search = async () => {
 
-   await connectToDatabase()
+  // CRUD Create Read Update Delete
 
-    //const res = await fetch("http://localhost:3000/list.json")
+  // Create
+  await Addon.create({ aid: 5, name: "Dodo Bird", instock: true, desc: "No desc", rate: 100, image: null})
 
-  //const data = await res.json()
+  const item = await Addon.findOne({ aid: 5})
 
-   const data = await Camper.find()
+  console.log("We found a item", item)
+
+
+  // Update
+  await Addon.updateOne({ name: "DooDoo Nelson"}, { name: "DooDoo McNelson"})
+
+  //Delete
+  await Addon.deleteOne({ aid: 5 })
+  
 
   return (
-    <div style={{marginTop: "85px"}}>
+    <div style={{ marginTop: "85px" }}>
 
+      <Suspense>
+      <Rvmapopener>
+        <Rvmappop />
+      </Rvmapopener>
+      
+      <Searchinventory search={searchParams} />
 
-    <section className="flex-direction-mobile">
-      <ul className="box-container ">
-        {data.map((list) => {
-          return (
-            <li key={list.id}>
-              <RentalCard item={list} />
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+      </Suspense>
+      
     </div>
   );
 };

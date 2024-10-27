@@ -9,9 +9,12 @@ const camperSchema = new Schema(
         type: String,
         sleeps: Number,
         location: {
+            loc_id: String,
             city: String,
             state: String,
             site: String,
+            map: String,
+
         },
         pictures: [String],
         desc: String,

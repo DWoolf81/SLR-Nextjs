@@ -4,16 +4,15 @@ import { RentalCard } from "@/components/rentalcard";
 import "@/app/css/rental.css";
 import Camper from "@/models/campers";
 import connectToDatabase from "@/lib/mongoose";
+import Map from "@/components/map";
+
 
 const data1 = async (id) => {
   // const res = await fetch(`http://localhost:3000/rt/${id}.json`);
 
   // const data = await res.json();
 
-
-  const data = Camper.findOne({ rvid: id })
-
- 
+  const data = Camper.findOne({ rvid: id });
 
   return data;
 };
@@ -23,27 +22,29 @@ const data2 = async () => {
 
   //const data = await res.json();
 
-  const data = Camper.find()
+  const data = Camper.find();
 
   return data;
 };
 const Rental = async ({ params }) => {
 
-  await connectToDatabase()
-  
+  await connectToDatabase();
+
   const rv = await data1(params.id);
 
-  console.log(rv, rv.pictures[9]);
+  console.log("The map field is ", rv)
+
 
   const mainImage = rv.pictures[0]
     ? `/assets/campers/${params.id}/${rv.pictures[0]}`
     : "assets/campers/default_camper.jpg";
 
+
   const rvs = await data2();
 
-   let isAvail = ''
-  let isAvailClass = 'is-avail '
 
+  let isAvail = "";
+  let isAvailClass = "is-avail ";
 
   if (rv.available === 0) {
     let isAvail = "Unavailable";
@@ -73,15 +74,16 @@ const Rental = async ({ params }) => {
           </div>
           <div id="rv-sub-images">
             {rv.pictures.slice(1).map((img, index) => {
-              console.log("The Image", img)
-              const rv_img = `/assets/campers/${params.id}/${img}`
+              const rv_img = `/assets/campers/${params.id}/${img}`;
               if (index == 3) {
                 return (
                   <div key={index} className="view-more">
-                   <Link  href={`/rental/${params.id}/photos`}><p>+ { rvs.length - index }</p></Link>
+                    <Link href={`/rental/${params.id}/photos`}>
+                      <p>+ {rvs.length - index}</p>
+                    </Link>
                   </div>
                 );
-              } else if (index < 2 ){
+              } else if (index < 2) {
                 return (
                   <div key={index}>
                     <Image
@@ -118,7 +120,7 @@ const Rental = async ({ params }) => {
                   </span>
                 </p>
               </div>
-              <p className={isAvailClass}>{ isAvail }</p>
+              <p className={isAvailClass}>{isAvail}</p>
               <div
                 className="booking-info display-none-mobile"
                 style={{ backgroundColor: "white" }}
@@ -154,6 +156,12 @@ const Rental = async ({ params }) => {
             <div id="desc">
               <p>{rv.desc} </p>
             </div>
+            <div className="loc-box">
+              <div className="under-line-head" style={{ marginBottom: "10px" }}>
+                <p className="sub-title">Location: </p>
+              </div>
+              <Map link={rv.location} />
+            </div>
             <div className="under-line-head">
               <p className="sub-title">Amenities</p>
             </div>
@@ -174,7 +182,7 @@ const Rental = async ({ params }) => {
           </div>
           <div className="book-info-box desktop-none">
             <div className="book-box">
-            <div className="booking-rate-box">
+              <div className="booking-rate-box">
                 <p>
                   <span className="rv-price">
                     $

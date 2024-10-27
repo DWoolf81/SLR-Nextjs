@@ -1,7 +1,11 @@
+import { findUserFromSession } from "@/lib/actions";
+import Payment from "@/models/payments";
 import Link from "next/link";
 import React from "react";
 
 const data1 = async () => {
+
+ 
   const res = await fetch(`http://localhost:3000/db/payments/payments.json`, {
     cache: "no-cache",
   });
@@ -12,7 +16,15 @@ const data1 = async () => {
 };
 
 const History = async () => {
-  const rv = await data1();
+
+
+   const renter = await findUserFromSession()
+
+  console.log("The renter for history", renter)
+
+  const payments = await  Payment.find({ rid: renter.rid })
+
+  console.log("Renters payments", payments)
 
   const rvs = [...Array(25)];
   return (
@@ -42,7 +54,7 @@ const History = async () => {
           <p>Links</p>
         </div>
 
-        {rv.map((el, index) => {
+        {payments.map((el, index) => {
           const prime = index % 2 == 0 ? "acct-history-item" : "";
           let type = "";
 

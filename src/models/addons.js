@@ -3,7 +3,7 @@ import mongoose, {Schema} from "mongoose";
 
 
 const addonSchema = new Schema({
-    aid: String,
+    aid: Number,
     name: String,
     instock: Boolean,
     desc: String,
@@ -13,3 +13,5 @@ const addonSchema = new Schema({
 
 
 const Addon = mongoose.models.Addon || mongoose.model("Addon", addonSchema)
+
+export default Addon

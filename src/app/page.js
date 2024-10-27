@@ -4,6 +4,7 @@ import { RentalCard } from "../components/rentalcard";
 import connectToDatabase from "@/lib/mongoose";
 import Camper from "@/models/campers";
 import Renter from "@/models/renters";
+import { cookies } from "next/headers";
 
 export default async function Home() {
   const bgStyles = {
@@ -20,6 +21,7 @@ export default async function Home() {
     color: "white",
   };
 
+
   await connectToDatabase()
 
    const res = await fetch("http://localhost:3000/api/")
@@ -27,8 +29,12 @@ export default async function Home() {
    const data = await Camper.find();
    const renter = await Renter.findOne({email: "darrellwoolfolk@outlooks.com"})
 
-   console.log(renter.name, await res.json())
-   console.log( res.name)
+   //console.log(renter.name, await res.json())
+   //console.log( res.name)
+
+   
+
+   
 
    // data.map(list => console.log("This is the camper name and length", list.nam, list.length) )
 

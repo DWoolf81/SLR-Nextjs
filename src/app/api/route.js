@@ -6,10 +6,11 @@ export async function GET() {
 
     await connectToDatabase()
 
-    const renter = await Renter.find({email: "darrellwoolfolk@outlooks.com"})
-    
-   
-    return Response.json(renter)
 
+    const renter = await Renter.find({email: "darrellwoolfolk@outlooks.com"})
+
+    
+    
+    return Response.json(renter)
 
   }

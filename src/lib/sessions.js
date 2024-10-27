@@ -1,29 +1,24 @@
 "use server";
 import { cookies } from "next/headers";
-import jose, { jwtDecrypt, jwtVerify, SignJWT } from "jose";
-import { NextRequest, NextResponse } from "next/server";
-import { redirect } from "next/navigation";
+import jose, { jwtVerify, SignJWT } from "jose";
+import { NextResponse } from "next/server";
 
-
-const key = new TextEncoder().encode(process.env.SECRET_PHRASE);
+const getKey = () => new TextEncoder().encode(process.env.SECRET_PHRASE);
 
 // const keyDecode = jose.base64url.decode(key)
-
-
-
 
 export const encrypt = async (payload) => {
   const jwt = await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime("60 sec from now")
-    .sign(key);
+    .setExpirationTime("60 secs from now")
+    .sign(getKey());
   return jwt;
 };
 
 export const decrypt = async (input) => {
   try {
-    const { payload } = await jwtVerify(input, key, {
+    const { payload } = await jwtVerify(input, getKey(), {
       algorithms: ["HS256"],
     });
     return payload;
@@ -38,9 +33,11 @@ const setCookie = async (request) => {
 
     if (!getCookie) return;
 
+    const resp = NextResponse.next();
+
     const res = await decrypt(getCookie);
 
-    res.expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+    res.expires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
 
     const expires = res.expires;
 
@@ -49,8 +46,6 @@ const setCookie = async (request) => {
       email: res.renter.email,
       name: res.renter.name,
     };
-
-    const resp = NextResponse.next();
 
     const enc = await encrypt({ renter, expires });
 
@@ -66,25 +61,18 @@ const setCookie = async (request) => {
 };
 
 export const getSession = async () => {
-    const session = cookies().get("session")?.value;
-    if (!session) return null;
-    return await decrypt(session);
-  };
-  
-  export const updateSession = async (request) => {
-    const session = await setCookie(request);
-  
-    if (!session) return null;
-  
-    console.log("Session was updated");
-  
-    return session;
-  };
+  const session = cookies().get("session")?.value;
+  if (!session) return null;
+  return await decrypt(session);
+};
 
+export const updateSession = async (request) => {
+  const session = await setCookie(request);
 
+  if (!session) return null;
+  return session;
+};
 
 export const logout = () => {
   cookies().set("session", "", { expires: new Date(0) });
 };
-
-

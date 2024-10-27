@@ -2,6 +2,11 @@ import mongoose, { Schema } from "mongoose";
 
 const renterSchema = new Schema(
     {
+        rid : {
+            type: String,
+            unique: true,
+            required: true
+        },
         email: {
             type: String,
             required: true,
@@ -11,20 +16,35 @@ const renterSchema = new Schema(
             type: String,
             required: true,
           },
-        name: String,
+        name: {
+            type: String,
+            required: true,
+        },
         location: {
+            address: String,
             city: String,
             state: String
+        },
+        dl: String,
+        dob: {
+            type: String,
+            required: true
+        },
+        phone: {
+            type: String,
+            required: true,
         },
         renting: {
             rv: String,
             rate: Number,
-            tenant: Number,
+            tenants: Number,
             location: String,
+            nextdate: Date,
             moveout: Date,
         },
         addon: [{
             aid: String,
+            stockNum: String,
             name: String,
             rate: Number,
             brand: {

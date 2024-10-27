@@ -1,23 +1,24 @@
-import { findUserById, getRv, getSession } from "@/app/lib/actions";
-import Amenites, { AddRemove, PaidAddons } from "@/components/amenites";
+import { findUserById, findUserFromSession, getRv } from "@/lib/actions";
+import { getSession } from "@/lib/sessions";
+import Amenities, { AddRemove, PaidAddons } from "@/components/amenites";
 import Backbtn from "@/components/backbtn";
 import React from "react";
 
 const Addons = async () => {
-  const session = await getSession();
-  if (!session)  toad = ""
-    const renter = await findUserById(session.renter.id);
+  
+    const renter = await findUserFromSession();
 
-    console.log("We found a renter", renter);
+     // console.log("We found a renter", renter, renter.id);
 
     
   
 const rv = await getRv(renter.renting.rv);
+
   return (
     <div style={{ padding: "20px" }}>
       <Backbtn link="./" />
-      <Amenites title={"Standard Amenities"} list={rv.amenities} />
-      <Amenites title={"Free Add-On Amenities"} list={rv.addons} />
+      <Amenities title={"Standard Amenities"} list={rv.amenities} />
+      <Amenities title={"Free Add-On Amenities"} list={rv.addons} />
       <PaidAddons rid={renter.id} />
     </div>
   );

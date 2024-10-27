@@ -1,16 +1,13 @@
 import "../css/account.css";
 import Link from "next/link";
 import Image from "next/image";
-import { getSession } from "@/lib/sessions";
-import { findUserById, getRv } from "@/lib/actions";
+import {  findUserFromSession, getRv } from "@/lib/actions";
 
 const AcountLayout = async ({ children}) => {
 
-  let toad ="";
-  const session = await getSession();
-  if (!session)  toad = ""
-  //console.log("geting sess from middle ware", session)
-    const renter = await findUserById(session.renter.id);
+  const renter = await findUserFromSession();
+
+  if (!renter) toda = true
 
     let rv = false
 
@@ -18,9 +15,6 @@ const AcountLayout = async ({ children}) => {
 
     let rate = renter.renting.rate
 
-    renter.addon.forEach(el => rate += el.rate)
-
-    console.log("rental", rv.name, rate)
 
   return (
     <>
