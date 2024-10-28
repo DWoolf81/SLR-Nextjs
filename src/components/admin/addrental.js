@@ -3,7 +3,7 @@ import StateSelect from "@/components/stateslist";
 import { addRental, admin_server_action, admin_server_action_test, updateRenter } from "@/lib/admin_actions";
 import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useActionState } from "react";
 import { useFormState } from "react-dom";
 
 
@@ -13,24 +13,13 @@ const handleSubmit = async (prev, formData) => {
     const res = await addRental(formData);
 
     if (res) {
-      //router.push("/login");
-
-      console.log("Updated successfully")
-
-     // revalidatePath("/admin/renter/[rid]/edit")
-
-    } else {
-      console.error("Update failed");
-      return "There was a problem with updating the renter"
+      console.log(res.error, "Previous state", prev)
+      return res
     }
   };
 
 
 export default function Addrental( { edit } ) {
-
-
-
-    
 
   
 const [ renter, setRenter ] = useState("")
@@ -38,32 +27,34 @@ const [ renter, setRenter ] = useState("")
 const [rid, setRid] = useState(edit.rid);
 const [name, setName] = useState(edit.name);
 
- const [rv, setRv] = useState(edit.rid);
-  const [rate, setRate] = useState(edit.renting.rate);
-  const [tenants, setTenants] = useState(edit.renting.tenants);
-  const [location, setLocation] = useState(edit.renting.location);
+ const [rv, setRv] = useState(edit.renting && edit.rentng.rv);
+  const [rate, setRate] = useState(edit.renting && edit.renting.rate);
+  const [tenants, setTenants] = useState(edit.renting && edit.renting.tenants);
+  const [location, setLocation] = useState(edit.renting && edit.renting.location);
   const [nextdate, setNextdate] = useState(() => {
 
-    const date = new Date(edit.renting.nextdate)
+    const date = new Date(edit.renting && edit.renting.nextdate)
 
     return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
     
   
 });
-  const [moveout, setMoveout] = useState(edit.renting.moveout);
+  const [moveout, setMoveout] = useState(edit.renting && edit.renting.moveout);
 
 
-  const [error, formAction ] = useFormState(handleSubmit, null)
+  const [error, formAction ] = useFormState(handleSubmit, false)
+
+  const [errorMess, setErrorMess] = useState(null)
 
   const router = useRouter();
 
   useEffect( () => {
 
-     console.log(error)
+     console.log("Check this error as well", error)
 
 
     
-  }, []);
+  }, [error]);
 
   
 
@@ -82,13 +73,14 @@ const [name, setName] = useState(edit.name);
       </div>
     <div
     className="uniform-box" >
+      
       <form className={"uniform-form"} action={ formData => { formAction(formData)}}>
       <input
           type="hidden"
           name="rid"
           value={rid}
         />
-        <p>Input rental ID</p>
+        <p>Input rental ID</p> { error.rv && (<p className="error-mess-bubble">{ error.rv }</p>) }
         <input
           type="text"
           name="rv"
@@ -116,6 +108,7 @@ const [name, setName] = useState(edit.name);
           required
         />
         <p>Enter the ID of the location of rental</p>
+        { error.loc && (<p className="error-mess-bubble">{ error.loc }</p>) }
         <input
           type="text"
           name="location"

@@ -2,6 +2,32 @@
 import bcrypt, { hash } from "bcryptjs";
 import Renter from "@/models/renters";
 import { redirect } from "next/navigation";
+import Camper from "@/models/campers";
+import Location from "@/models/locations";
+
+const isObjectEmpty = (objectName) => {
+  return Object.keys(objectName).length === 0
+}
+
+const compareDates = (d1, d2) => {
+  let date1 = new Date(d1).getTime();
+  let date2 = new Date(d2).getTime();
+
+  let compare = false
+
+  if (date1 < date2) {
+    console.log(`${d1} is less than ${d2}`);
+    compare = "less"
+  } else if (date1 > date2) {
+    console.log(`${d1} is greater than ${d2}`);
+    compare = "greater"
+  } else {
+    console.log(`Both dates are equal`);
+    compare ="equal"
+  }
+
+  return compare
+};
 
 export const getRenter = async (id) => Renter.findOne({ rid: id });
 
@@ -35,97 +61,104 @@ export const updateRenter = async (formData) => {
 };
 
 export const addAddon = async (action = {}) => {
-
-  const stockNum = makeid(10, "number")
+  const stockNum = makeid(10, "number");
 
   action.addon.stockNum = stockNum;
 
-  const res = await Renter.updateOne({rid: action.rid}, { $push: {addon: action.addon}})
+  const res = await Renter.updateOne(
+    { rid: action.rid },
+    { $push: { addon: action.addon } }
+  );
 
   //const res = (await fetch("http://localhost:3000/db/amenities.json"));
   //const data = await res.json()
 
-  console.log("Call a server action for ", action)
+  console.log("Call a server action for ", action);
 
   redirect(`/admin/renters/${action.rid}/addons`);
 
   // return JSON.parse(JSON.stringify(action))
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 
 export const addRental = async (formData) => {
-  /* const fab = Renter.updateOne({rid: "0005"}, {
-     name: "Penis Pump",
-   }); */
+  const rid = formData.get("rid");
+  const rv = await Camper.findOne({ rvid: rid });
+  const loc = await Location.findOne({ loc_id: formData.get("location") });
+
+  formData.set("rate", "corn");
+
+  const error = {};
+
+  console.log("Check if object is empty", isObjectEmpty(error))
+
+  if (!loc) error.loc = "This location ID is not listed";
+
+  if (!rv) error.rv = "This camper ID is not listed";
+
+  if (isNaN(formData.get("rate"))) error.rate = "Rate is too low or not a number"
+
+  if (isNaN(formData.get('tenants')) || Number(formData.get("tenants")) < 1) error.tenants = "There needs to be at least 1 tenant"
+
+  const now = new Date()
+
+
+  if (compareDates(formData.get("nextdate"), `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`) == "less") error.nextdate = "Date has already passed"
+
+  const kk = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`
+
+
+  console.log("Check amount is good", formData.get("nextdate"), new Date(), compareDates(formData.get("nextdate"), `${now.getFullYear}-${now.getMonth}-${now.getDate()}`))
+
+  if (isObjectEmpty(error)) {
+    const res = Renter.updateOne(
+      { rid: formData.get("rid") },
+      {
+        renting: {
+          rv: formData.get("rv"),
+          tenants: Number(formData.get("tenants")),
+          rate: Number(formData.get("rate")),
+          location: formData.get("location"),
+          nextdate: formData.get("nextdate"),
+          moveout: formData.get("movedate"),
+          addon: [],
+        },
+      }
+    );
+
+    console.log("This is the value of res", (await res).matchedCount);
+
+    redirect(`/admin/renters/${rid}`);
+  }
+
+  return error;
+};
+
+export const deleteAddon = async (formData) => {
+  const renter = await Renter.findOne({ rid: formData.get("rid") });
 
   const rid = formData.get("rid");
 
-  const res = Renter.updateOne(
-    { rid: formData.get("rid") },
-    {
-      renting: {
-        rv: formData.get("rv"),
-        tenants: formData.get("tenants"),
-        rate: formData.get("rate"),
-        location: formData.get("location"),
-        nextdate: formData.get("nextdate"),
-        moveout: formData.get("movedate"),
-        addon: [],
-      },
-    }
+  console.log(renter);
+
+  const addons = [
+    { rid: 1, name: "one" },
+    { rid: 2 },
+    { rid: 3 },
+    { rid: 4 },
+    { rid: 5 },
+    { rid: 6 },
+    { rid: 7 },
+  ];
+
+  const filArr = renter.addon.filter(
+    (el) => el.stockNum != formData.get("stock")
   );
 
-  console.log("This is the value of res", (await res).matchedCount);
+  const updateAddon = await Renter.updateOne({ rid: rid }, { addon: filArr });
 
-  if (res) redirect(`/admin/renters/${rid}`);
-  else return false;
+  console.log("Get data from a form", formData.get("aid"), filArr);
+  redirect(`/admin/renters/${rid}/addons`);
 };
-
-
-
-
-
-
-export const deleteAddon = async (formData) => {
-
-  const renter = await Renter.findOne({rid: formData.get("rid")})
-
-  const rid = formData.get("rid")
-
-  console.log(renter)
-
-  const  addons = [{rid: 1, name: "one" }, {rid: 2}, {rid: 3}, {rid: 4},{rid: 5}, {rid: 6}, { rid: 7}]
-
-  const filArr = renter.addon.filter(el => el.stockNum != formData.get('stock'))
-
-  const updateAddon = await Renter.updateOne({rid: rid}, {addon : filArr})
-
-  console.log("Get data from a form", formData.get("aid"), filArr)
-  redirect(`/admin/renters/${rid}/addons`)
-}
-
-
-
-
-
-
-
-
 
 export const admin_server_action_test = async (formData) => {
   // const renters = await Renter.find( {rid: "9999" })
@@ -156,25 +189,6 @@ export const admin_server_action_test = async (formData) => {
   return { test: "Good" };
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const admin_server_action = async () => {
   const res = Renter.create({
     rid: "000045",
@@ -187,20 +201,6 @@ export const admin_server_action = async () => {
 
   return res;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function makeid(length, type = "any") {
   let result = "";
@@ -221,22 +221,6 @@ function makeid(length, type = "any") {
   }
   return result;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const formatPhoneNumber = (str) => {
   //Filter only numbers from the input

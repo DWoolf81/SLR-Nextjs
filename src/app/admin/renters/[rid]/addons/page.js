@@ -122,7 +122,11 @@ const Page = async ({ params }) => {
           <div className={"admin-header-div"}>
             <h2>Add Ons</h2>
           </div>
-          <Renteraddons addons={addons} renteraddons={renteraddons} rid={params.rid} />
+          { renting ? (
+
+                      <Renteraddons addons={addons} renteraddons={renteraddons} rid={params.rid} />
+
+          ):(<p>Not renting so can't have addons</p>)}
         </div>
     </>
   );
