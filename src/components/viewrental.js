@@ -8,36 +8,32 @@ import Map from "@/components/map";
 
 
 const data1 = async (id) => {
-  // const res = await fetch(`http://localhost:3000/rt/${id}.json`);
 
-  // const data = await res.json();
+    console.log("This the id", id)
 
-  const data = Camper.findOne({ rvid: id });
+  const data = await Camper.findOne({ rvid: id });
 
   return data;
 };
 
 const data2 = async () => {
-  //const res = await fetch("http://localhost:3000/list.json");
-
-  //const data = await res.json();
 
   const data = Camper.find();
 
   return data;
 };
-const Rental = async ({ params }) => {
+const ViewRental = async ({ params }) => {
 
   await connectToDatabase();
 
-  const rv = await data1(params.id);
+  const rv = await data1(params.rvid);
 
-  console.log("The map field is ", rv)
+  console.log("The map field is ", rv, params)
 
 
   const mainImage = rv.pictures[0]
-    ? `/assets/campers/${params.id}/${rv.pictures[0]}`
-    : "/assets/campers/default_camper.jpg";
+    ? `/assets/rentals/uploads/${params.rvid}/${rv.pictures[0]}`
+    : "/assets/rentals/default_camper.jpg";
 
 
   const rvs = await data2();
@@ -55,9 +51,11 @@ const Rental = async ({ params }) => {
     isAvailClass = isAvailClass + "soon";
     isAvail = "Reserve";
   }
+    
 
   return (
     <>
+    
       <div className="vh100-box">
         <div className="rv-image-box">
           <div id="rv-main-image">
@@ -74,11 +72,11 @@ const Rental = async ({ params }) => {
           </div>
           <div id="rv-sub-images">
             {rv.pictures.slice(1).map((img, index) => {
-              const rv_img = `/assets/campers/${params.id}/${img}`;
+              const rv_img = `/assets/rentals/uploads/${params.rvid}/${img}`;
               if (index == 3) {
                 return (
                   <div key={index} className="view-more">
-                    <Link href={`/rental/${params.id}/photos`}>
+                    <Link href={`/rental/${params.rvid}/photos`}>
                       <p>+ {rvs.length - index}</p>
                     </Link>
                   </div>
@@ -248,6 +246,7 @@ const Rental = async ({ params }) => {
       </div>
     </>
   );
+  
 };
 
-export default Rental;
+export default ViewRental;

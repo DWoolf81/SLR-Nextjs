@@ -1,17 +1,28 @@
-import Addrental from "@/components/admin/addrental"
-import Newrenter  from "@/components/admin/newrenterform"
-import Renter from "@/models/renters"
+import Addrental from "@/components/admin/addrental";
+import Newrenter from "@/components/admin/newrenterform";
+import Camper from "@/models/campers";
+import Renter from "@/models/renters";
 
 const Page = async ({ params }) => {
+  const renter = await Renter.findOne({ rid: params.rid });
 
-    const renter = await Renter.findOne({ rid: params.rid })
-    
-    const json = JSON.parse(JSON.stringify(renter))
+  let terms = ""
 
-    console.log(json)
+  if (renter.renting) {
+    const rental = await Camper.findOne({ rvid: renter.renting.rv });
 
+    if (rental) {
+      renter.terms = rental.rate;
+    }
+   
+    terms = JSON.parse(JSON.stringify(rental.rate));
+  }
 
-    return <Addrental edit={json} />
-}
+  const json = JSON.parse(JSON.stringify(renter));
 
-export default Page
+  console.log("Renter info", json, terms);
+
+  return <Addrental edit={json} terms={terms} />;
+};
+
+export default Page;

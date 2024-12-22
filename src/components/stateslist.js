@@ -217,11 +217,13 @@ const StateSelect = ({ selected }) => {
     
   const [state, setState] = useState(selected);
 
+  console.log("Ran inside state list")
+
 
   return (
     <select name="state" onChange={(e) => setState(e.target.value)}>
       {stateNameAbbrKV.map((el, index) => {
-        if (el.abbreviation == selected) {
+        if (el.abbreviation == selected || el.name == selected) {
           return (
             <option key={index} value={el.abbreviation} selected>
               {el.name}

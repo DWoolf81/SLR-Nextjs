@@ -6,6 +6,7 @@ import bcrypt, { hash } from "bcryptjs";
 import { getSession } from "./sessions";
 import Renter from "@/models/renters";
 import Addon from "@/models/addons";
+import Camper from "@/models/campers";
 
 
 
@@ -78,18 +79,32 @@ export const findAmenityById = async (a) => {
   return find;
 };
 
-export const getRv = async (id) => {
-  const sess = getSession()
-  const res = await fetch(`http://localhost:3000/rt/${id}.json`);
+export const getRv = async (id) => JSON.parse(JSON.stringify(await Camper.findOne({rvid: id})))
 
-  const arr = ""
- if (res) {
+export const getRentedRv = async (id) => {
 
-    //const arr = await res.json();
- } 
+  const rv = await getRv(id)
 
-  return arr;
-};
+  if (rv) {
+
+    const check = { rv: rv.rvid, rate: rv.rate, location: rv.location.loc_id }
+
+    const rented = await Renter.findOne({"renting.rv": id})
+
+    if (rented) check.isAvailable = false
+    else check.isAvailable = true
+
+    return JSON.parse(JSON.stringify(check))
+
+
+
+  }
+
+  return false
+  
+  
+
+}
 
 export const encrypt = async (payload) => {
   const jwt = await new SignJWT(payload)

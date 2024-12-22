@@ -75,7 +75,7 @@ const Page = async () => {
                       </Link>
                     </li>
                     <li>
-                      <Link href={""}>
+                      <Link href={`/admin/renters/${el.rid}/edit`}>
                         <span className="material-symbols-outlined">edit</span>
                       </Link>{" "}
                     </li>

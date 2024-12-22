@@ -4,29 +4,171 @@ import Renter from "@/models/renters";
 import { redirect } from "next/navigation";
 import Camper from "@/models/campers";
 import Location from "@/models/locations";
+import fs from "node:fs/promises";
+import { revalidatePath } from "next/cache";
 
 const isObjectEmpty = (objectName) => {
-  return Object.keys(objectName).length === 0
-}
+  return Object.keys(objectName).length === 0;
+};
+
+// obj should have 4 properties
+// { rvid: value, list: value, img: value, pos: value}
+export const changeImgPosition = async (obj) => {
+  // We need to rmove the img from the list first
+  const origg = obj.list.filter((num) => num != obj.img);
+
+  // Create a new array to holder the list of images
+  let arr = [];
+
+  // Create a counter to
+  let count = 0;
+
+  // Map of the images with the remove images
+  if (origg.length == obj.pos) {
+    console.log("Place image at the end")
+    arr = [...origg, obj.img];
+  } else {
+    origg.map((img) => {
+      // once the count gets the the new postion
+      // add the new image
+      // increase the counter by one
+      console.log("Current count", count, obj.pos);
+      if (count == obj.pos) {
+        console.log("iNSERTING IMAGE INTO PLACE", obj.img);
+        arr[count] = obj.img;
+        count++;
+      }
+
+      // continue to add images to arr
+      arr[count] = img;
+      // increase the counter on every iteration
+
+      console.log("Here with", img, count, obj.pos);
+      count++;
+    });
+  }
+
+  console.log("List of images", obj, origg, arr);
+
+  // Update the rental with new pictures arra
+  const res = await Camper.updateOne({ rvid: obj.rvid}, { pictures: arr })
+
+  if (res.matchedCount) {
+    console.log("Image position has changed");
+    // revalidate path to see the
+    revalidatePath("/admin/rentals/[rvid]/images", "page");
+    redirect(`/admin/rentals/${obj.rvid}/images`);
+  } else {
+    console.log("Images postion did not update");
+  }
+};
+
+export const deleteImgS = async (obj) => {
+  console.log("DELETING FROM THE SERVER", obj);
+
+  const filterImg = obj.images.filter((imgs) => imgs !== obj.remove);
+
+  console.log("Updated list", filterImg);
+
+  const res = await Camper.updateOne(
+    { rvid: obj.rvid },
+    { pictures: filterImg }
+  );
+
+  if (res.matchedCount) {
+    console.log("iMAGE REMOVED FOR LIST");
+    revalidatePath("/admin/rentals/[rvid]/images", "page");
+  } else console.log("No image was removed");
+};
+
+const getFileExtension = (file) => {
+  let ext = "";
+
+  console.log("The file extension", file.type.toLowerCase());
+
+  if (
+    file.type.toLowerCase() == "image/jpeg" ||
+    file.type.toLowerCase() == "image/jpg"
+  ) {
+    ext = ".jpg";
+  } else if (file.type.toLowerCase() == "image/png") {
+    ext = ".png";
+  } else if (file.type.toLowerCase() == "image/gif") {
+    ext = ".gif";
+  } else ext = false;
+
+  return ext;
+};
+
+export const imageUpload = async (formData, rental) => {
+  console.log("We are here ready for image uploads", formData);
+
+  const imgDir = "./public/assets/rentals/uploads/";
+
+  const images = [];
+
+  const mkDir = rental.rvid && `${imgDir}${rental.rvid}`;
+
+  try {
+    let i = 0;
+    for (const files of formData) {
+      const file = formData.get(`file[${i}]`);
+
+      const ext = getFileExtension(file);
+
+      console.log("File name is", file);
+
+      if (ext) {
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = new Uint8Array(arrayBuffer);
+
+        console.log("FIle is an image", file);
+
+        await fs.mkdir(mkDir, { recursive: true });
+
+        await fs.writeFile(`${mkDir}/${file.name}${ext}/`, buffer);
+
+        rental.pictures.push(file.name + ext);
+
+        i++;
+      }
+    }
+
+    console.log("Do we have images", images, rental.pictures);
+    const res = await Camper.updateOne(
+      { rvid: rental.rvid },
+      { pictures: rental.pictures }
+    );
+
+    if (res.matchedCount) {
+      console.log("Images have been uploaded and insert in database");
+      revalidatePath("/admin/rentals/[rvid]/images", "page");
+    } else {
+      throw new Error("images did not insert into database");
+    }
+  } catch (error) {
+    console.log("error found", error);
+  }
+};
 
 const compareDates = (d1, d2) => {
   let date1 = new Date(d1).getTime();
   let date2 = new Date(d2).getTime();
 
-  let compare = false
+  let compare = false;
 
   if (date1 < date2) {
     console.log(`${d1} is less than ${d2}`);
-    compare = "less"
+    compare = "less";
   } else if (date1 > date2) {
     console.log(`${d1} is greater than ${d2}`);
-    compare = "greater"
+    compare = "greater";
   } else {
     console.log(`Both dates are equal`);
-    compare ="equal"
+    compare = "equal";
   }
 
-  return compare
+  return compare;
 };
 
 export const getRenter = async (id) => Renter.findOne({ rid: id });
@@ -82,32 +224,36 @@ export const addAddon = async (action = {}) => {
 
 export const addRental = async (formData) => {
   const rid = formData.get("rid");
-  const rv = await Camper.findOne({ rvid: rid });
+  const rv = await Camper.findOne({ rvid: formData.get("rv") });
   const loc = await Location.findOne({ loc_id: formData.get("location") });
-
-  formData.set("rate", "corn");
 
   const error = {};
 
-  console.log("Check if object is empty", isObjectEmpty(error))
+  console.log("Check if object is empty", formData.get("rate"));
 
   if (!loc) error.loc = "This location ID is not listed";
 
   if (!rv) error.rv = "This camper ID is not listed";
 
-  if (isNaN(formData.get("rate"))) error.rate = "Rate is too low or not a number"
+  if (isNaN(formData.get("rate")))
+    error.rate = "Rate is too low or not a number";
 
-  if (isNaN(formData.get('tenants')) || Number(formData.get("tenants")) < 1) error.tenants = "There needs to be at least 1 tenant"
+  if (isNaN(formData.get("tenants")) || Number(formData.get("tenants")) < 1)
+    error.tenants = "There needs to be at least 1 tenant";
 
-  const now = new Date()
+  const now = new Date();
 
+  if (
+    compareDates(
+      formData.get("nextdate"),
+      `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`
+    ) == "less"
+  )
+    error.nextdate = "Date has already passed";
 
-  if (compareDates(formData.get("nextdate"), `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`) == "less") error.nextdate = "Date has already passed"
+  const kk = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
 
-  const kk = `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`
-
-
-  console.log("Check amount is good", formData.get("nextdate"), new Date(), compareDates(formData.get("nextdate"), `${now.getFullYear}-${now.getMonth}-${now.getDate()}`))
+  console.log("Check amount is good", kk);
 
   if (isObjectEmpty(error)) {
     const res = Renter.updateOne(
@@ -189,6 +335,56 @@ export const admin_server_action_test = async (formData) => {
   return { test: "Good" };
 };
 
+export const admin_server_action_insert_camper = async (formData) => {
+  const rvid = makeid(10, "number");
+
+  console.log("This is the form data", formData);
+
+  const res = Camper.create({
+    rvid: rvid,
+    name: formData.get("name"),
+    year: formData.get("year"),
+    length: formData.get("length"),
+    type: formData.get("type"),
+    sleeps: formData.get("sleeps"),
+    details: {
+      year: formData.get("year"),
+      make: formData.get("make"),
+      model: formData.get("model"),
+      beds: formData.get("beds"),
+      baths: formData.get("baths"),
+      sleeps: formData.get("sleeps"),
+    },
+    location: {
+      loc_id: formData.get("loc_id"),
+      address: formData.get("address"),
+      city: formData.get("city"),
+      state: formData.get("state"),
+      zip: formData.get("zip"),
+      site: formData.get("site"),
+      map: formData.get("map"),
+    },
+    desc: formData.get("desc"),
+    amenities: formData.get("amenities").split(", "),
+    addons: formData.get("addons").split(", "),
+    available: formData.get("available"),
+    rate: {
+      day: formData.get("day"),
+      week: formData.get("week"),
+      month: formData.get("month"),
+    },
+    promo_rate: {
+      day: formData.get("promo_day"),
+      week: formData.get("promo_week"),
+      month: formData.get("promo_month"),
+    },
+  });
+
+  console.log("This is a server action test", formData.get("state"));
+
+  return { test: "Good" };
+};
+
 export const admin_server_action = async () => {
   const res = Renter.create({
     rid: "000045",
@@ -234,4 +430,10 @@ export const formatPhoneNumber = (str) => {
   }
 
   return null;
+};
+
+export const getLocationList = async (searchObj) => {
+  const locations = await Location.find({ searchObj });
+
+  return JSON.parse(JSON.stringify(locations));
 };

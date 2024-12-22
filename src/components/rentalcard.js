@@ -22,7 +22,7 @@ export const RentalCard = ({ item }) => {
 
 
 
-  const imgSrc = `/assets/campers/${item.rvid}/${item.pictures[0]}`
+  const imgSrc = item.pictures[0] ? `/assets/rentals/uploads/${item.rvid}/${item.pictures[0]}` : "/assets/campers/default_camper.jpg"
 
   return (
     <div className="div1">

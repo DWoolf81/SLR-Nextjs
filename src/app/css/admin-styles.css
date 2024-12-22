@@ -9,7 +9,7 @@
     margin: 20px 0px;
 }
 
-.uniform-form input, .uniform-form select {
+.uniform-form input, .uniform-form select, .uniform-form textarea {
     padding: 10px;
     border: solid 1px var(--button-bg-color);
     margin: 5px 0px;
@@ -31,6 +31,8 @@
     align-items: center;
     padding: 0px 20px;
     border-radius: 10px;
+    font-size: 16px;
+    font-weight: normal;
 }
 
 .on-page {
@@ -113,3 +115,79 @@
     color: green;
 }
 
+.image-holder-box {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-evenly;
+    
+}
+
+.image-uploader-box {
+    padding: 20px;
+    background-color: white;
+    margin: 10px 0px;
+}
+
+
+
+.image-action-box {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    display: flex;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    background-color: #dfdfdf85;
+    padding: 5px;
+    border-bottom-left-radius: 10px;
+    
+}
+.image-action-box .select-box select {
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    color: darkgrey;
+}
+
+.image-box:hover .image-action-box {
+    display: flex;
+}
+
+
+.image-holder-box .image-box {
+    max-width: 200px;
+    min-width: 100px;
+    max-height: 200px;
+    position: relative;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 430px) {
+
+    .image-holder-box {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .image-holder-box .image-box {
+        max-width: 150px;
+        min-width: 100px;
+        position: relative;
+    }
+
+
+}
