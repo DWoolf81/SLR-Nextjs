@@ -1,11 +1,8 @@
 "use client";
 import LocationListSelect from "@/components/locationlist";
-import RentalTypeSelect from "@/components/rentaltype";
 import StateSelect from "@/components/stateslist";
 import Universalformcomponent from "@/components/universalformcomponent";
-import { admin_server_action, admin_server_action_insert_camper } from "@/lib/admin_actions";
-import { decrypt, encrypt } from "@/lib/sessions";
-import bcrypt from "bcryptjs/dist/bcrypt";
+import { admin_server_action_camper } from "@/lib/admin_actions";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useFormState } from "react-dom";
@@ -14,7 +11,9 @@ import { useFormState } from "react-dom";
 
 const handleSubmit = async (prev, formData) => {
 
-    const res = await admin_server_action_insert_camper(formData);
+    const res = await admin_server_action_camper(formData);
+
+
 
     if (res) {
       //router.push("/login");
@@ -25,7 +24,10 @@ const handleSubmit = async (prev, formData) => {
   };
 
 
-export default function Camper({ locations, type }) {
+export default function Camper(props) {
+
+  console.log(props)
+
 
 
   const [ street, setStreet ] = useState("")
@@ -34,10 +36,11 @@ export default function Camper({ locations, type }) {
   const [ map, setMap ] = useState("")
   const [ state, setState ] = useState("")
   const [ site, setSite ] = useState("")
+  const [ loc_id, setLoc ] = useState("")
 
   const clickLocation = async (val) => {
     console.log("What is the location?", val)
-    const loc =  locations.find((el) => el.loc_id == val)
+    const loc =  props.locations.find((el) => el.loc_id == val)
 
     console.log(loc)
 
@@ -47,6 +50,8 @@ export default function Camper({ locations, type }) {
       setState(loc.location.state)
       setZip(loc.location.zip)
       setMap(loc.location.map)
+      setLoc(val)
+      setSite(loc.name)
     }
 
 
@@ -54,7 +59,8 @@ export default function Camper({ locations, type }) {
 
 
 
-console.log("Getting the locations", locations)
+
+console.log("Getting the locations", props.locations)
 
   const [error, formAction ] = useFormState(handleSubmit, null)
 
@@ -73,12 +79,15 @@ console.log("Getting the locations", locations)
     className="uniform-box" >
       <form className={"uniform-form"} action={ formData => { formAction(formData)}}>
         <input type="hidden" name="type" value={"camper"} />
+        <input type="hidden" name="formType" value={props.type} />
+        <input type="hidden" name="loc_id" value={loc_id} />
         
         <input
           type="text"
           name="name"
           placeholder="Make, model and year of camper"
           required
+         
         />
         <p>Details</p>
         <input
@@ -86,6 +95,7 @@ console.log("Getting the locations", locations)
           name="year"
           placeholder="Year of RV/Camper"
           required
+          
         />
         <input
           type="text"
@@ -119,13 +129,13 @@ console.log("Getting the locations", locations)
         />
         <input
         type="number"
-        name="bath"
+        name="baths"
         placeholder="Number of bath room"
         required
       />
         
         <p>Location: Camper ground or resort</p>
-        <LocationListSelect search={locations} onChange={clickLocation} />
+        <LocationListSelect search={props.locations} onChange={clickLocation} />
         <input
           type="text"
           name="street"

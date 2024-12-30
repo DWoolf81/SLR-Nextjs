@@ -1,4 +1,4 @@
-import Camper from "@/models/campers";
+import Camper from "@/models/rental";
 import Location from "@/models/locations";
 import Link from "next/link";
 

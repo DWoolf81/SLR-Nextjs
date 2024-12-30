@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const camperSchema = new Schema(
+const rentalSchema = new Schema(
     {
         rvid : String,
         name: String,
@@ -22,7 +22,7 @@ const camperSchema = new Schema(
         },
         location: {
             loc_id: String,
-            street: String,
+            address: String,
             city: String,
             state: String,
             zip: Number,
@@ -49,6 +49,6 @@ const camperSchema = new Schema(
     }
 )
 
-const Camper = mongoose.models.Camper || mongoose.model("Camper", camperSchema)
+const Rental = mongoose.models.Rental || mongoose.model("Rental", rentalSchema)
 
-export default Camper
+export default Rental

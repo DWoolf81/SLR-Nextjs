@@ -2,10 +2,11 @@
 import bcrypt, { hash } from "bcryptjs";
 import Renter from "@/models/renters";
 import { redirect } from "next/navigation";
-import Camper from "@/models/campers";
+import Camper from "@/models/rental";
 import Location from "@/models/locations";
 import fs from "node:fs/promises";
 import { revalidatePath } from "next/cache";
+import Rental from "@/models/rental";
 
 const isObjectEmpty = (objectName) => {
   return Object.keys(objectName).length === 0;
@@ -25,16 +26,13 @@ export const changeImgPosition = async (obj) => {
 
   // Map of the images with the remove images
   if (origg.length == obj.pos) {
-    console.log("Place image at the end")
     arr = [...origg, obj.img];
   } else {
     origg.map((img) => {
       // once the count gets the the new postion
       // add the new image
       // increase the counter by one
-      console.log("Current count", count, obj.pos);
       if (count == obj.pos) {
-        console.log("iNSERTING IMAGE INTO PLACE", obj.img);
         arr[count] = obj.img;
         count++;
       }
@@ -43,20 +41,17 @@ export const changeImgPosition = async (obj) => {
       arr[count] = img;
       // increase the counter on every iteration
 
-      console.log("Here with", img, count, obj.pos);
       count++;
     });
   }
 
-  console.log("List of images", obj, origg, arr);
-
   // Update the rental with new pictures arra
-  const res = await Camper.updateOne({ rvid: obj.rvid}, { pictures: arr })
+  const res = await Rental.updateOne({ rvid: obj.rvid }, { pictures: arr });
 
   if (res.matchedCount) {
     console.log("Image position has changed");
     // revalidate path to see the
-    revalidatePath("/admin/rentals/[rvid]/images", "page");
+    revalidatePath("/admin/rentals/[rvid]/images");
     redirect(`/admin/rentals/${obj.rvid}/images`);
   } else {
     console.log("Images postion did not update");
@@ -64,19 +59,33 @@ export const changeImgPosition = async (obj) => {
 };
 
 export const deleteImgS = async (obj) => {
-  console.log("DELETING FROM THE SERVER", obj);
-
   const filterImg = obj.images.filter((imgs) => imgs !== obj.remove);
 
-  console.log("Updated list", filterImg);
+  const imgDir = `./public/assets/rentals/uploads/${obj.rvid}/${obj.remove}`;
 
-  const res = await Camper.updateOne(
+  await fs.access(imgDir, fs.constants.F_OK, (err) => {
+    if (err) {
+      console.error("File does not exist:", err);
+      return;
+    }
+  });
+
+  console.log("File exists!");
+
+  const res = await Rental.updateOne(
     { rvid: obj.rvid },
     { pictures: filterImg }
   );
 
   if (res.matchedCount) {
-    console.log("iMAGE REMOVED FOR LIST");
+    await fs.unlink(imgDir, (err) => {
+      if (err) {
+        console.error("Error deleting file:", err);
+      } else {
+        console.log("File deleted successfully!");
+      }
+    });
+
     revalidatePath("/admin/rentals/[rvid]/images", "page");
   } else console.log("No image was removed");
 };
@@ -101,7 +110,7 @@ const getFileExtension = (file) => {
 };
 
 export const imageUpload = async (formData, rental) => {
-  console.log("We are here ready for image uploads", formData);
+  // console.log("We are here ready for image uploads", formData);
 
   const imgDir = "./public/assets/rentals/uploads/";
 
@@ -116,13 +125,13 @@ export const imageUpload = async (formData, rental) => {
 
       const ext = getFileExtension(file);
 
-      console.log("File name is", file);
+      //console.log("File name is", file);
 
       if (ext) {
         const arrayBuffer = await file.arrayBuffer();
         const buffer = new Uint8Array(arrayBuffer);
 
-        console.log("FIle is an image", file);
+        // console.log("FIle is an image", file);
 
         await fs.mkdir(mkDir, { recursive: true });
 
@@ -224,7 +233,7 @@ export const addAddon = async (action = {}) => {
 
 export const addRental = async (formData) => {
   const rid = formData.get("rid");
-  const rv = await Camper.findOne({ rvid: formData.get("rv") });
+  const rv = await Rental.findOne({ rvid: formData.get("rv") });
   const loc = await Location.findOne({ loc_id: formData.get("location") });
 
   const error = {};
@@ -335,50 +344,113 @@ export const admin_server_action_test = async (formData) => {
   return { test: "Good" };
 };
 
-export const admin_server_action_insert_camper = async (formData) => {
+export const admin_server_action_camper = async (formData) => {
   const rvid = makeid(10, "number");
 
   console.log("This is the form data", formData);
 
-  const res = Camper.create({
-    rvid: rvid,
-    name: formData.get("name"),
-    year: formData.get("year"),
-    length: formData.get("length"),
-    type: formData.get("type"),
-    sleeps: formData.get("sleeps"),
-    details: {
+  if (formData.get('formType') == "insert") {
+    const res = Rental.create({
+      rvid: rvid,
+      name: formData.get("name"),
       year: formData.get("year"),
-      make: formData.get("make"),
-      model: formData.get("model"),
-      beds: formData.get("beds"),
-      baths: formData.get("baths"),
+      length: formData.get("length"),
+      type: formData.get("type"),
       sleeps: formData.get("sleeps"),
-    },
-    location: {
-      loc_id: formData.get("loc_id"),
-      address: formData.get("address"),
-      city: formData.get("city"),
-      state: formData.get("state"),
-      zip: formData.get("zip"),
-      site: formData.get("site"),
-      map: formData.get("map"),
-    },
-    desc: formData.get("desc"),
-    amenities: formData.get("amenities").split(", "),
-    addons: formData.get("addons").split(", "),
-    available: formData.get("available"),
-    rate: {
-      day: formData.get("day"),
-      week: formData.get("week"),
-      month: formData.get("month"),
-    },
-    promo_rate: {
-      day: formData.get("promo_day"),
-      week: formData.get("promo_week"),
-      month: formData.get("promo_month"),
-    },
-  });
+      details: {
+        year: formData.get("year"),
+        make: formData.get("make"),
+        model: formData.get("model"),
+        beds: formData.get("beds"),
+        baths: formData.get("baths"),
+        sleeps: formData.get("sleeps"),
+      },
+      location: {
+        loc_id: formData.get("loc_id"),
+        address: formData.get("address"),
+        city: formData.get("city"),
+        state: formData.get("state"),
+        zip: formData.get("zip"),
+        site: formData.get("site"),
+        map: formData.get("map"),
+      },
+      desc: formData.get("desc"),
+      amenities: formData.get("amenities").split(", "),
+      addons: formData.get("addons").split(", "),
+      available: formData.get("available"),
+      rate: {
+        day: formData.get("day"),
+        week: formData.get("week"),
+        month: formData.get("month"),
+      },
+      promo_rate: {
+        day: formData.get("promo_day"),
+        week: formData.get("promo_week"),
+        month: formData.get("promo_month"),
+      },
+    }).then( result => {
+      if (result.matchedCount){
+        revalidatePath(`./admin/rentals/[rvid]/new-rental`, 'page');
+       // redirect(`./admin/rentals/${rvid}/edit`);
+
+      } 
+    });
+  } else if (formData.get('formType') == 'update') {
+
+    const rvid = formData.get("rvid")
+
+    console.log("Updating camper info")
+    const res = Rental.updateOne({rvid: formData.get("rvid")}, {
+      name: formData.get("name"),
+      year: formData.get("year"),
+      length: formData.get("length"),
+      type: formData.get("type"),
+      sleeps: formData.get("sleeps"),
+      details: {
+        year: formData.get("year"),
+        make: formData.get("make"),
+        model: formData.get("model"),
+        beds: formData.get("beds"),
+        baths: formData.get("baths"),
+        sleeps: formData.get("sleeps"),
+      },
+      location: {
+        loc_id: formData.get("loc_id"),
+        address: formData.get("address"),
+        city: formData.get("city"),
+        state: formData.get("state"),
+        zip: formData.get("zip"),
+        site: formData.get("site"),
+        map: formData.get("map"),
+      },
+      desc: formData.get("desc"),
+      amenities: formData.get("amenities").split(", "),
+      addons: formData.get("addons").split(", "),
+      available: formData.get("available"),
+      rate: {
+        day: formData.get("day"),
+        week: formData.get("week"),
+        month: formData.get("month"),
+      },
+      promo_rate: {
+        day: formData.get("promo_day"),
+        week: formData.get("promo_week"),
+        month: formData.get("promo_month"),
+      },
+    }).then( result => {
+      console.log("What is the updated results", result)
+      if (result.matchedCount){
+        revalidatePath(`./admin/rentals/[rvid]/edit`, 'page');
+       // redirect(`./admin/rentals/${rvid}/edit`);
+
+      } else {
+        console.log("Rental not updated")
+      }
+    });
+
+
+
+  }
 
   console.log("This is a server action test", formData.get("state"));
 

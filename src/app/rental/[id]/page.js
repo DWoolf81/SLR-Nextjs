@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { RentalCard } from "@/components/rentalcard";
 import "@/app/css/rental.css";
-import Camper from "@/models/campers";
+import Camper from "@/models/rental";
 import connectToDatabase from "@/lib/mongoose";
 import Map from "@/components/map";
 

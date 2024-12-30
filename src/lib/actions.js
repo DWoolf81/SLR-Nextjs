@@ -6,7 +6,7 @@ import bcrypt, { hash } from "bcryptjs";
 import { getSession } from "./sessions";
 import Renter from "@/models/renters";
 import Addon from "@/models/addons";
-import Camper from "@/models/campers";
+import Camper from "@/models/rental";
 
 
 

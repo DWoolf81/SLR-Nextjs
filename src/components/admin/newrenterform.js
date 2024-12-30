@@ -31,7 +31,7 @@ export default function Newrenter( { edit } ) {
 
 
     
-
+console.log(edit)
   
 const [ renter, setRenter ] = useState("")
 

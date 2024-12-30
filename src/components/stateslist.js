@@ -217,8 +217,6 @@ const StateSelect = ({ selected }) => {
     
   const [state, setState] = useState(selected);
 
-  console.log("Ran inside state list")
-
 
   return (
     <select name="state" onChange={(e) => setState(e.target.value)}>

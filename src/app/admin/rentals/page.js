@@ -1,5 +1,5 @@
 import Addlink from "@/components/admin/addlink";
-import Camper from "@/models/campers";
+import Camper from "@/models/rental";
 import Link from "next/link";
 
 const Page = async () => {

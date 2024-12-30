@@ -20,7 +20,6 @@ const LocationListSelect = ( props ) => {
           {el.name}
         </option>
       ))}
-      <option key="4" value="ABCDC">Abdc</option>
     </select>
   );
 };

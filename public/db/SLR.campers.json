@@ -125,12 +125,15 @@
   "name": "Coleman Sportsmen",
   "year": 1997,
   "length": 26.2,
-  "type": "Travel Trailer",
+  "type": "camper",
   "sleeps": 6,
   "location": {
-    "city": " -- ",
-    "state": "TX",
-    "site": " -- "
+    "loc_id": "",
+    "city": "",
+    "state": "AL",
+    "zip": null,
+    "site": "",
+    "map": ""
   },
   "pictures": [
     "418962694_7505895799443468_526453201712088413_n.jpg",
@@ -143,32 +146,29 @@
   ],
   "desc": "Don’t just sleep on this one, sleep in it! This newly renovated beauty has been fully remodeled to meet today’s modern standards from top to bottom. It can comfortably sleep up to 6 people with a queen size bed and bunkhouse in the back. It’s equipped with everything you need to come home and relax after a long day’s work. This is the perfect RV for a single person or 2 or 3 friends or co-workers who want to save money but still live like they’re at home. And if you add some extra features, you may not want to go home on the weekends!",
   "amenities": [
-    "toliet",
-    "refrigerator",
-    "AC and heat",
-    "sofa",
-    "inside shower and tub",
-    "TV",
-    "oven",
-    "stove",
-    "queen bed",
-    "2 bunk beds",
-    "microwave"
+    "toliet,refrigerator,AC and heat,sofa,inside shower and tub,TV,oven,stove,queen bed,2 bunk beds,microwave"
   ],
   "addons": [
-    "amazon alexa",
-    "smart lock",
-    "WIFI",
-    "rgb lights",
-    "Kureg K4000 Coffee Machine",
-    "Smart TV",
-    "Solar Lights"
+    "amazon alexa,smart lock,WIFI,rgb lights,Kureg K4000 Coffee Machine,Smart TV,Solar Lights"
   ],
   "available": 2,
   "rate": {
     "day": 79,
     "week": 400,
     "month": 1450
+  },
+  "details": {
+    "year": 1997,
+    "make": "Coleman",
+    "model": "Sportsmen",
+    "beds": 1,
+    "baths": 1,
+    "sleeps": 6
+  },
+  "promo_rate": {
+    "day": null,
+    "week": null,
+    "month": null
   }
 },
 {
@@ -252,12 +252,12 @@
     "406380734_6954843644577305_8153396373265324727_n.jpg",
     "405496985_6926587957394998_6156033889941479358_n.jpg",
     "406344286_5702655466526365_8909195229077833496_n.jpg",
-    "406461637_7567749906602429_3495590361854999802_n.jpg",
-    "406556388_6889780254475288_9173145634795924805_n.jpg",
-    "406570909_24706727108925711_6372018565750067790_n.jpg",
     "406661432_6818462521542251_5068047917336254214_n.jpg",
+    "406461637_7567749906602429_3495590361854999802_n.jpg",
+    "406570909_24706727108925711_6372018565750067790_n.jpg",
+    "405276065_6599405470185886_2390206710679784857_n.jpg",
     "406914443_6706023009508679_60016000077635761_n.jpg",
-    "405276065_6599405470185886_2390206710679784857_n.jpg"
+    "406556388_6889780254475288_9173145634795924805_n.jpg"
   ],
   "desc": "If you want a no compromise luxury leisure while you're on the road for work, then this is the camper for you. This powerhouse camper has everything you need to enjoy a home away from home while you work. The only thing is lacking is a washer and dryer, but it has two bathrooms, so you don’t have to wait in line. This camper is designed for multiple occupants. It can sleep up to 10 people, but 4 or 5 would be ideal to split the cost to just over $500 per person. This camper will be available soon, so book it now before it’s gone!",
   "amenities": [
@@ -291,4 +291,52 @@
     "week": 800,
     "month": 2600
   }
+},
+{
+  "_id": {
+    "$oid": "67698c1730e4bbac2afbedcd"
+  },
+  "rvid": "3356597810",
+  "name": "A Random Camper VII",
+  "year": 2024,
+  "length": 34,
+  "type": "camper",
+  "sleeps": 10,
+  "details": {
+    "year": 2024,
+    "make": "Forest River",
+    "model": "Vibe 28bh",
+    "beds": 2,
+    "baths": 2,
+    "sleeps": 10
+  },
+  "location": {
+    "loc_id": null,
+    "city": "Bridge City",
+    "state": "TX",
+    "zip": 77611,
+    "site": "The Elite RV Park",
+    "map": "https://maps.app.goo.gl/xh78kCxWXSPWCbr67"
+  },
+  "pictures": [],
+  "desc": "Just a random ass camper that needs to make us some money",
+  "amenities": [
+    "2 bedroom,2 bath rooms,outdoor kitchen"
+  ],
+  "addons": [
+    "Amazon firestick,samsung smart tv,coffee machine"
+  ],
+  "available": 2,
+  "brand": [],
+  "rate": {
+    "day": 100,
+    "week": 450,
+    "month": 1350
+  },
+  "promo_rate": {
+    "day": null,
+    "week": null,
+    "month": null
+  },
+  "__v": 0
 }]

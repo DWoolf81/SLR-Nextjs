@@ -2,7 +2,7 @@ import Image from "next/image";
 import bg from "../../public/assets/shutterstock_758389312-1.jpg";
 import { RentalCard } from "../components/rentalcard";
 import connectToDatabase from "@/lib/mongoose";
-import Camper from "@/models/campers";
+import Camper from "@/models/rental";
 import Renter from "@/models/renters";
 import { cookies } from "next/headers";
 

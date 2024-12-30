@@ -1,16 +1,18 @@
-import Newrenter  from "@/components/admin/newrenterform"
-import Renter from "@/models/renters"
+import UpdateCamper from "@/components/admin/rentalforms/camper/update";
+import { getRv } from "@/lib/actions";
+import { getLocationList } from "@/lib/admin_actions"
 
 const Page = async ({ params }) => {
 
-    const renter = await Renter.findOne({ rid: params.rid })
-    
-    const json = JSON.parse(JSON.stringify(renter))
-
-    console.log(json)
+    const rental = await getRv(params.rvid)
 
 
-    return <Newrenter edit={json} />
+    const res = await getLocationList();
+
+    const locations = JSON.parse(JSON.stringify(res))
+
+
+    return <UpdateCamper locations={locations} rental={rental} type={"update"} /> 
 }
 
 export default Page

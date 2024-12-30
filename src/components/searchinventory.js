@@ -1,5 +1,5 @@
 import { RentalCard } from "@/components/rentalcard";
-import Camper from "@/models/campers";
+import Camper from "@/models/rental";
 
 const Searchinventory = async ({ search }) => {
 

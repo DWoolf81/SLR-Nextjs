@@ -10,11 +10,12 @@ const Imageholder = ({ imageObj, index }) => {
 
   const ref = useRef("Default");
 
+  const pos = index + 1
+
+
   if (ref.current.value) ref.current.value = "Default";
-  console.log("Testing render");
 
   const clickMe = (img) => {
-    console.log("get rid of this image", img);
     deleteImgS({
       rvid: imageObj.rvid,
       images: imageObj.images,
@@ -23,7 +24,6 @@ const Imageholder = ({ imageObj, index }) => {
   };
 
   const changeImagePosition = (pos) => {
-    console.log("Ther postion is ", pos);
     changeImgPosition({
       rvid: imageObj.rvid,
       list: imageObj.images,
@@ -51,10 +51,10 @@ const Imageholder = ({ imageObj, index }) => {
               onChange={(e) => {
                 changeImagePosition(e.target.value);
               }}
+              value={pos}
             >
-              <option value={"Default"}>--</option>
               {imageObj.images.map((img, index) => (
-                <option value={index}>{++index}</option>
+                <option alue={index}>{++index}</option>
               ))}
             </select>
           </div>

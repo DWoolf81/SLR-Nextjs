@@ -1,6 +1,6 @@
 import Addrental from "@/components/admin/addrental";
 import Newrenter from "@/components/admin/newrenterform";
-import Camper from "@/models/campers";
+import Camper from "@/models/rental";
 import Renter from "@/models/renters";
 
 const Page = async ({ params }) => {
