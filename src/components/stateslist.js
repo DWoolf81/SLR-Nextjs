@@ -219,21 +219,14 @@ const StateSelect = ({ selected }) => {
 
 
   return (
-    <select name="state" onChange={(e) => setState(e.target.value)}>
+    <select name="state" defaultValue={selected ? selected : "Select A state"} onChange={(e) => setState(e.target.value)}>
       {stateNameAbbrKV.map((el, index) => {
-        if (el.abbreviation == selected || el.name == selected) {
-          return (
-            <option key={index} value={el.abbreviation} selected>
-              {el.name}
-            </option>
-          );
-        } else {
+       
           return (
             <option key={index} value={el.abbreviation}>
               {el.name}
             </option>
           );
-        }
       })}
     </select>
   );

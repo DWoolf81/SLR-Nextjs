@@ -4,29 +4,32 @@ import StateSelect from "@/components/stateslist";
 import Universalformcomponent from "@/components/universalformcomponent";
 import { admin_server_action_camper } from "@/lib/admin_actions";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useActionState } from "react";
 import { useFormState } from "react-dom";
 
 const handleSubmit = async (prev, formData) => {
   const res = await admin_server_action_camper(formData);
 
-  if (res) {
-    //router.push("/login");
-  } else {
-    console.error("Registration failed");
-  }
+
+  return res
 };
 
-export default function UpdateContainer(props) {
+const init = {
+  mess: ""
+}
+export default function UpdateHouse(props) {
   // console.log(props);
+
+
+
+
 
   const rental = props.rental;
 
   const [name, setName] = useState(rental.name);
   const [year, setYear] = useState(rental.details?.year);
   const [stories, setStories] = useState(rental.details?.stories);
-  const [containers, setConainters] = useState(rental.details?.containers);
-  const [length, setLength] = useState(rental.length);
+  const [sqtft, setSqrFeet] = useState(rental.details?.sqtft);
   const [sleeps, setSleeps] = useState(rental.details?.sleeps);
   const [beds, setBeds] = useState(rental.details?.beds);
   const [baths, setBath] = useState(rental.details?.baths);
@@ -70,22 +73,39 @@ export default function UpdateContainer(props) {
 
   //console.log("Getting the locations", props.locations);
 
-  const [error, formAction] = useFormState(handleSubmit, "");
+  const [message, formAction] = useFormState(handleSubmit, {});
+  const [show, setShow ] = useState(false)
+
+console.log("there error", message)
 
   const router = useRouter();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+
+    console.log("What is the message", message)
+
+    if (message.success){
+      setShow(true)
+      setTimeout(()=> {
+        setShow(false)
+        console.log("remove success message")
+      }
+        , 5000)
+    }
+
+  }, [message]);
 
   return (
     <div className="uniform-box">
         <h1>Editing: <span style={{  color: "grey" }}>{ name }</span> - { props.rental.rvid }</h1>
+        { show && <p className="success-mess"> { message.mess }</p>}
       <form
         className={"uniform-form"}
         action={(formData) => {
           formAction(formData);
         }}
       >
-        <input type="hidden" name="type" value={"container"} readOnly />
+        <input type="hidden" name="type" value={props.item} readOnly />
         <input type="hidden" name="rvid" value={props.rental.rvid} readOnly />
         <input type="hidden" name="formType" value={props.type} readOnly />
         <input type="hidden" name="loc_id" value={loc_id} readOnly />
@@ -117,20 +137,13 @@ export default function UpdateContainer(props) {
         />
         <input
           type="text"
-          name="containers"
-          placeholder="How many containers"
+          name="sqtft"
+          placeholder="Square footage of the home"
           required
-          value={containers}
-          onChange={(e) => setConainters(e.target.value)}
+          value={sqtft}
+          onChange={(e) => setSqrFeet(e.target.value)}
         />
-        <input
-          type="text"
-          name="length"
-          placeholder="Length of RV/Camper"
-          required
-          value={length}
-          onChange={(e) => setLength(e.target.value)}
-        />
+        
         <input
           type="text"
           name="sleeps"

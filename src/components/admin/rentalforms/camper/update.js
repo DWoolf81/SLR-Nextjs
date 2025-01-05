@@ -22,6 +22,8 @@ export default function UpdateCamper(props) {
 
   const rental = props.rental;
 
+  console.log("The rental", rental)
+
   const [name, setName] = useState(rental.name);
   const [year, setYear] = useState(rental.details?.year);
   const [make, setMake] = useState(rental.details?.make);

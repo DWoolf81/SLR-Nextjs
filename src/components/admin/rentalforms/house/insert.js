@@ -13,24 +13,18 @@ const handleSubmit = async (prev, formData) => {
 
     const res = await admin_server_action_camper(formData);
 
-
-
-    if (res) {
-      //router.push("/login");
-
-    } else {
-      console.error("Registration failed");
-    }
+    return res
+      
   };
 
 
-export default function Camper(props) {
+export default function House(props) {
 
   console.log(props)
 
 
 
-  const [ address, setAddress ] = useState("")
+  const [ street, setStreet ] = useState("")
   const [ city, setCity ] = useState("")
   const [ zip, setZip ] = useState("")
   const [ map, setMap ] = useState("")
@@ -45,7 +39,7 @@ export default function Camper(props) {
     console.log(loc)
 
     if (loc){
-      setAddress(loc.location.street)
+      setStreet(loc.location.street)
       setCity(loc.location.city)
       setState(loc.location.state)
       setZip(loc.location.zip)
@@ -62,30 +56,43 @@ export default function Camper(props) {
 
 console.log("Getting the locations", props.locations)
 
-  const [error, formAction ] = useFormState(handleSubmit, null)
-
-  const router = useRouter();
-
-  useEffect(() => {
-
-
-    
-  }, []);
-
+  const [message, formAction] = useFormState(handleSubmit, {});
+    const [show, setShow ] = useState(false)
+  
+  console.log("there error", message)
+  
+    const router = useRouter();
+  
+    useEffect(() => {
+  
+      console.log("What is the message", message)
+  
+     if (message.success){
+        setShow(true)
+        setTimeout(()=> {
+          setShow(false)
+          console.log("remove success message")
+        }
+          , 5000)
+     }
+  
+    }, [message]);
   
 
   return (
     <div
     className="uniform-box" >
+              { show && <p className="success-mess"> { message.mess }</p>}
+
       <form className={"uniform-form"} action={ formData => { formAction(formData)}}>
-        <input type="hidden" name="type" value={"camper"} />
+        <input type="hidden" name="type" value={props.item} />
         <input type="hidden" name="formType" value={props.type} />
         <input type="hidden" name="loc_id" value={loc_id} />
         
         <input
           type="text"
           name="name"
-          placeholder="Make, model and year of camper"
+          placeholder={`Give your ${props.item} an unique name`}
           required
          
         />
@@ -93,26 +100,20 @@ console.log("Getting the locations", props.locations)
         <input
           type="text"
           name="year"
-          placeholder="Year of RV/Camper"
+          placeholder="Year built"
           required
           
         />
         <input
-          type="text"
-          name="make"
-          placeholder="Brand or make of camper"
+          type="number"
+          name="stories"
+          placeholder="How many stories"
           required
         />
         <input
-          type="text"
-          name="model"
-          placeholder="Model of camper"
-          required
-        />
-        <input
-          type="text"
-          name="length"
-          placeholder="Length of RV/Camper"
+          type="number"
+          name="sqtft"
+          placeholder={`What's the square footage of the ${props.item}`}
           required
         />
          <input
@@ -124,13 +125,13 @@ console.log("Getting the locations", props.locations)
         <input
           type="number"
           name="beds"
-          placeholder="Number of bed room"
+          placeholder="Number of bed rooms"
           required
         />
         <input
         type="number"
         name="baths"
-        placeholder="Number of bath room"
+        placeholder="Number of bath rooms"
         required
       />
         
@@ -138,9 +139,9 @@ console.log("Getting the locations", props.locations)
         <LocationListSelect search={props.locations} onChange={clickLocation} />
         <input
           type="text"
-          name="address"
-          placeholder="Street address of camper"
-          value={address}
+          name="street"
+          placeholder={`Street address of ${props.item}`}
+          value={street}
         />
         <div style={{
           display: "flex",
@@ -175,7 +176,7 @@ console.log("Getting the locations", props.locations)
           onChange={(e) => setSite(e.target.value)}
         />
         <Universalformcomponent placeholders={{ desc: "Add a description for this camper"}} />
-        <button type="submit">Register</button>
+        <button type="submit">Create</button>
       </form>
     </div>
   );

@@ -1,12 +1,12 @@
 import Addlink from "@/components/admin/addlink";
-import Camper from "@/models/rental";
+import { rentalTypes } from "@/lib/actions";
+import Rental from "@/models/rental";
 import Link from "next/link";
 
 const Page = async () => {
-  const items = [...Array(25)];
 
 
-  const campers = await Camper.find();
+  const rentals = await Rental.find();
 
 
 
@@ -29,12 +29,13 @@ const Page = async () => {
           <li>Name</li>
           <li>Renting</li>
           <li>Location</li>
+          <li>Type</li>
           <li>Rates</li>
           <li>Links</li>
         </ul>
       </div>
       <div>
-        {campers.map((el, index) => {
+        {rentals.map((el, index) => {
           const prime = index % 2 == 0 ? "acct-history-item" : "";
 
           let renting = " -- "
@@ -59,6 +60,7 @@ const Page = async () => {
               <li>{ el.name }</li>
               <li><Link href={`/admin/rentals/${renting}`}>{ renting }</Link></li>
               <li>{ location }</li>
+              <li>{ rentalTypes( el.type ) } </li>
               <li>{ `$${el.rate.day}/$${el.rate.week}/$${el.rate.month}` }</li>
               <li>
                 <div style={{width: "100%"}}>

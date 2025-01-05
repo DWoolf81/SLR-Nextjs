@@ -4,16 +4,16 @@ const Univeralformcomponent = ({ placeholders }) => {
 
   // console.log("the placeholders", placeholders)
 
-  const [desc, setDesc ] = useState(placeholders.desc ?? placeholders.desc)
-  const [amenities, setAmenities ] = useState(placeholders.amenities ?? placeholders.amenities)
-  const [addons, setAddons ] = useState(placeholders.addons ?? placeholders.addons?.toString())
-  const [available, setAvailable ] = useState(placeholders.available ?? placeholders.available)
-  const [rateDay, setRateDay ] = useState(placeholders.rateDay ?? placeholders.rateDay)
-  const [rateWeek, setRateWeek ] = useState(placeholders.rateWeek ?? placeholders.rateWeek)
-  const [rateMonth, setRateMonth ] = useState(placeholders.rateMonth ?? placeholders.rateMonth)
-  const [promoDay, setPromoDay ] = useState(placeholders.promoDay ?? placeholders.promoDay)
-  const [promoWeek, setPromoWeek ] = useState(placeholders.promoWeek ?? placeholders.promoWeek)
-  const [promoMonth, setPromoMonth ] = useState(placeholders.promoMonth ?? placeholders.promoMonth)
+  const [desc, setDesc ] = useState(placeholders.desc ? placeholders.desc : "")
+  const [amenities, setAmenities ] = useState(placeholders.amenities ? placeholders.amenities : "")
+  const [addons, setAddons ] = useState(placeholders.addons ? placeholders.addons?.toString() : "")
+  const [available, setAvailable ] = useState(placeholders.available ? placeholders.available : "")
+  const [rateDay, setRateDay ] = useState(placeholders.rateDay ? placeholders.rateDay : "")
+  const [rateWeek, setRateWeek ] = useState(placeholders.rateWeek ? placeholders.rateWeek : "")
+  const [rateMonth, setRateMonth ] = useState(placeholders.rateMonth ? placeholders.rateMonth : "")
+  const [promoDay, setPromoDay ] = useState(placeholders.promoDay ? placeholders.promoDay : "")
+  const [promoWeek, setPromoWeek ] = useState(placeholders.promoWeek ? placeholders.promoWeek : "")
+  const [promoMonth, setPromoMonth ] = useState(placeholders.promoMonth ? placeholders.promoMonth : "")
 
   return (
     <>
@@ -21,7 +21,7 @@ const Univeralformcomponent = ({ placeholders }) => {
           name="desc"
           defaultValue={desc}
           required
-          rows={10}
+          rows="10"
         ></textarea>
         <input
           type="text"

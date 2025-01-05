@@ -116,6 +116,11 @@ h3 {
   color: var(--error-mess);
   font-size: 12px;
 }
+.success-mess {
+  color: white;
+  background-color: var(--main-link-color);
+  padding: 10px;
+}
 
 .red {
   color: #e40a0a;

@@ -2,7 +2,9 @@
 
 import Camper from "@/components/admin/rentalforms/camper/insert";
 import Container from "@/components/admin/rentalforms/container/insert";
+import House from "@/components/admin/rentalforms/house/insert";
 import RentalListType from "@/components/admin/rentaltypelist/rentallistype";
+import RentalType from "@/components/admin/rentaltypelist/rentaltype";
 import { getLocationList } from "@/lib/admin_actions";
 import { useEffect, useReducer, useState } from "react";
 
@@ -14,6 +16,8 @@ const reducer = (state, action ) => {
   return { value: action.value }
 }
 
+
+const items = ['house', 'condo', "apartment", 'townhome']
 
 
 export default function RentalPage() {
@@ -47,11 +51,17 @@ export default function RentalPage() {
 
       console.log("Location IS set")
 
+      
+
+
+
 
       
     };
 
     locationcomp();
+
+    
 
 
 
@@ -64,11 +74,11 @@ export default function RentalPage() {
     <RentalListType onClick={clicked} />
       
       <div>
-          <h2>New { state.value.toUpperCase() } </h2>
+          <h2>New   <RentalType type={state.value } /> </h2>
         </div>
       { state.value == 'camper' && <Camper locations={locations} type={"insert"} /> }
       { state.value == 'container' && <Container locations={locations} type={"insert"} /> }
-    <p>{ state.value }</p>
+      { items.includes(state.value) && <House locations={locations} type={"insert"} item={state.value} /> }
       
 
     </>

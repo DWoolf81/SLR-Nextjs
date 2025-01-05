@@ -15,6 +15,24 @@ const key = new TextEncoder().encode(process.env.SECRET_PHRASE);
 // const keyDecode = jose.base64url.decode(key)
 
 
+export const rentalTypes = (type) => {
+'use client'
+
+  const types = {
+    camper : "RV/Camper",
+    container : "Container Home",
+    house: "House",
+    condo: "Condo/High Rise",
+    apartment: "Apartment",
+    townhome: "Town Home"
+
+  }
+
+  return types[type]
+
+}
+
+
 export const addOnAmounts = ({ items }) => {
 
   console.log("Get actions for amounts")

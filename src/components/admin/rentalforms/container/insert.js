@@ -78,14 +78,14 @@ console.log("Getting the locations", props.locations)
     <div
     className="uniform-box" >
       <form className={"uniform-form"} action={ formData => { formAction(formData)}}>
-        <input type="hidden" name="type" value={"camper"} />
+        <input type="hidden" name="type" value={"container"} />
         <input type="hidden" name="formType" value={props.type} />
         <input type="hidden" name="loc_id" value={loc_id} />
         
         <input
           type="text"
           name="name"
-          placeholder="Make, model and year of camper"
+          placeholder="Give your container an unique name"
           required
          
         />
@@ -98,15 +98,15 @@ console.log("Getting the locations", props.locations)
           
         />
         <input
-          type="text"
-          name="make"
-          placeholder="Brand or make of camper"
+          type="number"
+          name="stories"
+          placeholder="How many stories"
           required
         />
         <input
-          type="text"
-          name="model"
-          placeholder="Model of camper"
+          type="number"
+          name="containers"
+          placeholder="How many containers"
           required
         />
         <input
@@ -141,7 +141,6 @@ console.log("Getting the locations", props.locations)
           name="street"
           placeholder="Street address of camper"
           value={street}
-          required
         />
         <div style={{
           display: "flex",
@@ -152,7 +151,6 @@ console.log("Getting the locations", props.locations)
           name="city"
           placeholder="City"
           value={city}
-          required
         />
         <StateSelect selected={state} />
         <input
@@ -160,7 +158,6 @@ console.log("Getting the locations", props.locations)
           name="zip"
           placeholder="Zip Code"
           value={zip}
-          required
         />
         </div>
         

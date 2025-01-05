@@ -347,10 +347,12 @@ export const admin_server_action_test = async (formData) => {
 export const admin_server_action_camper = async (formData) => {
   const rvid = makeid(10, "number");
 
-  console.log("This is the form data", formData);
+  // console.log("This is the form data", formData);
 
-  if (formData.get('formType') == "insert") {
-    const res = Rental.create({
+  // return "This aint working"
+
+  if (formData.get("formType") == "insert") {
+    const res = await Rental.create({
       rvid: rvid,
       name: formData.get("name"),
       year: formData.get("year"),
@@ -359,6 +361,9 @@ export const admin_server_action_camper = async (formData) => {
       sleeps: formData.get("sleeps"),
       details: {
         year: formData.get("year"),
+        containers: formData.get("containers"),
+        stories: formData.get("stories"),
+        sqtft: formData.get("sqtft"),
         make: formData.get("make"),
         model: formData.get("model"),
         beds: formData.get("beds"),
@@ -388,73 +393,83 @@ export const admin_server_action_camper = async (formData) => {
         week: formData.get("promo_week"),
         month: formData.get("promo_month"),
       },
-    }).then( result => {
-      if (result.matchedCount){
-        revalidatePath(`./admin/rentals/[rvid]/new-rental`, 'page');
-       // redirect(`./admin/rentals/${rvid}/edit`);
-
-      } 
     });
-  } else if (formData.get('formType') == 'update') {
 
-    const rvid = formData.get("rvid")
+    if (res instanceof Rental) {
+      console.log("What is the updated results", res);
 
-    console.log("Updating camper info")
-    const res = Rental.updateOne({rvid: formData.get("rvid")}, {
-      name: formData.get("name"),
-      year: formData.get("year"),
-      length: formData.get("length"),
-      type: formData.get("type"),
-      sleeps: formData.get("sleeps"),
-      details: {
+      revalidatePath(`./admin/rentals/new-rental`, "page");
+      return {
+        success: true,
+        mess: `successfully inserted ${formData.get("type")}`,
+      };
+
+      // redirect(`./admin/rentals/${rvid}/edit`);
+    } else {
+      console.log("Rental was not inserted", result);
+    }
+  } else if (formData.get("formType") == "update") {
+    const rvid = formData.get("rvid");
+
+    console.log("Updating camper info");
+    const res = Rental.updateOne(
+      { rvid: formData.get("rvid") },
+      {
+        name: formData.get("name"),
         year: formData.get("year"),
-        make: formData.get("make"),
-        model: formData.get("model"),
-        beds: formData.get("beds"),
-        baths: formData.get("baths"),
+        length: formData.get("length"),
+        type: formData.get("type"),
         sleeps: formData.get("sleeps"),
-      },
-      location: {
-        loc_id: formData.get("loc_id"),
-        address: formData.get("address"),
-        city: formData.get("city"),
-        state: formData.get("state"),
-        zip: formData.get("zip"),
-        site: formData.get("site"),
-        map: formData.get("map"),
-      },
-      desc: formData.get("desc"),
-      amenities: formData.get("amenities").split(", "),
-      addons: formData.get("addons").split(", "),
-      available: formData.get("available"),
-      rate: {
-        day: formData.get("day"),
-        week: formData.get("week"),
-        month: formData.get("month"),
-      },
-      promo_rate: {
-        day: formData.get("promo_day"),
-        week: formData.get("promo_week"),
-        month: formData.get("promo_month"),
-      },
-    }).then( result => {
-      console.log("What is the updated results", result)
-      if (result.matchedCount){
-        revalidatePath(`./admin/rentals/[rvid]/edit`, 'page');
-       // redirect(`./admin/rentals/${rvid}/edit`);
-
+        details: {
+          year: formData.get("year"),
+          make: formData.get("make"),
+          model: formData.get("model"),
+          sqtft: formData.get("sqtft"),
+          stories: formData.get("stories"),
+          beds: formData.get("beds"),
+          baths: formData.get("baths"),
+          sleeps: formData.get("sleeps"),
+        },
+        location: {
+          loc_id: formData.get("loc_id"),
+          address: formData.get("address"),
+          city: formData.get("city"),
+          state: formData.get("state"),
+          zip: formData.get("zip"),
+          site: formData.get("site"),
+          map: formData.get("map"),
+        },
+        desc: formData.get("desc"),
+        amenities: formData.get("amenities").split(", "),
+        addons: formData.get("addons").split(", "),
+        available: formData.get("available"),
+        rate: {
+          day: formData.get("day"),
+          week: formData.get("week"),
+          month: formData.get("month"),
+        },
+        promo_rate: {
+          day: formData.get("promo_day"),
+          week: formData.get("promo_week"),
+          month: formData.get("promo_month"),
+        },
+      }
+    ).then((result) => {
+      console.log("What is the updated results", result);
+      if (result.matchedCount) {
+        revalidatePath(`./admin/rentals/[rvid]/edit`, "page");
+        // redirect(`./admin/rentals/${rvid}/edit`);
+        return {
+          success: true,
+          mess: `successfully updated ${formData.get("type")}`,
+        };
       } else {
-        console.log("Rental not updated")
+        console.log("Rental not updated");
       }
     });
 
-
-
+    return res;
   }
-
-  console.log("This is a server action test", formData.get("state"));
-
-  return { test: "Good" };
 };
 
 export const admin_server_action = async () => {
