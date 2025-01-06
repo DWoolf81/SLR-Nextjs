@@ -2,7 +2,7 @@
 import LocationListSelect from "@/components/locationlist";
 import StateSelect from "@/components/stateslist";
 import Universalformcomponent from "@/components/universalformcomponent";
-import { admin_server_action_camper } from "@/lib/admin_actions";
+import { admin_server_action_rental } from "@/lib/admin_actions";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useFormState } from "react-dom";
@@ -11,7 +11,7 @@ import { useFormState } from "react-dom";
 
 const handleSubmit = async (prev, formData) => {
 
-    const res = await admin_server_action_camper(formData);
+    const res = await admin_server_action_rental(formData);
 
     return res
       
@@ -24,7 +24,7 @@ export default function House(props) {
 
 
 
-  const [ street, setStreet ] = useState("")
+  const [ address, setAddress ] = useState("")
   const [ city, setCity ] = useState("")
   const [ zip, setZip ] = useState("")
   const [ map, setMap ] = useState("")
@@ -39,7 +39,7 @@ export default function House(props) {
     console.log(loc)
 
     if (loc){
-      setStreet(loc.location.street)
+      setAddress(loc.location.street)
       setCity(loc.location.city)
       setState(loc.location.state)
       setZip(loc.location.zip)
@@ -93,7 +93,6 @@ console.log("Getting the locations", props.locations)
           type="text"
           name="name"
           placeholder={`Give your ${props.item} an unique name`}
-          required
          
         />
         <p>Details</p>
@@ -101,73 +100,55 @@ console.log("Getting the locations", props.locations)
           type="text"
           name="year"
           placeholder="Year built"
-          required
           
         />
         <input
           type="number"
           name="stories"
           placeholder="How many stories"
-          required
         />
         <input
           type="number"
           name="sqtft"
           placeholder={`What's the square footage of the ${props.item}`}
-          required
         />
          <input
           type="text"
           name="sleeps"
           placeholder="How many people it sleeps"
-          required
         />
         <input
           type="number"
           name="beds"
           placeholder="Number of bed rooms"
-          required
         />
         <input
         type="number"
         name="baths"
         placeholder="Number of bath rooms"
-        required
       />
         
         <p>Location: Camper ground or resort</p>
         <LocationListSelect search={props.locations} onChange={clickLocation} />
         <input
           type="text"
-          name="street"
+          name="address"
           placeholder={`Street address of ${props.item}`}
-          value={street}
+          onChange={(e) => setAddress(e.target.value)}
+          value={address}
         />
-        <div style={{
-          display: "flex",
-          gap: "20px"
-        }}>
-        <input
-          type="text"
-          name="city"
-          placeholder="City"
-          value={city}
-        />
-        <StateSelect selected={state} />
-        <input
-          type="text"
-          name="zip"
-          placeholder="Zip Code"
-          value={zip}
-        />
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+          }}
+        >
+          <input type="text" name="city" placeholder="City" onChange={(e) => setCity(e.target.value)} value={city} />
+          <StateSelect selected={state} />
+          <input type="text" name="zip" placeholder="Zip Code" onChange={(e) => setZip(e.target.value)} value={zip} />
         </div>
-        
-        <input
-          type="text"
-          name="map"
-          placeholder="Input map url"
-          value={map}
-        />
+
+        <input type="text" name="map" placeholder="Input map url" value={map} />
         <input
           type="text"
           name="site"

@@ -20,14 +20,12 @@ const Univeralformcomponent = ({ placeholders }) => {
     <textarea
           name="desc"
           defaultValue={desc}
-          required
           rows="10"
         ></textarea>
         <input
           type="text"
           name="amenities"
           placeholder="Standard amenities Ex. 1 bedroom, 2 bath rooms,"
-          required
           value={amenities}
           onChange={e => setAmenities(e.target.value)}
         />
@@ -46,7 +44,6 @@ const Univeralformcomponent = ({ placeholders }) => {
           placeholder="0=Unavailable, 1=Available, 2=Reserve (Soon to be available)"
           value={available}
           onChange={e => setAvailable(e.target.value)}
-          required
         />
         <p>Rates (Current Rates)</p>
         <div style={{
@@ -59,7 +56,6 @@ const Univeralformcomponent = ({ placeholders }) => {
           name='day'
           placeholder='Day'
           style={{ width: "30%" }}
-          required
           value={rateDay}
           onChange={(e) => setRateDay(e.target.value)}
           />
@@ -68,7 +64,6 @@ const Univeralformcomponent = ({ placeholders }) => {
           name='week'
           placeholder='Weekly'
           style={{ width: "30%" }}
-          required
           value={rateWeek}
           onChange={(e) => setRateWeek(e.target.value)}
           />
@@ -77,7 +72,6 @@ const Univeralformcomponent = ({ placeholders }) => {
           name='month'
           placeholder='Monthly'
           style={{ width: "30%" }}
-          required
           value={rateMonth}
           onChange={(e) => setRateMonth(e.target.value)}
           />

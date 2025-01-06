@@ -2,13 +2,13 @@
 import LocationListSelect from "@/components/locationlist";
 import StateSelect from "@/components/stateslist";
 import Universalformcomponent from "@/components/universalformcomponent";
-import { admin_server_action_camper } from "@/lib/admin_actions";
+import { admin_server_action_rental } from "@/lib/admin_actions";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useActionState } from "react";
 import { useFormState } from "react-dom";
 
 const handleSubmit = async (prev, formData) => {
-  const res = await admin_server_action_camper(formData);
+  const res = await admin_server_action_rental(formData);
 
 
   return res
@@ -97,7 +97,7 @@ console.log("there error", message)
 
   return (
     <div className="uniform-box">
-        <h1>Editing: <span style={{  color: "grey" }}>{ name }</span> - { props.rental.rvid }</h1>
+        <h1 style={{  marginBottom: "10px"  }}>Editing: <span style={{  color: "grey"}}>{ name }</span> - { props.rental.rvid }</h1>
         { show && <p className="success-mess"> { message.mess }</p>}
       <form
         className={"uniform-form"}
@@ -114,7 +114,6 @@ console.log("there error", message)
           type="text"
           name="name"
           placeholder="Give your container an unique name"
-          required
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -123,7 +122,6 @@ console.log("there error", message)
           type="text"
           name="year"
           placeholder="Year of RV/Camper"
-          required
           value={year}
           onChange={(e) => setYear(e.target.value)}
         />
@@ -131,7 +129,6 @@ console.log("there error", message)
           type="text"
           name="stories"
           placeholder="How many stories"
-          required
           value={stories}
           onChange={(e) => setStories(e.target.value)}
         />
@@ -139,7 +136,6 @@ console.log("there error", message)
           type="text"
           name="sqtft"
           placeholder="Square footage of the home"
-          required
           value={sqtft}
           onChange={(e) => setSqrFeet(e.target.value)}
         />
@@ -148,7 +144,6 @@ console.log("there error", message)
           type="text"
           name="sleeps"
           placeholder="How many people it sleeps"
-          required
           value={sleeps}
           onChange={(e) => setSleeps(e.target.value)}
         />
@@ -156,7 +151,6 @@ console.log("there error", message)
           type="number"
           name="beds"
           placeholder="Number of bed room"
-          required
           value={beds}
           onChange={(e) => setBeds(e.target.value)}
         />
@@ -164,7 +158,6 @@ console.log("there error", message)
           type="number"
           name="baths"
           placeholder="Number of bath room"
-          required
           value={baths}
           onChange={(e) => setBath(e.target.value)}
         />

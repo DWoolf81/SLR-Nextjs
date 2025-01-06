@@ -2,19 +2,15 @@
 import LocationListSelect from "@/components/locationlist";
 import StateSelect from "@/components/stateslist";
 import Universalformcomponent from "@/components/universalformcomponent";
-import { admin_server_action_camper } from "@/lib/admin_actions";
+import { admin_server_action_rental } from "@/lib/admin_actions";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useFormState } from "react-dom";
 
 const handleSubmit = async (prev, formData) => {
-  const res = await admin_server_action_camper(formData);
+  const res = await admin_server_action_rental(formData);
 
-  if (res) {
-    //router.push("/login");
-  } else {
-    console.error("Registration failed");
-  }
+  return res
 };
 
 export default function UpdateContainer(props) {
@@ -68,17 +64,35 @@ export default function UpdateContainer(props) {
     promoMonth: rental.promo_rate?.month,
   };
 
-  //console.log("Getting the locations", props.locations);
-
-  const [error, formAction] = useFormState(handleSubmit, "");
-
-  const router = useRouter();
-
-  useEffect(() => {}, []);
+ console.log("Getting the locations", props.locations)
+ 
+   const [message, formAction] = useFormState(handleSubmit, {});
+     const [show, setShow ] = useState(false)
+   
+   console.log("there error", message)
+   
+     const router = useRouter();
+   
+     useEffect(() => {
+   
+       console.log("What is the message", message)
+   
+      if (message.success){
+         setShow(true)
+         setTimeout(()=> {
+           setShow(false)
+           console.log("remove success message")
+         }
+           , 5000)
+      }
+   
+     }, [message]);
 
   return (
     <div className="uniform-box">
-        <h1>Editing: <span style={{  color: "grey" }}>{ name }</span> - { props.rental.rvid }</h1>
+        <h1 style={{  marginBottom: "10px"  }}>Editing: <span style={{  color: "grey"}}>{ name }</span> - { props.rental.rvid }</h1>
+        { show && <p className="success-mess"> { message.mess }</p>}
+
       <form
         className={"uniform-form"}
         action={(formData) => {
@@ -94,7 +108,6 @@ export default function UpdateContainer(props) {
           type="text"
           name="name"
           placeholder="Give your container an unique name"
-          required
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -103,7 +116,6 @@ export default function UpdateContainer(props) {
           type="text"
           name="year"
           placeholder="Year of RV/Camper"
-          required
           value={year}
           onChange={(e) => setYear(e.target.value)}
         />
@@ -111,7 +123,6 @@ export default function UpdateContainer(props) {
           type="text"
           name="stories"
           placeholder="How many stories"
-          required
           value={stories}
           onChange={(e) => setStories(e.target.value)}
         />
@@ -119,7 +130,6 @@ export default function UpdateContainer(props) {
           type="text"
           name="containers"
           placeholder="How many containers"
-          required
           value={containers}
           onChange={(e) => setConainters(e.target.value)}
         />
@@ -127,7 +137,6 @@ export default function UpdateContainer(props) {
           type="text"
           name="length"
           placeholder="Length of RV/Camper"
-          required
           value={length}
           onChange={(e) => setLength(e.target.value)}
         />
@@ -135,7 +144,6 @@ export default function UpdateContainer(props) {
           type="text"
           name="sleeps"
           placeholder="How many people it sleeps"
-          required
           value={sleeps}
           onChange={(e) => setSleeps(e.target.value)}
         />
@@ -143,7 +151,6 @@ export default function UpdateContainer(props) {
           type="number"
           name="beds"
           placeholder="Number of bed room"
-          required
           value={beds}
           onChange={(e) => setBeds(e.target.value)}
         />
@@ -151,7 +158,6 @@ export default function UpdateContainer(props) {
           type="number"
           name="baths"
           placeholder="Number of bath room"
-          required
           value={baths}
           onChange={(e) => setBath(e.target.value)}
         />

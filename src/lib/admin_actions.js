@@ -344,12 +344,13 @@ export const admin_server_action_test = async (formData) => {
   return { test: "Good" };
 };
 
-export const admin_server_action_camper = async (formData) => {
+export const admin_server_action_rental = async (formData) => {
   const rvid = makeid(10, "number");
 
   // console.log("This is the form data", formData);
 
   // return "This aint working"
+
 
   if (formData.get("formType") == "insert") {
     const res = await Rental.create({

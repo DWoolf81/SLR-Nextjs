@@ -12,9 +12,12 @@ const LocationListSelect = ( props ) => {
 
   const [locations, setLocations] = useState(props.search);
 
+  const [defval, setDefVal] = useState("")
+
 
   return (
-    <select onChange={findLocation}>
+    <select value={defval} onChange={findLocation}>
+      <option value={0}>Select A Resort</option>
       {locations && locations.map((el, index) => (
         <option key={index} value={el.loc_id}>
           {el.name}
