@@ -10,8 +10,9 @@ const Imageholder = ({ imageObj, index }) => {
 
   const ref = useRef("Default");
 
-  const pos = index + 1
+  const pos = index + 1;
 
+  console.log("What is the imageOn=bj", imageObj);
 
   if (ref.current.value) ref.current.value = "Default";
 
@@ -36,28 +37,33 @@ const Imageholder = ({ imageObj, index }) => {
     <>
       <div id={index} className="image-box">
         <div className="image-action-box">
-          <div>
-            <span
-              onClick={() => clickMe(image)}
-              className="material-symbols-outlined"
-            >
-              delete
-            </span>
-          </div>
-          <div className="select-box">
-            <select
-              ref={ref}
-              name="pos"
-              onChange={(e) => {
-                changeImagePosition(e.target.value);
-              }}
-              value={pos}
-            >
-              {imageObj.images.map((img, index) => (
-                <option alue={index}>{++index}</option>
-              ))}
-            </select>
-          </div>
+          {imageObj.images && (
+            <>
+              <div>
+                <span
+                  onClick={() => clickMe(image)}
+                  className="material-symbols-outlined"
+                >
+                  delete
+                </span>
+              </div>
+              <div className="select-box">
+                <select
+                  ref={ref}
+                  name="pos"
+                  onChange={(e) => {
+                    changeImagePosition(e.target.value);
+                  }}
+                  value={pos}
+                >
+                  {imageObj.images &&
+                    imageObj.images.map((img, index) => (
+                      <option alue={index}>{++index}</option>
+                    ))}
+                </select>
+              </div>
+            </>
+          )}
         </div>
         <div>
           <Image

@@ -6,6 +6,8 @@ import Paymenthead from "@/components/paymenthead";
 const Account = async () => {
   // Logic to determine if a redirect is needed
 
+  
+
   return (
     <>
     <Paymenthead />
