@@ -1,17 +1,17 @@
 import Addlink from "@/components/admin/addlink";
-import { rentalTypes } from "@/lib/actions";
+import Adminrentallist from "@/components/admin/rentallist/adminrentallist";
+import Removerentalform from "@/components/admin/removerentalform";
 import Rental from "@/models/rental";
-import Link from "next/link";
+import { rentalTypes } from '@/lib/actions'
+
+
 
 const Page = async () => {
-
-
   const rentals = await Rental.find();
-
-
 
   return (
     <div>
+      
       <div
         style={{
           display: "flex",
@@ -20,7 +20,10 @@ const Page = async () => {
         }}
       >
         <h1>Rentals</h1>
-        <Addlink linkpath={"/admin/rentals/new-rental"} text={"Create Rental"} />
+        <Addlink
+          linkpath={"/admin/rentals/new-rental"}
+          text={"Create Rental"}
+        />
       </div>
 
       <div>
@@ -61,7 +64,7 @@ const Page = async () => {
               <li><Link href={`/admin/rentals/${renting}`}>{ renting }</Link></li>
               <li>{ location }</li>
               <li>{ rentalTypes( el.type ) } </li>
-              <li>{ `$${el.rate.day}/d $${el.rate.week}/w $${el.rate.month}/m` }</li>
+              <li>{ `$${el.rate.day}/$${el.rate.week}/$${el.rate.month}` }</li>
               <li>
                 <div style={{width: "100%"}}>
                   <ul className={"admin-flex-list-links"}>

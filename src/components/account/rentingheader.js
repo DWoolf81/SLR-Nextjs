@@ -1,24 +1,15 @@
-import "../css/account.css";
-import Link from "next/link";
-import Image from "next/image";
-import {  findUserFromSession, getRv } from "@/lib/actions";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
-const AcountLayout = async ({ children }) => {
-  const renter = await findUserFromSession();
+const Rentingheader = ({ rv, renter}) => {
 
-  if (!renter) toda = true
-
-    let rv = false
-
-    if (renter.renting) rv = await getRv(renter.renting.rv)
 
     let rate = renter.renting.rate
 
 
   return (
-    <>
-      <div className="max-wid-1024 flex-dir-column">
-        <div>
+    <div>
           <div className="acct-rv-top-box gap-20">
             <div>
               <div className="acct-rv-img">
@@ -35,8 +26,8 @@ const AcountLayout = async ({ children }) => {
             </div>
             <div style={{ width: "100%", display: "flex", alignItems: "center" }}>
               <article>
-                <p className="acct-sub-head-p">Renting</p>
-                <p className="acct-bold-head-p">{ rv.name }</p>
+                <p className="acct-sub-head-p">Renting From components</p>
+                <p className="acct-bold-head-p">{ rv?.name }</p>
                 <p style={{  display: "flex", alignItems: "center", gap: "5px" }}><span class="material-symbols-outlined green">
 group
 </span> <span>{ renter.name } + {renter.renting.tenants} </span></p>
@@ -54,20 +45,12 @@ group
               <p className="acct-bold-head-p">${ rate }</p>
               <p className="acct-sub-head-p" style={{ margin: "-5px 0px 10px" }}>month</p>
               <Link className="acct-details-btn" href={{
-          pathname: `/rental/${rv.rvid}`,
+          pathname: `/rental/${rv?.rvid}`,
         }} >Details</Link>
             </div>
           </div>
         </div>
-        <div className="acct-main-box">
+  )
+}
 
-          {children}
-        </div>
-
-        
-      </div>
-    </>
-  );
-};
-
-export default AcountLayout;
+export default Rentingheader

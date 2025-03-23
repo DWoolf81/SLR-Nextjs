@@ -315,6 +315,32 @@ export const deleteAddon = async (formData) => {
   redirect(`/admin/renters/${rid}/addons`);
 };
 
+export const deleteRental = async (formData) => {
+  // const del = await Rental.deleteOne({ rvid: rvid });
+  // For Tessting only
+  //const del = { deletedCount: true };
+
+  console.log("This is the form data", formData)
+
+  const res = await Rental.updateOne(
+    { rvid: formData.get("rvid") },
+    { status: formData.get("type") })
+
+  //if (del.deletedCount) {
+    if ( res.matchedCount) {
+    revalidatePath(`./admin/rentals/`, "page");
+    return {
+      success: true,
+      mess: `Successfully deleted rental - ${formData.get("rvid")}`,
+    };
+  } else {
+    return {
+      error: true,
+      mess: `Rental was NOT deleted - ${formData.get("rvid")}`,
+    };
+  }
+};
+
 export const admin_server_action_test = async (formData) => {
   // const renters = await Renter.find( {rid: "9999" })
 
@@ -350,7 +376,6 @@ export const admin_server_action_rental = async (formData) => {
   // console.log("This is the form data", formData);
 
   // return "This aint working"
-
 
   if (formData.get("formType") == "insert") {
     const res = await Rental.create({

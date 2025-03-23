@@ -5,6 +5,8 @@ import Link from "next/link";
 const Account = async () => {
   // Logic to determine if a redirect is needed
 
+  
+
   return (
     <>
         <div className="acct-link-box">

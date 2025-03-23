@@ -30,6 +30,7 @@ const rentalSchema = new Schema(
             map: String,
 
         },
+        status: Number,
         pictures: [String],
         desc: String,
         amenities:[String],
