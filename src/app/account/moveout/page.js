@@ -14,7 +14,7 @@ const Moveout = async () => {
       <div className="acct-moveout-box">
         <div style={{ margin: "20px" }}>
           <div className="acct-moveout-date-box">
-            <p style={{ margin: "20px" }}>Move-Out</p>
+            <p >Move-Out</p>
             {renter.renting.moveout ? (
               <>
                 <p>

@@ -9,13 +9,15 @@
     margin: 20px 0px;
 }
 
-.uniform-form input, .uniform-form select, .uniform-form textarea {
+.uniform-form input,
+.uniform-form select,
+.uniform-form textarea {
     padding: 10px;
     border: solid 1px var(--button-bg-color);
     margin: 5px 0px;
     border-radius: 10px;
     font-size: 16px;
-    
+
 }
 
 .uniform-form button {
@@ -23,7 +25,8 @@
     height: 55px;
 }
 
-.admin-link, .action-link {
+.admin-link,
+.action-link {
     background-color: var(--button-bg-color);
     height: 35px;
     display: flex;
@@ -64,19 +67,20 @@
 }
 
 .admin-flex-list-links {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
 }
+
 .admin-flex-list-links li a {
     padding: 5px;
-    display: flex;   
-     border-radius: 20px;
+    display: flex;
+    border-radius: 20px;
 
 }
+
 .admin-flex-list-links li a:hover {
     background-color: #cfecc1;
-    
+
 }
 
 .admin-flex-list-head {
@@ -87,6 +91,7 @@
     font-weight: bold;
     border-bottom: solid 1px #d1d1d1;
 }
+
 .admin-flex-list-content {
     background-color: white;
     padding: 20px 10px;
@@ -110,6 +115,7 @@
 .admin-info-box p {
     margin: 5px 0px;
 }
+
 .admin-info-box span {
     font-weight: bold;
     color: green;
@@ -121,7 +127,7 @@
     flex-wrap: wrap;
     position: relative;
     justify-content: space-evenly;
-    
+
 }
 
 .image-uploader-box {
@@ -145,8 +151,9 @@
     background-color: #dfdfdf85;
     padding: 5px;
     border-bottom-left-radius: 10px;
-    
+
 }
+
 .image-action-box .select-box select {
     padding: 5px;
     border: none;
@@ -188,6 +195,13 @@
         max-width: 150px;
         min-width: 100px;
         position: relative;
+    }
+
+    .admin-flex-list-head,
+    .admin-flex-list,
+    .admin-flex-list .material-symbols-outlined {
+        font-size: 2.5vw;
+
     }
 
 

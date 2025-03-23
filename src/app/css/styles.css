@@ -57,7 +57,12 @@ h3 {
 .text-green-shadow {
   text-shadow: 5px 5px 5px var(--main-bg-color);
 }
-
+.pt-100 {
+  padding-top: 100px;
+}
+.pt-75 {
+  padding-top: 75px;
+}
 #container {
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
@@ -598,7 +603,6 @@ footer ul a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   width: 100%;
   text-align: center;
   z-index: -1;

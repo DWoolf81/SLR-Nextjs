@@ -61,7 +61,7 @@ const Page = async () => {
               <li><Link href={`/admin/rentals/${renting}`}>{ renting }</Link></li>
               <li>{ location }</li>
               <li>{ rentalTypes( el.type ) } </li>
-              <li>{ `$${el.rate.day}/$${el.rate.week}/$${el.rate.month}` }</li>
+              <li>{ `$${el.rate.day}/d $${el.rate.week}/w $${el.rate.month}/m` }</li>
               <li>
                 <div style={{width: "100%"}}>
                   <ul className={"admin-flex-list-links"}>

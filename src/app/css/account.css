@@ -205,14 +205,15 @@ body * {
     margin-right: 5px;
 }
 
-.history-item-box,
-.acct-main-box {
-    padding-top: 200px;
 
+.acct-main-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .acct-history-item,
-.acct-addon-item {
+ .acct-addon-item {
     background-color: var(--acct-history-item-bg) !important;
 }
 
@@ -592,8 +593,7 @@ body * {
 
     }
 
-    .history-item-box,
-    .acct-main-box {
+    .history-item-box {
         padding-top: 170px;
     }
 

@@ -5,21 +5,26 @@ import Backbtn from "@/components/backbtn";
 import React from "react";
 
 const Addons = async () => {
-  
-    const renter = await findUserFromSession();
+  const renter = await findUserFromSession();
 
-     // console.log("We found a renter", renter, renter.id);
+  // console.log("We found a renter", renter, renter.id);
 
-    
-  
-const rv = await getRv(renter.renting.rv);
+  const rv = await getRv(renter.renting.rv);
 
   return (
     <div style={{ padding: "20px" }}>
       <Backbtn link="./" />
-      <Amenities title={"Standard Amenities"} list={rv.amenities} />
-      <Amenities title={"Free Add-On Amenities"} list={rv.addons} />
-      <PaidAddons rid={renter.id} />
+      {rv ? (
+        <>
+          <Amenities title={"Standard Amenities"} list={rv.amenities} />
+          <Amenities title={"Free Add-On Amenities"} list={rv.addons} />
+          <PaidAddons rid={renter.id} />
+        </>
+      ) : (
+        <p style={{ display: "flex", justifyContent: "center" }}>
+          No amenites to show
+        </p>
+      )}
     </div>
   );
 };

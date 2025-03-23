@@ -1,5 +1,4 @@
 import Backbtn from "@/components/backbtn";
-import Paymenthead from "@/components/paymenthead";
 import YearSelect from "@/components/selectyear";
 import { findUserFromSession } from "@/lib/actions";
 import React from "react";
@@ -15,8 +14,9 @@ const Card = async () => {
   return (
     <>
       <Backbtn link="../payment" />
-      <Paymenthead />
-      <div style={{ 
+      <div>
+
+<div style={{ 
         paddingLeft: "30px",
        }}>
         <h2 style={{  fontWeight: "bold" }}>Enter Credit Card</h2>
@@ -59,6 +59,9 @@ const Card = async () => {
         <button>Submit</button>
       </div>
       </div>
+
+      </div>
+      
 
       
     </>

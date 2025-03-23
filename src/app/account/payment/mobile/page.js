@@ -1,5 +1,4 @@
 import Backbtn from "@/components/backbtn";
-import Paymenthead from "@/components/paymenthead";
 import Image from "next/image";
 import React from "react";
 
@@ -7,7 +6,6 @@ const Mobile = () => {
   return (
     <>
       <Backbtn link="../payment" />
-      <Paymenthead />
       <div style={{ textAlign: "center" }}>
         <h2 style={{ marginBottom: "20px", color: "var(--main-link-color)" }}> Accepted Payment</h2>
         <p>SLR accepts any of the below mobile payment services</p>
