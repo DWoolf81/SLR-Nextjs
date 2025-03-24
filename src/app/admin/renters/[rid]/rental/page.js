@@ -9,20 +9,21 @@ const Page = async ({ params }) => {
   let terms = ""
 
   if (renter.renting) {
-    const rental = await Camper.findOne({ rvid: renter.renting.rv });
-
+    const rental = await Camper.findOne({ rvid: renter.renting.rv })
+    console.log(rental)
     if (rental) {
       renter.terms = rental.rate;
+      //terms = JSON.parse(JSON.stringify(rental.rate));
     }
    
-    terms = JSON.parse(JSON.stringify(rental.rate));
+    
   }
 
   const json = JSON.parse(JSON.stringify(renter));
 
   console.log("Renter info", json, terms);
 
-  return <Addrental edit={json} terms={terms} />;
+  return terms !== "" ? <Addrental edit={json} terms={terms} /> : `No active rental or inactive serach for rvid : ${renter.renting.rv}`
 };
 
 export default Page;

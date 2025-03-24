@@ -107,7 +107,7 @@ export default function Container(props) {
           name="address"
           placeholder="Street address of camper"
           onChange={(e) => setAddress(e.target.value)}
-          value={address}
+          value={street}
         />
         <div
           style={{

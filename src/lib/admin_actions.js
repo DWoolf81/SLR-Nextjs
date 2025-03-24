@@ -331,12 +331,12 @@ export const deleteRental = async (formData) => {
     revalidatePath(`./admin/rentals/`, "page");
     return {
       success: true,
-      mess: `Successfully deleted rental - ${formData.get("rvid")}`,
+      mess: `Successfully updated rental - ${formData.get("rvid")}`,
     };
   } else {
     return {
       error: true,
-      mess: `Rental was NOT deleted - ${formData.get("rvid")}`,
+      mess: `Rental was NOT updated - ${formData.get("rvid")}`,
     };
   }
 };

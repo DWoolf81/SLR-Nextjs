@@ -63,6 +63,8 @@ const Removerentalform = (props) => {
                 <>
                   <input type="hidden" name="rvid" value={rental?.rvid} />
                   <select className="form-action-type" name="type" onChange={(formData) => formAction(formData)}>
+
+                    <option value={0}>Select A Type</option>
                     <option value={1}>Active</option>
                     <option value={2}>Inactive</option>
                     <option value={3}>Remove</option>
