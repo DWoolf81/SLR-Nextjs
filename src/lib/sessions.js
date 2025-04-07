@@ -30,12 +30,15 @@ export const decrypt = async (input) => {
 const setCookie = async (request) => {
   try {
     const getCookie = request.cookies.get("session")?.value;
+   
 
     if (!getCookie) return;
 
-    const resp = NextResponse.next();
+    
 
     const res = await decrypt(getCookie);
+
+    console.log("This is the cookie", res.expires)
 
     res.expires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
 
@@ -48,11 +51,14 @@ const setCookie = async (request) => {
     };
 
     const enc = await encrypt({ renter, expires });
+    
+    const resp = NextResponse.next();
 
     const setCookie = resp.cookies.set("session", enc, {
       expires,
       httpOnly: true,
     });
+    console.log("Cookie has been set")
 
     return resp;
   } catch (e) {

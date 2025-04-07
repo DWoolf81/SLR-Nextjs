@@ -8,8 +8,12 @@ const PaymentSchema = new Schema ({
     date:  String,
     type: Number,
     amount: Number,
+    pas: String, // Payment Amount Status = Partial = P, Full = F
+    pm: String, // Payment Month
     create_at: { type: Date, default: Date.now },
     method: String,
+    status: String, 
+    isOnTime: String, // P=Pending, L=Late, OT=On=Time
     payment: {
         number: String,
         method: String,

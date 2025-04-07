@@ -20,7 +20,7 @@ const Page = async () => {
         }}
       >
         <h1>Payments</h1>
-        <Addlink linkpath={"/admin/renters/new-renter"} text={"Add Renter"} />
+        <Addlink linkpath={"/admin/payments/add-payment"} text={"Add Payment"} />
       </div>
 
       <div>
@@ -30,6 +30,7 @@ const Page = async () => {
           <li>Rental ID</li>
           <li>Amount</li>
           <li>Payment Date</li>
+          <li>OnTime?</li>
           <li>Links</li>
         </ul>
       </div>
@@ -52,6 +53,7 @@ const Page = async () => {
               <li><Link href={`/admin/rentals/${el.rid}`}>{ el.rid }</Link></li>
               <li>{ payment }</li>
               <li>{ el.date }</li>
+              <li className="iot"><p>L</p></li>
               <li>
                 <div style={{width: "100%"}}>
                   <ul className={"admin-flex-list-links"}>
