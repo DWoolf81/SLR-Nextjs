@@ -1,130 +1,129 @@
 "use client";
+import RentalListSelect from "@/components/rentallist";
 import StateSelect from "@/components/stateslist";
-import { admin_server_action, admin_server_action_test } from "@/lib/admin_actions";
-import { decrypt, encrypt } from "@/lib/sessions";
-import bcrypt from "bcryptjs/dist/bcrypt";
+import { getAllRvs, getAllRenters } from "@/lib/actions";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useFormState } from "react-dom";
-
-
+import { payment_create_action } from "@/lib/payment/payment_actions";
+import RenterSelectList from "@/components/renterselectlist";
 
 const handleSubmit = async (prev, formData) => {
 
-    const res = await admin_server_action_test(formData);
+  console.log("What is the payment form", formData)
+  const res = await payment_create_action(formData);
 
-    if (res) {
-      //router.push("/login");
-
-    } else {
-      console.error("Registration failed");
-    }
-  };
-
+  if (res) {
+    //router.push("/login");
+  } else {
+    console.error("Registration failed");
+  }
+};
 
 export default function RegisterPage() {
 
+
+  const setTheRenter = (val) => {
+    console.log("The renter that's clicked", val)
+    setRenter(val)
+  } 
   
+  const setRental = (val) => {
+    console.log("The rv that's clicked", val)
+    setRv(val)
+  }
+  const isOnTime = (e) => {
+    setOnTime(e.target.value)
+  }
+  
+  const changePaymentType = (e) => {
+    setPaymentType(e.target.value)
+  }
+  
+  const changePaymentTerm = (e) => {
+    setPaymentTerm(e.target.value)
+  }
+
+  
+  const [rv, setRv] = useState();
+  const [rvs, setRvs] = useState();
+  const [renter, setRenter] = useState();
+  const [renters, setRenters] = useState();
+  const [date, setDate ] = useState()
+  const [amount, setAmount] = useState("");
+  const [onTime, setOnTime] = useState("");
+  const [paymentType, setPaymentType] = useState("");
+  const [paymentTerm, setPaymentTerm] = useState("");
 
 
- const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [dob, setDob] = useState("");
-
-  const [dl, setDL] = useState("");
-  const [phone, setPhone] = useState("");
-
-
-  const [error, formAction ] = useFormState(handleSubmit, null)
+  const [error, formAction] = useFormState(handleSubmit, null);
 
   const router = useRouter();
 
   useEffect(() => {
-    
+    const test = async () => {
+      const rvs = await getAllRvs();
+
+      const renters = await getAllRenters();
+
+      setRenters(renters)
+      setRvs(rvs)
+
+      console.log("All rvs listed", rvs);
+      console.log("All rvs listed", renters);
+    };
+
+    test();
   }, []);
 
-  
-
   return (
-    <div
-    className="uniform-box" >
-      <form className={"uniform-form"} action={ formData => { formAction(formData)}}>
-        <p>Something</p>
+    <div className="uniform-box">
+      <form
+        className={"uniform-form"}
+        action={formData => formAction(formData) }
+      >
+        <RenterSelectList list={renters} onChange={setTheRenter} />
+        <RentalListSelect list={rvs} onChange={setRental} />
         <input
-          type="text"
-          name="name"
-          placeholder="Renters full name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          type="number"
+          name="amount"
+          placeholder="Amount"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
           required
         />
         <input
-          type="email"
-          name="email"
-          placeholder="Email for renter"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="date"
+          name="date"
+          placeholder="date of payment"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
           required
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password for renter. Use DOB"
-          value={dob}
-          onChange={(e) => setDob(e.target.value)}
-          required
-        />
-         <input
-          type="text"
-          name="address"
-          placeholder="Street address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required
-        />
-        <div style={{
-          display: "flex",
-          gap: "20px"
-        }}>
-        <input
-          type="text"
-          name="city"
-          placeholder="City"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          required
-        />
-        <StateSelect />
-        
-        </div>
-        <input
-          type="text"
-          name="dob"
+        <select value={onTime}  onChange={isOnTime}>
+      <option value={0}>Payment On Time?</option>
+        <option value={1}>On Time</option>
+        <option value={2}>Late</option>
+    </select>
+    <select value={paymentType} onChange={changePaymentType}>
+      <option value={0}>Payment Type</option>
+        <option value={1}>Pro-rated</option>
+        <option value={2}>Partial</option>
+        <option value={3}>Full</option>
+    </select>
+    <select value={paymentTerm} onChange={changePaymentTerm}>
+      <option value={0}>Payment Term</option>
+        <option value={1}>Daily</option>
+        <option value={2}>Weekly</option>
+        <option value={3}>Bi-Weekly</option>
+        <option value={4}>Monthly</option>
+    </select>
+       
+        <textarea
+          name="extra"
           placeholder="Date of birth ex 10/09/1981"
-          value={dob}
-          onChange={(e) => setDob(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          name="dl"
-          placeholder="Driver Licence or ID number"
-          value={dl}
-          onChange={(e) => setDL(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          name="phone"
-          placeholder="Phone Ex. 723-555-5555"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          required
-        />
+        > </textarea>
+        
         <button type="submit">Register</button>
       </form>
     </div>

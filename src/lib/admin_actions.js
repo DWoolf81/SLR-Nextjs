@@ -511,6 +511,8 @@ export const admin_server_action = async () => {
   return res;
 };
 
+export const createId = (length, type) => makeid(length, type)
+
 function makeid(length, type = "any") {
   let result = "";
   let characters = "";

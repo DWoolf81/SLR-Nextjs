@@ -1,4 +1,3 @@
-import { getLocationList } from "@/lib/admin_actions";
 import React, { useEffect, useState } from "react";
 
 const LocationListSelect = ( props ) => {

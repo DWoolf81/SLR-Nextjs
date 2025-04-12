@@ -99,6 +99,9 @@ export const findAmenityById = async (a) => {
 
 export const getRv = async (id) => JSON.parse(JSON.stringify(await Camper.findOne({rvid: id})))
 
+export const getAllRvs = async () => JSON.parse(JSON.stringify(await Camper.find()))
+export const getAllRenters = async () => JSON.parse(JSON.stringify(await Renter.find()))
+
 export const getRentedRv = async (id) => {
 
   const rv = await getRv(id)
@@ -160,7 +163,7 @@ const authenticate = async (formData) => {
 
     const renter = { id: res.id, email: res.email, name: res.name };
 
-    const expires = new Date(Date.now() + 60 * 1000); // Ten seconds
+    const expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
     const session = await encrypt({ renter, expires });
 
     //console.log("Cookie", session, renter);

@@ -28,7 +28,7 @@ const History = async () => {
 
   const rvs = [...Array(25)];
   return (
-    <>
+    <div style={{ marginTop: "75px"}}>
       <div className="back-btn-box">
         <Link className="back-btn" href={`/account/`}>
           <span className="material-symbols-outlined">arrow_back</span>
@@ -107,7 +107,7 @@ const History = async () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

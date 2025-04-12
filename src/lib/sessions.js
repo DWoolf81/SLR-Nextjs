@@ -40,7 +40,7 @@ const setCookie = async (request) => {
 
     console.log("This is the cookie", res.expires)
 
-    res.expires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+    res.expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
 
     const expires = res.expires;
 

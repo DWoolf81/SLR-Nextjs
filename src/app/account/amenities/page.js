@@ -21,7 +21,7 @@ const Addons = async () => {
           <PaidAddons rid={renter.id} />
         </>
       ) : (
-        <p style={{ display: "flex", justifyContent: "center" }}>
+        <p style={{ display: "flex", justifyContent: "center", height: "100vh", alignItems: "center" }}>
           No amenites to show
         </p>
       )}
