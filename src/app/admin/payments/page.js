@@ -1,6 +1,5 @@
 import Addlink from "@/components/admin/addlink";
 import Payment from "@/models/payments";
-import Renter from "@/models/renters";
 import Link from "next/link";
 
 const Page = async () => {

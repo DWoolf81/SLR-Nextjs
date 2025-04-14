@@ -24,7 +24,7 @@ const RentalListSelect = ( props ) => {
       <option value={0}>Select A Resort</option>
       {props.list && props.list.map((el, index) => (
         <option key={index} value={el.rvid}>
-          {el.name}
+          {el.name} - {el.rvid}
         </option>
       ))}
     </select>
