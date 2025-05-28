@@ -4,7 +4,7 @@ const RenterSelectList = ( props ) => {
   const empty = [];
 
   const findLocation = (e) => {
-    console.log("These are the props", props, e.target.value)
+    //console.log("These are the props", props, e.target.value)
     props.onChange(e.target.value)
     setDefVal(e.target.value)
     // props.onChange("Bitches and hoes are my thang")
@@ -12,10 +12,12 @@ const RenterSelectList = ( props ) => {
 
   const [renters, setRenters] = useState(props.list);
 
-  const [defval, setDefVal] = useState("")
+  const [defval, setDefVal] = useState()
 
 
   return (
+    <>
+    <label htmlFor='renter'>Select a renter</label>
     <select name="renter" value={defval} onChange={findLocation}>
       <option value={0}>Select A Renter</option>
       {props.list && props.list.map((el, index) => (
@@ -24,6 +26,8 @@ const RenterSelectList = ( props ) => {
         </option>
       ))}
     </select>
+    </>
+    
   );
 };
 

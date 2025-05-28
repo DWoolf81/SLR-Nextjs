@@ -12,3 +12,4 @@ export const rentalTypes = (type) => {
 
   return types[type];
 };
+

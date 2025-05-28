@@ -7,10 +7,34 @@ import Location from "@/models/locations";
 import fs from "node:fs/promises";
 import { revalidatePath } from "next/cache";
 import Rental from "@/models/rental";
+import Payment from "@/models/payments";
 
 const isObjectEmpty = (objectName) => {
   return Object.keys(objectName).length === 0;
 };
+
+export const getRenterById = async (id) => JSON.parse(JSON.stringify(await Renter.findOne({ rid: id })));
+export const getRentalById = async (id) => Rental.findOne({ rvid: id });
+export const getPaymentById = async (id) => Payment.findOne({ pid: id });
+export const getLocationById = async (id) => Location.findOne({ loc_id: id });
+
+export const getUniqueId = async (table, count, type) => {
+  let res = null;
+  let checkId = ""
+
+  do {
+    checkId = (await makeid(count, type)).toString();
+
+    if (table == "renter") res = await getRenterById(checkId);
+    if (table == "rental") res = await getRentalById(checkId);
+    if (table == "payment") res = await getPaymentById(checkId);
+    if (table == "location") res = await getLocationById(checkId);
+    
+  } while (res !== null);
+
+  return checkId;
+};
+
 
 // obj should have 4 properties
 // { rvid: value, list: value, img: value, pos: value}
@@ -180,8 +204,6 @@ const compareDates = (d1, d2) => {
   return compare;
 };
 
-export const getRenter = async (id) => Renter.findOne({ rid: id });
-
 export const updateRenter = async (formData) => {
   /* const fab = Renter.updateOne({rid: "0005"}, {
     name: "Penis Pump",
@@ -320,14 +342,15 @@ export const deleteRental = async (formData) => {
   // For Tessting only
   //const del = { deletedCount: true };
 
-  console.log("This is the form data", formData)
+  console.log("This is the form data", formData);
 
   const res = await Rental.updateOne(
     { rvid: formData.get("rvid") },
-    { status: formData.get("type") })
+    { status: formData.get("type") }
+  );
 
   //if (del.deletedCount) {
-    if ( res.matchedCount) {
+  if (res.matchedCount) {
     revalidatePath(`./admin/rentals/`, "page");
     return {
       success: true,
@@ -511,9 +534,7 @@ export const admin_server_action = async () => {
   return res;
 };
 
-export const createId = (length, type) => makeid(length, type)
-
-function makeid(length, type = "any") {
+async function makeid(length, type = "any") {
   let result = "";
   let characters = "";
 

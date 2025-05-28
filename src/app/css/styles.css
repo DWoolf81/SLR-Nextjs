@@ -9,7 +9,39 @@ body {
   padding: 0px;
   background-color: #e9e9e9;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }
+
+.adminError {
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity .5s ease-in-out, 
+    max-height .5s ease-in-out, 
+    background-color .5s linear, 
+    color .5s linear;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  max-height: 0px;
+  background-color: transparent;
+  color: white
+}
+
+.warning {
+  background-color: #ffddab;
+  color: #cb8300;
+}
+
+.danger {
+  background-color: #f36161;
+  color: #ffcccc;
+}
+
+.showError {
+  opacity: 1;
+  max-height: 100px;
+}
+
 
 li {
   list-style: none;
@@ -731,6 +763,11 @@ footer ul a:hover {
   justify-content: center;
   text-align: center;
   align-items: center;
+}
+
+body {
+
+  font-size: 2.5vw;
 }
 
 @media screen and (max-width: 430px) {

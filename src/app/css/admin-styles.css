@@ -1,266 +1,266 @@
+body {
+  font-size: 14px;
+}
 .admin-container {
-    padding-top: 85px;
+  padding-top: 85px;
 }
 
 .aid-bubble {
-    width: 20px;
-    height: 20px;
-    margin: 0px 10px;
-    border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin: 0px 10px;
+  border-radius: 50%;
 }
 
 .active-aid {
-
-    background-color: #8bc34a;
+  background-color: #8bc34a;
 }
 
 .inactive-aid {
-    background-color: #e3e3e3
+  background-color: #e3e3e3;
 }
 
 .deleted-aid {
-    background: #ffc5c5;
-
+  background: #ffc5c5;
 }
 
 .form-action-type {
-    padding: 5px 20px;
-    border: none;
-    background-color: var(--button-bg-color);
-    border-radius: 10px;
-    width: 200px;
+  padding: 5px 20px;
+  border: none;
+  background-color: var(--button-bg-color);
+  border-radius: 10px;
+  width: 200px;
 }
 
 .uniform-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 20px 0px 100px;
+}
+
+.sticky-submit-box {
+  display: flex;
+  position: fixed;
+  bottom: 10px;
+  left: 0px;
+  width: 100%;
+  justify-content: center;
+}
+
+.sticky-submit-box button {
+    width: 90%;
 }
 
 .uniform-form input,
 .uniform-form select,
 .uniform-form textarea {
-    padding: 10px;
-    border: solid 1px var(--button-bg-color);
-    margin: 5px 0px;
-    border-radius: 10px;
-    font-size: 16px;
+  padding: 10px;
+  border: solid 1px var(--button-bg-color);
+  margin: 5px 0px;
+  border-radius: 10px;
+}
 
+.uniform-form label {
+  padding: 10px 15px 5px;
 }
 
 .uniform-form button {
-    background-color: var(--button-bg-color);
-    height: 55px;
+  background-color: var(--button-bg-color);
+  height: 55px;
 }
 
 .admin-link,
 .action-link {
-    background-color: var(--button-bg-color);
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 20px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: normal;
+  background-color: var(--button-bg-color);
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px;
+  border-radius: 10px;
+  font-weight: normal;
 }
 
 .on-page {
-    background-color: var(--main-link-color-hover);
-    color: white;
+  background-color: var(--main-link-color-hover);
+  color: white;
 }
 
 .action-link {
-    background-color: black;
-    color: white;
-    display: inline-flex;
+  background-color: black;
+  color: white;
+  display: inline-flex;
 }
 
 .al-green-bg {
-    background-color: green;
+  background-color: green;
 }
 
 .admin-flex-list {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr 2fr 1fr 1fr 1fr 2fr;
-    gap: 10px;
-
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr 2fr 1fr 1fr 1fr 2fr;
+  gap: 10px;
 }
 
 .admin-flex-list li {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .admin-flex-list-links {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .admin-flex-list-links li a {
-    padding: 5px;
-    display: flex;
-    border-radius: 20px;
-
+  padding: 5px;
+  display: flex;
+  border-radius: 20px;
 }
 
 .admin-flex-list-links li a:hover {
-    background-color: #cfecc1;
-
+  background-color: #cfecc1;
 }
 
 .admin-flex-list-head {
-    background-color: white;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 15px 10px;
-    font-weight: bold;
-    border-bottom: solid 1px #d1d1d1;
+  background-color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 15px 10px;
+  font-weight: bold;
+  border-bottom: solid 1px #d1d1d1;
 }
 
 .admin-flex-list-content {
-    background-color: white;
-    padding: 20px 10px;
-    border-bottom: solid 1px #a6f0a4;
-    color: #636363;
+  background-color: white;
+  padding: 20px 10px;
+  border-bottom: solid 1px #a6f0a4;
+  color: #636363;
 }
 
 .admin-header-div {
-    display: flex;
-    justify-content: space-between;
-    color: green;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    border-bottom: solid 1px #dedede;
+  display: flex;
+  justify-content: space-between;
+  color: green;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: solid 1px #dedede;
 }
 
 .admin-info-box {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .admin-info-box p {
-    margin: 5px 0px;
+  margin: 5px 0px;
 }
 
 .admin-info-box span {
-    font-weight: bold;
-    color: green;
+  font-weight: bold;
+  color: green;
 }
 
 .image-holder-box {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    position: relative;
-    justify-content: space-evenly;
-
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-evenly;
 }
 
 .image-uploader-box {
-    padding: 20px;
-    background-color: white;
-    margin: 10px 0px;
+  padding: 20px;
+  background-color: white;
+  margin: 10px 0px;
 }
 
-
-
 .image-action-box {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    display: flex;
-    color: black;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    cursor: pointer;
-    background-color: #dfdfdf85;
-    padding: 5px;
-    border-bottom-left-radius: 10px;
-
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  display: flex;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: #dfdfdf85;
+  padding: 5px;
+  border-bottom-left-radius: 10px;
 }
 
 .image-action-box .select-box select {
-    padding: 5px;
-    border: none;
-    border-radius: 10px;
-    color: black;
-    font-weight: bold;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
 }
 
 .image-box:hover .image-action-box {
-    display: flex;
+  display: flex;
 }
-
 
 .image-holder-box .image-box {
-    max-width: 200px;
-    min-width: 100px;
-    max-height: 200px;
-    position: relative;
-    padding: 20px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
+  max-width: 200px;
+  min-width: 100px;
+  max-height: 200px;
+  position: relative;
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
 }
 
-
 .remove-item-confirm-box {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #3b492f96;
-    left: 0;
-    top: 0;
-    text-align: center;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #3b492f96;
+  left: 0;
+  top: 0;
+  text-align: center;
 }
 
 .remove-item-inner-box {
-    background-color: white;
-    width: 90%;
-    border-radius: 20px;
-    padding: 30px 0px;
+  background-color: white;
+  width: 90%;
+  border-radius: 20px;
+  padding: 30px 0px;
 }
 
-
 @media screen and (max-width: 430px) {
+  .image-holder-box {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
 
-    .image-holder-box {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-        flex-wrap: wrap;
-        position: relative;
-        display: flex;
-        justify-content: center;
-    }
+  .image-holder-box .image-box {
+    max-width: 150px;
+    min-width: 100px;
+    position: relative;
+  }
 
-    .image-holder-box .image-box {
-        max-width: 150px;
-        min-width: 100px;
-        position: relative;
-    }
+  .admin-flex-list-head,
+  .admin-flex-list,
+  .admin-flex-list .material-symbols-outlined {
+    font-size: 2.5vw;
+  }
 
-    .admin-flex-list-head,
-    .admin-flex-list,
-    .admin-flex-list .material-symbols-outlined {
-        font-size: 2.5vw;
+  .iot
 
-    }
-
-    .iot
-
-    /* is on time for the admin payment list item */
-        {
-           display: flex;
-           justify-content: center;
-        }
-
-
+    /* is on time for the admin payment list item */ {
+    display: flex;
+    justify-content: center;
+  }
 }
