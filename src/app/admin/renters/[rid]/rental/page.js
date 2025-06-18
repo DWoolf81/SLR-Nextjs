@@ -1,5 +1,4 @@
 import Addrental from "@/components/admin/addrental";
-import Newrenter from "@/components/admin/newrenterform";
 import Camper from "@/models/rental";
 import Renter from "@/models/renters";
 
@@ -12,7 +11,7 @@ const Page = async ({ params }) => {
     const rental = await Camper.findOne({ rvid: renter.renting.rv })
     console.log(rental)
     if (rental) {
-      renter.terms = rental.rate;
+      terms = rental.rate;
       //terms = JSON.parse(JSON.stringify(rental.rate));
     }
    
@@ -23,7 +22,7 @@ const Page = async ({ params }) => {
 
   console.log("Renter info", json, terms);
 
-  return terms !== "" ? <Addrental edit={json} terms={terms} /> : `No active rental or inactive serach for rvid : ${renter.renting.rv}`
+  return <Addrental edit={json} terms={terms} />
 };
 
 export default Page;

@@ -124,7 +124,11 @@ export default function RegisterPage() {
           onChange={(e) => setPhone(e.target.value)}
           required
         />
-        <button type="submit">Register</button>
+        <div className="sticky-submit-box">
+
+                  <button type="submit">Register</button>
+
+        </div>
       </form>
     </div>
   );

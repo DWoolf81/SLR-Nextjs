@@ -10,9 +10,18 @@ const RenterSelectList = ( props ) => {
     // props.onChange("Bitches and hoes are my thang")
   }
 
+  console.log("selected renter", props.selected)
+
   const [renters, setRenters] = useState(props.list);
 
-  const [defval, setDefVal] = useState()
+  const [defval, setDefVal] = useState(props.selected)
+
+   useEffect(()=> {
+  
+      if (props.selected) setDefVal(props.selected)
+  
+  
+    }, [props.selected])
 
 
   return (

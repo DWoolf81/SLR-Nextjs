@@ -1,7 +1,7 @@
 "use client";
 import RentalListSelect from "@/components/rentallist";
 import { getAllRvs, getAllRenters } from "@/lib/actions";
-import { redirect, useRouter } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
 import { payment_create_action } from "@/lib/payment/payment_actions";
@@ -22,7 +22,11 @@ const handleSubmit = async (prev, formData) => {
   }
 };
 
-export default function RegisterPage() {
+export default function AddPaymentPage() {
+  const params = useSearchParams();
+
+  console.log("These are the params", params.get("rid"));
+
   const setTheRenter = (val) => {
     console.log("The renter that's clicked", val);
     setRenter(val);
@@ -53,6 +57,7 @@ export default function RegisterPage() {
   };
 
   const [rv, setRv] = useState();
+  const [rid, setRid ] = useState()
   const [rvs, setRvs] = useState();
   const [renter, setRenter] = useState();
   const [renters, setRenters] = useState();
@@ -81,6 +86,14 @@ export default function RegisterPage() {
 
       setRenters(renters);
       setRvs(rvs);
+
+      console.log("Renter", renter)
+
+      // This run run on intial query (if it exist) and not run with selecting a new renter for the select field
+      if (params && renter == undefined) {
+        setTheRenter(params.get("rid"));
+        setRid(params.get("rid"))
+      }
     };
 
     test();
@@ -90,12 +103,12 @@ export default function RegisterPage() {
         const r = await getRenterById(renter);
 
         const today = new Date();
-        
+
         const nextMonth =
           today.getMonth().length > 1
             ? today.getMonth() + 1
             : `0${today.getMonth() + 2}`;
-            const currentMonth =
+        const currentMonth =
           today.getMonth().length > 1
             ? today.getMonth() + 1
             : `0${today.getMonth() + 1}`;
@@ -104,14 +117,15 @@ export default function RegisterPage() {
             ? today.getFullYear() + 1
             : today.getFullYear();
         const nextPayDate = `${year}-${nextMonth}`;
-        const currentPayDate = `${year}-${currentMonth}`
+        const currentPayDate = `${year}-${currentMonth}`;
 
-
-        const todayFormatted = `${today.getFullYear()}-${currentMonth}-${today.getDate().length > 1 ? today.getDate() : `0${today.getDate()}`}`
+        const todayFormatted = `${today.getFullYear()}-${currentMonth}-${
+          today.getDate().length > 1 ? today.getDate() : `0${today.getDate()}`
+        }`;
 
         console.log("We have a renter", renter, r, "Date", todayFormatted);
 
-        setDate(todayFormatted)
+        setDate(todayFormatted);
 
         if (r.renting && r.renting !== "false") {
           const renting = r.renting;
@@ -166,7 +180,7 @@ export default function RegisterPage() {
           formAction(formData);
         }}
       >
-        <RenterSelectList list={renters} onChange={setTheRenter} />
+        <RenterSelectList list={renters} selected={rid} onChange={setTheRenter} />
         <RentalListSelect list={rvs} select={rv} onChange={setRental} />
         <label htmlFor="amount">Enter the rent amount</label>
         <input
@@ -177,7 +191,7 @@ export default function RegisterPage() {
           onChange={(e) => setAmount(e.target.value)}
           required
         />
-        <label htmlFor='date'>Enter date of payment</label>
+        <label htmlFor="date">Enter date of payment</label>
         <input
           type="date"
           name="date"
@@ -186,7 +200,7 @@ export default function RegisterPage() {
           onChange={(e) => setDate(e.target.value)}
           required
         />
-        <label htmlFor='isOnTime'>Is payment on time?</label>
+        <label htmlFor="isOnTime">Is payment on time?</label>
         <select name="isOnTime" value={onTime} onChange={isOnTime}>
           <option value={0}>Payment On Time?</option>
           <option value={1}>On Time</option>
@@ -245,15 +259,13 @@ export default function RegisterPage() {
           <option value={1}>Pending</option>
           <option value={2}>Complete</option>
         </select>
-<label htmlFor="extra">Extra details about payment</label>
+        <label htmlFor="extra">Extra details about payment</label>
         <textarea
           name="extra"
           defaultValue="Extra details about payment"
         ></textarea>
         <div className="sticky-submit-box">
-
-                  <button type="submit">Add Payment</button>
-
+          <button type="submit">Add Payment</button>
         </div>
       </form>
     </div>

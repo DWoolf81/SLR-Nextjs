@@ -234,7 +234,7 @@ export const updateRenter = async (formData) => {
 };
 
 export const addAddon = async (action = {}) => {
-  const stockNum = makeid(10, "number");
+  const stockNum = await makeid(10, "number");
 
   action.addon.stockNum = stockNum;
 

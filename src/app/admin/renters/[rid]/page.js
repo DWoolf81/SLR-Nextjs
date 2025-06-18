@@ -1,17 +1,21 @@
 import Addlink from "@/components/admin/addlink";
+import ListOfPayments from "@/components/admin/listofpayments";
+import RenterCard from "@/components/admin/renter/rentercard";
 import { formatPhoneNumber } from "@/lib/admin_actions";
-import Addon from "@/models/addons";
+import Payment from "@/models/payments";
 import Renter from "@/models/renters";
 
 const Page = async ({ params }) => {
   const renter = await Renter.findOne({ rid: params.rid });
 
-  console.log("add ons", Object.values(renter.renting));
+  const payments = await Payment.find({ rid: "0005" });
+
+  // console.log("add ons", Object.values(renter.renting));
+  console.log("List of Payments", payments)
 
   let moveout = " -- ";
   let nextdate = " -- "
   let renting = false;
-  let addons = false;
 
   if (renter.renting && renter.renting.rv !== undefined) {
     renting = renter.renting;
@@ -39,39 +43,10 @@ const Page = async ({ params }) => {
           text={"Edit Renter"}
         />
       </div>
-
-      <div className={"admin-info-box"}>
-        <span className="material-symbols-outlined">face_6</span>
-        <div className={"admin-header-div"}>
-          <h2>Personal</h2>
-          <Addlink
-            className="al-green-bg"
-            linkpath={`/admin/renters/${params.rid}/edit`}
-            text={"Edit"}
-          />
-        </div>
-
-        <p>
-          Name: <span>{renter.name}</span>
-        </p>
-        <p>
-          Email: <span>{renter.email}</span>
-        </p>
-        <p>
-          Location:{" "}
-          <span>{`${renter.location.city}, ${renter.location.state} `}</span>
-        </p>
-        <p>
-          DOB: <span>{renter.dob}</span>
-        </p>
-        <p>
-          Phone: <span>{phone}</span>
-        </p>
-        <p>
-          DL: <span>{renter.dl}</span>
-        </p>
-      </div>
-
+<div className={"admin-info-box"}>
+  <RenterCard renter={renter} />
+</div>
+      
       <div className={"admin-info-box"}>
         <div className={"admin-header-div"}>
           <h2>Renting</h2>
@@ -110,7 +85,7 @@ const Page = async ({ params }) => {
               </span>
             </p>
             <p>
-              Rate: <span>{renter.renting.rate}</span>
+              Rate: <span>${renter.renting.rate}</span>
             </p>
             <p>
               Location: <span>{renter.renting.location}</span>
@@ -154,6 +129,18 @@ const Page = async ({ params }) => {
           ) : (
             <p>No Add Ons</p>
           )}
+        </div>
+        <div className="admin-info-box">
+          <div className={"admin-header-div"}>
+            <h2>Payments</h2>
+
+            <Addlink
+              className="al-green-bg"
+              linkpath={`/admin/payments/add-payment?rid=${params.rid}`}
+              text={"Add Payment"}
+            />
+          </div>
+          <ListOfPayments payments={ payments } />
         </div>
     </>
   );

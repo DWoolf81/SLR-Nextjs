@@ -28,10 +28,7 @@ const handleSubmit = async (prev, formData) => {
 
 export default function Newrenter( { edit } ) {
 
-
-
-    
-console.log(edit)
+console.log("what is edit", edit)
   
 const [ renter, setRenter ] = useState("")
 
@@ -56,8 +53,6 @@ const [rid, setRid] = useState(edit.rid);
 
      console.log(error)
 
-
-    
   }, []);
 
   
@@ -146,7 +141,10 @@ const [rid, setRid] = useState(edit.rid);
           onChange={(e) => setPhone(e.target.value)}
           required
         />
-        <button type="submit">Register</button>
+        <div className="sticky-submit-box">
+                  <button type="submit">Submit Edit</button>
+
+        </div>
       </form>
     </div>
     </>

@@ -1,15 +1,10 @@
 "use client";
-import StateSelect from "@/components/stateslist";
-import { getRentedRv, getRv } from "@/lib/actions";
+import { getRentedRv } from "@/lib/actions";
 import {
-  addRental,
-  admin_server_action,
-  admin_server_action_test,
-  updateRenter,
+  addRental
 } from "@/lib/admin_actions";
-import { revalidatePath } from "next/cache";
 import { useRouter } from "next/navigation";
-import { useState, useEffect, useActionState } from "react";
+import { useState, useEffect } from "react";
 import { useFormState } from "react-dom";
 
 const handleSubmit = async (prev, formData) => {
@@ -115,7 +110,7 @@ export default function Addrental({ edit, terms }) {
           padding: "10px 0px",
         }}
       >
-        <h1>Add Rental: {name}</h1>
+        <h1>Add/Edit Rental: {name}</h1>
       </div>
       <div className="uniform-box">
         <form

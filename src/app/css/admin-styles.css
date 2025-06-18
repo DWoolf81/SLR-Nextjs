@@ -234,6 +234,52 @@ body {
   padding: 30px 0px;
 }
 
+
+
+
+.renter-info-div {
+    display: flex;
+    gap: 10px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding: 20px 0px;
+    box-shadow: 5px 5px 15px #00000010;
+    border: solid 1px white;
+
+}
+
+.renter-image-div {
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+}
+
+.renter-image {
+  background-color: darkgrey;
+    color: white;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.fixed-bottom-btn-box {
+  position: fixed;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+
+}
+
+.fixed-bottom-btn-box button {
+  width: 90%;
+  margin: auto;
+}
+
 @media screen and (max-width: 430px) {
   .image-holder-box {
     display: flex;
